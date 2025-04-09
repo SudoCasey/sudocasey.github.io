@@ -23,11 +23,18 @@ jobs:
         run: npm run build
 
       - name: Create .nojekyll
-        run: touch out/.nojekyll
+        run: |
+          echo "Creating .nojekyll file..."
+          touch out/.nojekyll
+          echo "Contents of out directory:"
+          ls -la out/
+          echo "Verifying .nojekyll file:"
+          ls -la out/.nojekyll
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GH_PAGES_TOKEN }}
           publish_dir: ./out
-          publish_branch: gh-pages 
+          publish_branch: gh-pages
+          commit_message: "Deploy with .nojekyll" 
