@@ -12,9 +12,11 @@ import FAQ from '../../components/FAQ';
 import Footer from '../../components/Footer';
 import AppTheme from '../shared-theme/AppTheme';
 
-export default function MarketingPage(props) {
+export const dynamic = 'force-static';
+
+export default function MarketingPage() {
   return (
-    <AppTheme {...props}>
+    <AppTheme>
       <CssBaseline enableColorScheme />
       <Navbar />
       <Hero />
