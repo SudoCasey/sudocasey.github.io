@@ -3,8 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   output: 'export',
   // Configure for GitHub Pages root URL
-  assetPrefix: isProd ? '' : '',
-  basePath: isProd ? '' : '',
+  assetPrefix: isProd ? '/sudocasey.github.io' : '',
+  basePath: isProd ? '/sudocasey.github.io' : '',
   trailingSlash: true,
   // Disable image optimization for static export
   images: {
