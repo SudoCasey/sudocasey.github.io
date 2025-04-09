@@ -78,12 +78,12 @@ export default function Navbar() {
                 alignItems: 'center',
               }}
             >
-              <Button color="primary" variant="text" size="small">
+              {/*<Button color="primary" variant="text" size="small">
                 Sign in
               </Button>
               <Button color="primary" variant="contained" size="small">
                 Sign up
-              </Button>
+              </Button>*/}
               <ColorModeIconDropdown />
             </Box>
             <Box sx={{ display: { xs: 'flex', md: 'none' }, gap: 1 }}>
@@ -113,7 +113,9 @@ export default function Navbar() {
                     </IconButton>
                   </Box>
 
-                  <MenuItem>Features</MenuItem>
+                  <MenuItem href="/" color="secondary" component={NextLink}>Home</MenuItem>
+                  <MenuItem href="/about" color="secondary" component={NextLink}>About</MenuItem>
+                  {/*<MenuItem>Features</MenuItem>
                   <MenuItem>Testimonials</MenuItem>
                   <MenuItem>Highlights</MenuItem>
                   <MenuItem>Pricing</MenuItem>
@@ -129,7 +131,7 @@ export default function Navbar() {
                     <Button color="primary" variant="outlined" fullWidth>
                       Sign in
                     </Button>
-                  </MenuItem>
+                  </MenuItem>*/}
                 </Box>
               </Drawer>
             </Box>

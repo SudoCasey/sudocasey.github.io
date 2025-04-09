@@ -17,7 +17,7 @@ const projects = [
     description: 'A website crawler that crawls individual pages of a website or recursively crawls all pages of a site, checking for WCAG 2.2 accessibility errors, and provides users with a list of accessibility errors & screenshots of each error where applicable.',
     image: '/project1.jpg',
     technologies: ['React', 'Node.js', 'MongoDB', 'AWS EC2', 'AWS S3'],
-    github: 'https://github.com/SudoCasey/ADashboard',
+    github: 'https://github.com/SudoCasey/ADAshboard_example',
     demo: 'https://myadash.com/',
     date: 'January 2021 - October 2024'
   },
@@ -26,7 +26,7 @@ const projects = [
     description: 'A WCAG 2.2-compliant color contrast calculator & color grabbing tool used as a Google Chrome browser plugin. This allows users to immediately check color contrast values on any web page without needing to switch to other pages or tabs.',
     image: '/project2.jpg',
     technologies: ['React', 'Chrome Extension API'],
-    github: 'https://chromewebstore.google.com/detail/wcag-color-contrast-tool/dlgdkjfbookpeopkfeookihfpobkophe',
+    github: 'https://github.com/SudoCasey/Contrast_Checker_Chrome_Plugin',
     demo: 'https://chromewebstore.google.com/detail/wcag-color-contrast-tool/dlgdkjfbookpeopkfeookihfpobkophe',
     date: 'November 2024 - December 2024'
   }
