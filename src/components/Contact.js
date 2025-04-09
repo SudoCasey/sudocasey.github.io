@@ -93,16 +93,16 @@ export default function Contact() {
                   startIcon={<LocationOnIcon />}
                   fullWidth
                 >
-                  Inverness, Florida
+                  Florida, United States
                 </Button>
-                <Button
+                /*<Button
                   variant="outlined"
                   startIcon={<EmailIcon />}
                   href="mailto:CaseyRFriedrich@gmail.com"
                   fullWidth
                 >
                   CaseyRFriedrich@gmail.com
-                </Button>
+                </Button>*/
                 <Button
                   variant="outlined"
                   startIcon={<GitHubIcon />}
@@ -124,9 +124,6 @@ export default function Contact() {
                   linkedin.com/in/caseyfriedrich1
                 </Button>
               </Stack>
-              <Typography variant="body2" color="text.secondary" align="center" sx={{ mt: 2 }}>
-                Phone: 7723323909
-              </Typography>
             </Box>
           </Grid>
         </Grid>

@@ -50,15 +50,15 @@ export default function About() {
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <LocationOnIcon color="action" />
                   <Typography variant="body2" color="text.secondary">
-                    Inverness, Florida, United States
+                    Florida, United States
                   </Typography>
                 </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                /*<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <EmailIcon color="action" />
                   <Typography variant="body2" color="text.secondary">
                     CaseyRFriedrich@gmail.com
                   </Typography>
-                </Box>
+                </Box>*/
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <GitHubIcon color="action" />
                   <Typography variant="body2" color="text.secondary">
