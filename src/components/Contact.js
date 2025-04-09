@@ -14,6 +14,18 @@ import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 export default function Contact() {
+  const inputSx = {
+    '& .MuiOutlinedInput-root': {
+      height: 'auto',
+      '& input': {
+        padding: '14px',
+      },
+      '& textarea': {
+        padding: '14px',
+      }
+    }
+  };
+
   return (
     <Box
       id="contact"
@@ -42,6 +54,7 @@ export default function Contact() {
                 label="Name"
                 variant="outlined"
                 required
+                sx={inputSx}
               />
               <TextField
                 fullWidth
@@ -49,12 +62,14 @@ export default function Contact() {
                 variant="outlined"
                 type="email"
                 required
+                sx={inputSx}
               />
               <TextField
                 fullWidth
                 label="Subject"
                 variant="outlined"
                 required
+                sx={inputSx}
               />
               <TextField
                 fullWidth
@@ -63,6 +78,7 @@ export default function Contact() {
                 multiline
                 rows={4}
                 required
+                sx={inputSx}
               />
               <Button
                 variant="contained"

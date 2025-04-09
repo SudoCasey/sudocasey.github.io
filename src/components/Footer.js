@@ -28,6 +28,16 @@ function Copyright() {
 }
 
 export default function Footer() {
+  const inputSx = {
+    width: '250px',
+    '& .MuiOutlinedInput-root': {
+      height: 'auto',
+      '& input': {
+        padding: '8.5px 14px',
+      }
+    }
+  };
+
   return (
     <Container
       sx={{
@@ -73,13 +83,7 @@ export default function Footer() {
                 fullWidth
                 aria-label="Enter your email address"
                 placeholder="Your email address"
-                slotProps={{
-                  htmlInput: {
-                    autoComplete: 'off',
-                    'aria-label': 'Enter your email address',
-                  },
-                }}
-                sx={{ width: '250px' }}
+                sx={inputSx}
               />
               <Button
                 variant="contained"
