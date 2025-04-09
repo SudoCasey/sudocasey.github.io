@@ -35,6 +35,10 @@ export default function Footer() {
       '& input': {
         padding: '8.5px 14px',
       }
+    },
+    '& .MuiInputLabel-outlined': {
+      backgroundColor: 'background.default',
+      px: 1,
     }
   };
 

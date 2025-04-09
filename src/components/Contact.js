@@ -23,6 +23,10 @@ export default function Contact() {
       '& textarea': {
         padding: '14px',
       }
+    },
+    '& .MuiInputLabel-outlined': {
+      backgroundColor: 'background.default',
+      px: 1,
     }
   };
 
