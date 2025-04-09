@@ -8,8 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "predeploy": "npm run build && touch ./out/.nojekyll",
-    "deploy": "touch ./out/.nojekyll && gh-pages -d out"
+    "predeploy": "npm run build && node create-nojekyll.js",
+    "deploy": "gh-pages -d out -b gh-pages"
   },
   "dependencies": {
     "@emotion/cache": "latest",
