@@ -95,33 +95,34 @@ export default function Contact() {
                 >
                   Florida, United States
                 </Button>
-                /*<Button
+                {/* <Button
                   variant="outlined"
                   startIcon={<EmailIcon />}
-                  href="mailto:CaseyRFriedrich@gmail.com"
                   fullWidth
                 >
                   CaseyRFriedrich@gmail.com
-                </Button>*/
+                </Button> */}
                 <Button
                   variant="outlined"
                   startIcon={<GitHubIcon />}
+                  fullWidth
+                  component="a"
                   href="https://github.com/SudoCasey"
                   target="_blank"
                   rel="noopener noreferrer"
-                  fullWidth
                 >
                   github.com/SudoCasey
                 </Button>
                 <Button
                   variant="outlined"
                   startIcon={<LinkedInIcon />}
-                  href="https://linkedin.com/in/caseyfriedrich1"
+                  fullWidth
+                  component="a"
+                  href="https://www.linkedin.com/in/casey-friedrich/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  fullWidth
                 >
-                  linkedin.com/in/caseyfriedrich1
+                  linkedin.com/in/casey-friedrich
                 </Button>
               </Stack>
             </Box>
