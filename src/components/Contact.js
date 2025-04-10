@@ -9,7 +9,7 @@ import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import XIcon from '@mui/icons-material/X';
+import CloudIcon from '@mui/icons-material/Cloud';
 import EmailIcon from '@mui/icons-material/Email';
 
 export default function Contact() {
@@ -127,12 +127,12 @@ export default function Contact() {
                 </Button>
                 <Button
                   variant="outlined"
-                  startIcon={<XIcon />}
-                  href="https://twitter.com/SudoCasey"
+                  startIcon={<CloudIcon />}
+                  href="https://bsky.app/profile/caseyfriedrich.bsky.social"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  X
+                  Bluesky
                 </Button>
               </Stack>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 2 }}>
