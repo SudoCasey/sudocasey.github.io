@@ -119,7 +119,7 @@ export default function Contact() {
                 <Button
                   variant="outlined"
                   startIcon={<LinkedInIcon />}
-                  href="https://www.linkedin.com/in/caseyfriedrich/"
+                  href="https://www.linkedin.com/in/caseyfriedrich1/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
