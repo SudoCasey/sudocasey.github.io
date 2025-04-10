@@ -8,7 +8,9 @@ import Avatar from '@mui/material/Avatar';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Stack from '@mui/material/Stack';
+import Link from '@mui/material/Link';
 
 export default function About() {
   return (
@@ -61,9 +63,27 @@ export default function About() {
                 </Box> */}
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <GitHubIcon color="action" />
-                  <Typography variant="body2" color="text.secondary">
+                  <Link
+                    href="https://github.com/sudocasey"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    color="text.secondary"
+                    underline="hover"
+                  >
                     github.com/SudoCasey
-                  </Typography>
+                  </Link>
+                </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <LinkedInIcon color="action" />
+                  <Link
+                    href="https://www.linkedin.com/in/caseyfriedrich1/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    color="text.secondary"
+                    underline="hover"
+                  >
+                    linkedin.com/in/caseyfriedrich1
+                  </Link>
                 </Box>
               </Stack>
             </Box>
