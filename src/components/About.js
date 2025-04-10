@@ -31,7 +31,7 @@ export default function About() {
               }}
             >
               <Avatar
-                src="/images/Casey/CaseyFriedrich.jpg"
+                src="/profile.jpg"
                 alt="Casey Friedrich"
                 sx={{
                   width: 200,
