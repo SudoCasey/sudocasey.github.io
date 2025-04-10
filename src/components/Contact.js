@@ -3,15 +3,14 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import IconButton from '@mui/material/IconButton';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import Grid from '@mui/material/Grid';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import XIcon from '@mui/icons-material/X';
 import EmailIcon from '@mui/icons-material/Email';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 export default function Contact() {
   const inputSx = {
@@ -107,44 +106,41 @@ export default function Contact() {
               <Typography variant="h6" gutterBottom>
                 Connect with me
               </Typography>
-              <Stack spacing={2} sx={{ width: '100%', maxWidth: 300 }}>
-                <Button
-                  variant="outlined"
-                  startIcon={<LocationOnIcon />}
-                  fullWidth
-                >
-                  Florida, United States
-                </Button>
-                {/* <Button
-                  variant="outlined"
-                  startIcon={<EmailIcon />}
-                  fullWidth
-                >
-                  CaseyRFriedrich@gmail.com
-                </Button> */}
+              <Stack direction="row" spacing={2}>
                 <Button
                   variant="outlined"
                   startIcon={<GitHubIcon />}
-                  fullWidth
-                  component="a"
                   href="https://github.com/SudoCasey"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  github.com/SudoCasey
+                  GitHub
                 </Button>
                 <Button
                   variant="outlined"
                   startIcon={<LinkedInIcon />}
-                  fullWidth
-                  component="a"
-                  href="https://www.linkedin.com/in/casey-friedrich/"
+                  href="https://www.linkedin.com/in/caseyfriedrich/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  linkedin.com/in/casey-friedrich
+                  LinkedIn
+                </Button>
+                <Button
+                  variant="outlined"
+                  startIcon={<XIcon />}
+                  href="https://twitter.com/SudoCasey"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  X
                 </Button>
               </Stack>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 2 }}>
+                <EmailIcon color="action" />
+                <Typography variant="body2" color="text.secondary">
+                  CaseyRFriedrich@gmail.com
+                </Typography>
+              </Box>
             </Box>
           </Grid>
         </Grid>

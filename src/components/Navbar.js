@@ -69,6 +69,9 @@ export default function Navbar() {
                 <Button variant="text" href="/about" color="secondary" component={NextLink}>
                   About
                 </Button>
+                <Button variant="text" href="/contact" color="secondary" component={NextLink}>
+                  Contact
+                </Button>
               </Box>
             </Box>
             <Box
@@ -115,6 +118,7 @@ export default function Navbar() {
 
                   <MenuItem href="/" color="secondary" component={NextLink}>Home</MenuItem>
                   <MenuItem href="/about" color="secondary" component={NextLink}>About</MenuItem>
+                  <MenuItem href="/contact" color="secondary" component={NextLink}>Contact</MenuItem>
                   {/*<MenuItem>Features</MenuItem>
                   <MenuItem>Testimonials</MenuItem>
                   <MenuItem>Highlights</MenuItem>
