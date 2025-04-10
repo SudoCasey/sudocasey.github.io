@@ -12,6 +12,27 @@ const nextConfig = {
   },
   // Ensure proper static export
   distDir: 'out',
+  // Enable build caching
+  experimental: {
+    turbo: {
+      resolveAlias: {
+        // Add any aliases if needed
+      },
+    },
+  },
+  // Configure build cache
+  webpack: (config, { dev, isServer }) => {
+    // Enable caching in production
+    if (!dev) {
+      config.cache = {
+        type: 'filesystem',
+        buildDependencies: {
+          config: [__filename],
+        },
+      };
+    }
+    return config;
+  },
 };
 
 export default nextConfig;
