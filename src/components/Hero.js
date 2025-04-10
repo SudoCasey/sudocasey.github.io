@@ -116,7 +116,9 @@ export default function Hero() {
               variant="contained"
               color="primary"
               size="large"
-              href="#contact"
+              href="https://www.linkedin.com/in/caseyfriedrich1/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Contact Me
             </Button>

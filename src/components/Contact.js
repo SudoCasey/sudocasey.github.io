@@ -3,32 +3,14 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import CloudIcon from '@mui/icons-material/Cloud';
-import EmailIcon from '@mui/icons-material/Email';
 
 export default function Contact() {
-  const inputSx = {
-    '& .MuiOutlinedInput-root': {
-      height: 'auto',
-      '& input': {
-        padding: '14px',
-      },
-      '& textarea': {
-        padding: '14px',
-      }
-    },
-    '& .MuiInputLabel-outlined': {
-      backgroundColor: 'background.default',
-      px: 1,
-    }
-  };
-
   return (
     <Box
       id="contact"
@@ -51,46 +33,34 @@ export default function Contact() {
         </Typography>
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
-            <Stack spacing={2}>
-              <TextField
-                fullWidth
-                label="Name"
-                variant="outlined"
-                required
-                sx={inputSx}
-              />
-              <TextField
-                fullWidth
-                label="Email"
-                variant="outlined"
-                type="email"
-                required
-                sx={inputSx}
-              />
-              <TextField
-                fullWidth
-                label="Subject"
-                variant="outlined"
-                required
-                sx={inputSx}
-              />
-              <TextField
-                fullWidth
-                label="Message"
-                variant="outlined"
-                multiline
-                rows={4}
-                required
-                sx={inputSx}
-              />
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 2,
+                height: '100%',
+                justifyContent: 'center',
+              }}
+            >
+              <Typography variant="h6" gutterBottom>
+                Connect with me on LinkedIn
+              </Typography>
+              <Typography variant="body1" color="text.secondary" align="center" sx={{ mb: 2 }}>
+                Send me a message on LinkedIn to discuss potential projects, collaborations, or opportunities.
+              </Typography>
               <Button
                 variant="contained"
                 size="large"
-                sx={{ alignSelf: 'flex-start' }}
+                startIcon={<LinkedInIcon />}
+                href="https://www.linkedin.com/in/caseyfriedrich1/"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ alignSelf: 'center' }}
               >
-                Send Message
+                Message Me on LinkedIn
               </Button>
-            </Stack>
+            </Box>
           </Grid>
           <Grid item xs={12} md={6}>
             <Box
@@ -104,7 +74,7 @@ export default function Contact() {
               }}
             >
               <Typography variant="h6" gutterBottom>
-                Connect with me
+                Other Ways to Connect
               </Typography>
               <Stack direction="row" spacing={2}>
                 <Button
@@ -118,15 +88,6 @@ export default function Contact() {
                 </Button>
                 <Button
                   variant="outlined"
-                  startIcon={<LinkedInIcon />}
-                  href="https://www.linkedin.com/in/caseyfriedrich1/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  LinkedIn
-                </Button>
-                <Button
-                  variant="outlined"
                   startIcon={<CloudIcon />}
                   href="https://bsky.app/profile/caseyfriedrich.bsky.social"
                   target="_blank"
@@ -135,12 +96,6 @@ export default function Contact() {
                   Bluesky
                 </Button>
               </Stack>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 2 }}>
-                <EmailIcon color="action" />
-                <Typography variant="body2" color="text.secondary">
-                  CaseyRFriedrich@gmail.com
-                </Typography>
-              </Box>
             </Box>
           </Grid>
         </Grid>

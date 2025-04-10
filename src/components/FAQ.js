@@ -62,10 +62,9 @@ export default function FAQ() {
               gutterBottom
               sx={{ maxWidth: { sm: '100%', md: '70%' } }}
             >
-              You can reach our customer support team by emailing&nbsp;
-              <Link href="mailto:support@email.com">support@email.com</Link>
-              &nbsp;or calling our toll-free number. We&apos;re here to assist you
-              promptly.
+              You can reach me by sending a message on&nbsp;
+              <Link href="https://www.linkedin.com/in/caseyfriedrich1/" target="_blank" rel="noopener noreferrer">LinkedIn</Link>
+              . I'm here to assist you promptly.
             </Typography>
           </AccordionDetails>
         </Accordion>
