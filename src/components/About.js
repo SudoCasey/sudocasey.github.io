@@ -31,7 +31,7 @@ export default function About() {
               }}
             >
               <Avatar
-                src="/profile.jpg"
+                src="/images/Casey/CaseyFriedrich.jpg"
                 alt="Casey Friedrich"
                 sx={{
                   width: 200,
@@ -40,10 +40,10 @@ export default function About() {
                   borderColor: 'primary.main',
                 }}
               />
-              <Typography variant="h5" component="h2" gutterBottom>
+              <Typography variant="h5" component="h2" gutterBottom sx={{ textAlign: 'center' }}>
                 Casey Friedrich
               </Typography>
-              <Typography variant="subtitle1" color="text.secondary">
+              <Typography variant="subtitle1" color="text.secondary" sx={{ textAlign: 'center' }}>
                 Full Stack Web Developer & WCAG Accessibility Expert
               </Typography>
               <Stack spacing={1} sx={{ mt: 2 }}>
