@@ -7,7 +7,8 @@
     "dev": "next dev",
     "build": "node scripts/setup-cache.js && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "convert-images": "node scripts/convert-images.js"
   },
   "dependencies": {
     "@emotion/cache": "latest",
@@ -20,7 +21,8 @@
     "eslint-config-next": "^15.0.0",
     "next": "^15.0.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "sharp": "^0.32.6"
   },
   "devDependencies": {
     "@types/node": "22.10.5",
