@@ -54,6 +54,19 @@ const avatarSizes = [
 
 const avatarInputPath = path.join(__dirname, '../public/images/Casey/CaseyFriedrich.jpg');
 
+// Convert full-size avatar to WebP
+const fullSizeOutputPath = path.join(__dirname, '../public/images/Casey/CaseyFriedrich.webp');
+
+sharp(avatarInputPath)
+  .webp({ 
+    lossless: true,
+    effort: 6
+  })
+  .toFile(fullSizeOutputPath)
+  .then(() => console.log('Created full-size CaseyFriedrich.webp'))
+  .catch(err => console.error('Error creating full-size CaseyFriedrich.webp:', err));
+
+// Convert avatar to different sizes
 avatarSizes.forEach(({ size, name }) => {
   const outputPath = path.join(__dirname, '../public/images/Casey', `${name}.webp`);
   
