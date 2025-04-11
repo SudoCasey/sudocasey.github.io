@@ -106,7 +106,7 @@ export const dataDisplayCustomizations = {
               borderColor: gray[200],
               backgroundColor: gray[100],
               [`& .${chipClasses.label}`]: {
-                color: gray[500],
+                color: 'rgb(69, 83, 112)',
               },
               [`& .${chipClasses.icon}`]: {
                 color: gray[500],
