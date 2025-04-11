@@ -67,7 +67,7 @@ export default function Skills() {
                   height: '100%',
                 }}
               >
-                <Typography variant="h6" gutterBottom>
+                <Typography variant="h6" component="h3" gutterBottom>
                   {category.title}
                 </Typography>
                 <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
