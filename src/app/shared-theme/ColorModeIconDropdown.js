@@ -59,6 +59,7 @@ export default function ColorModeIconDropdown(props) {
         onClick={handleClick}
         disableRipple
         size="small"
+        aria-label="Appearance"
         aria-controls={open ? 'color-scheme-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
