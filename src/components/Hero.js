@@ -88,6 +88,7 @@ export default function Hero() {
           </Typography>
           <Typography
             variant="h4"
+            component="h2"
             sx={{
               textAlign: 'center',
               color: 'text.secondary',

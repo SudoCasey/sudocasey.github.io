@@ -43,7 +43,7 @@ export default function Contact() {
                 justifyContent: 'center',
               }}
             >
-              <Typography variant="h6" gutterBottom>
+              <Typography variant="h6" component="h3" gutterBottom>
                 Connect with me on LinkedIn
               </Typography>
               <Typography variant="body1" color="text.secondary" align="center" sx={{ mb: 2 }}>
@@ -73,7 +73,7 @@ export default function Contact() {
                 justifyContent: 'center',
               }}
             >
-              <Typography variant="h6" gutterBottom>
+              <Typography variant="h6" component="h3" gutterBottom>
                 Other Ways to Connect
               </Typography>
               <Stack direction="row" spacing={2}>

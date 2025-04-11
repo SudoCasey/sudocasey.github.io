@@ -83,7 +83,7 @@ export default function About() {
               <Typography variant="h5" component="h2" gutterBottom sx={{ textAlign: 'center' }}>
                 Casey Friedrich
               </Typography>
-              <Typography variant="subtitle1" color="text.secondary" sx={{ textAlign: 'center' }}>
+              <Typography variant="subtitle1" component="h3" color="text.secondary" sx={{ textAlign: 'center' }}>
                 Full Stack Web Developer & WCAG Accessibility Expert
               </Typography>
               <Stack spacing={1} sx={{ mt: 2 }}>
