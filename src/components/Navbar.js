@@ -15,6 +15,8 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import CaseyFriedrichIcon from './CaseyFriedrichIcon';
 import ColorModeIconDropdown from '../app/shared-theme/ColorModeIconDropdown';
 import NextLink from 'next/link';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
@@ -61,7 +63,22 @@ export default function Navbar() {
         <Container maxWidth="lg">
           <StyledToolbar variant="dense" disableGutters>
             <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
-              <CaseyFriedrichIcon />
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                <Avatar
+                  src="/images/Casey/CaseyFriedrich-100.webp"
+                  srcSet={`
+                    /images/Casey/CaseyFriedrich-100.webp 100w,
+                    /images/Casey/CaseyFriedrich-200.webp 200w,
+                    /images/Casey/CaseyFriedrich-400.webp 400w
+                  `}
+                  sizes="(max-width: 600px) 100px, (max-width: 900px) 200px, 400px"
+                  alt="Casey Friedrich"
+                  sx={{ width: 40, height: 40 }}
+                />
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                  Casey Friedrich
+                </Typography>
+              </Box>
               <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
                 <Button variant="text" href="/" color="secondary" component={NextLink}>
                   Home

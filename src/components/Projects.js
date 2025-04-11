@@ -149,6 +149,12 @@ function ProjectCard({ project }) {
                 component="img"
                 width={project.images[value].width}
                 height={project.images[value].height}
+                srcSet={`
+                  ${project.images[value].src.replace('.webp', '-250.webp')} 250w,
+                  ${project.images[value].src.replace('.webp', '-500.webp')} 500w,
+                  ${project.images[value].src.replace('.webp', '-1000.webp')} 1000w
+                `}
+                sizes="(max-width: 600px) 250px, (max-width: 900px) 500px, 1000px"
                 image={project.images[value].src}
                 alt={`${project.title} - Image ${value + 1}`}
                 loading="lazy"
@@ -160,7 +166,7 @@ function ProjectCard({ project }) {
             )}
           </Box>
         </Box>
-        <CardContent sx={{ flexGrow: 1 }}>
+        <CardContent>
           <Typography gutterBottom variant="h5" component="h3">
             {project.title}
           </Typography>
@@ -241,6 +247,12 @@ function ProjectCard({ project }) {
             ) : (
               <img
                 src={selectedImage.fullSize}
+                srcSet={`
+                  ${selectedImage.fullSize.replace('.webp', '-250.webp')} 250w,
+                  ${selectedImage.fullSize.replace('.webp', '-500.webp')} 500w,
+                  ${selectedImage.fullSize.replace('.webp', '-1000.webp')} 1000w
+                `}
+                sizes="(max-width: 600px) 250px, (max-width: 900px) 500px, 1000px"
                 alt={`${project.title} - Full Size Image`}
                 loading="lazy"
                 style={{

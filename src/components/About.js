@@ -13,6 +13,34 @@ import Stack from '@mui/material/Stack';
 import Link from '@mui/material/Link';
 
 export default function About() {
+  const [isVisible, setIsVisible] = React.useState(false);
+  const imageRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        rootMargin: '150px',
+        threshold: 0.1
+      }
+    );
+
+    if (imageRef.current) {
+      observer.observe(imageRef.current);
+    }
+
+    return () => {
+      if (imageRef.current) {
+        observer.unobserve(imageRef.current);
+      }
+    };
+  }, []);
+
   return (
     <Box
       id="about"
@@ -31,17 +59,27 @@ export default function About() {
                 alignItems: 'center',
                 gap: 2,
               }}
+              ref={imageRef}
             >
-              <Avatar
-                src="/images/Casey/CaseyFriedrich.webp"
-                alt="Casey Friedrich"
-                sx={{
-                  width: 200,
-                  height: 200,
-                  border: '4px solid',
-                  borderColor: 'primary.main',
-                }}
-              />
+              {isVisible && (
+                <Avatar
+                  src="/images/Casey/CaseyFriedrich.webp"
+                  srcSet={`
+                    /images/Casey/CaseyFriedrich-100.webp 100w,
+                    /images/Casey/CaseyFriedrich-200.webp 200w,
+                    /images/Casey/CaseyFriedrich-400.webp 400w
+                  `}
+                  sizes="(max-width: 600px) 100px, (max-width: 900px) 200px, 400px"
+                  alt="Casey Friedrich"
+                  sx={{
+                    width: { xs: 100, sm: 200, md: 200 },
+                    height: { xs: 100, sm: 200, md: 200 },
+                    border: '4px solid',
+                    borderColor: 'primary.main',
+                  }}
+                  loading="lazy"
+                />
+              )}
               <Typography variant="h5" component="h2" gutterBottom sx={{ textAlign: 'center' }}>
                 Casey Friedrich
               </Typography>
