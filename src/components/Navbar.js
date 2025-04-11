@@ -75,7 +75,10 @@ export default function Navbar() {
                   alt="Casey Friedrich"
                   sx={{ width: 40, height: 40 }}
                 />
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                <Typography variant="h6" component="h2" sx={{ 
+                  flexGrow: 1,
+                  color: (theme) => theme.palette.mode === 'light' ? 'text.primary' : 'inherit'
+                }}>
                   Casey Friedrich
                 </Typography>
               </Box>
