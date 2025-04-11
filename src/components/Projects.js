@@ -84,7 +84,7 @@ function ProjectCard({ project }) {
         }
       },
       {
-        rootMargin: '50px',
+        rootMargin: '150px',
         threshold: 0.1
       }
     );
