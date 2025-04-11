@@ -5,7 +5,7 @@ export default function CaseyFriedrichIcon() {
   return (
     <Box
       component="img"
-      src="/images/Casey/CaseyFriedrich.jpg"
+      src="/images/Casey/CaseyFriedrich.webp"
       alt="Casey Friedrich"
       sx={{
         width: 40,

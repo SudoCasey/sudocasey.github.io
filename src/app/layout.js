@@ -10,23 +10,23 @@ export const metadata = {
   description: 'Personal portfolio and blog of Casey Friedrich',
   icons: {
     icon: [
-      { url: '/images/Casey/CaseyFriedrich.jpg', sizes: '32x32', type: 'image/jpeg' },
-      { url: '/images/Casey/CaseyFriedrich.jpg', sizes: '16x16', type: 'image/jpeg' },
+      { url: '/images/Casey/favicon-32x32.webp', sizes: '32x32', type: 'image/webp' },
+      { url: '/images/Casey/favicon-16x16.webp', sizes: '16x16', type: 'image/webp' },
     ],
     apple: [
-      { url: '/images/Casey/CaseyFriedrich.jpg', sizes: '180x180', type: 'image/jpeg' },
+      { url: '/images/Casey/apple-touch-icon.webp', sizes: '180x180', type: 'image/webp' },
     ],
   },
   openGraph: {
     title: 'Casey Friedrich',
     description: 'Personal portfolio and blog of Casey Friedrich',
-    images: '/images/Casey/CaseyFriedrich.jpg',
+    images: '/images/Casey/CaseyFriedrich.webp',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Casey Friedrich',
     description: 'Personal portfolio and blog of Casey Friedrich',
-    images: '/images/Casey/CaseyFriedrich.jpg',
+    images: '/images/Casey/CaseyFriedrich.webp',
   },
 };
 
@@ -36,9 +36,9 @@ export default function RootLayout(props) {
       <head>
         <meta httpEquiv="Cache-Control" content="public, max-age=31536000, immutable" />
         <meta httpEquiv="Expires" content="31536000" />
-        <link rel="icon" type="image/jpeg" href="/images/Casey/CaseyFriedrich.jpg" sizes="32x32" />
-        <link rel="icon" type="image/jpeg" href="/images/Casey/CaseyFriedrich.jpg" sizes="16x16" />
-        <link rel="apple-touch-icon" type="image/jpeg" href="/images/Casey/CaseyFriedrich.jpg" sizes="180x180" />
+        <link rel="icon" type="image/webp" href="/images/Casey/favicon-32x32.webp" sizes="32x32" />
+        <link rel="icon" type="image/webp" href="/images/Casey/favicon-16x16.webp" sizes="16x16" />
+        <link rel="apple-touch-icon" type="image/webp" href="/images/Casey/apple-touch-icon.webp" sizes="180x180" />
       </head>
       <body>
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>

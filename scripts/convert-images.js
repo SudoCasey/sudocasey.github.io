@@ -43,4 +43,30 @@ sharp(ccGifPath)
   })
   .toFile(ccWebpPath)
   .then(() => console.log('Converted CC_Gif.gif to WebP'))
-  .catch(err => console.error('Error converting CC_Gif.gif:', err)); 
+  .catch(err => console.error('Error converting CC_Gif.gif:', err));
+
+// Convert avatar image to WebP in multiple sizes
+const avatarSizes = [
+  { size: 16, name: 'favicon-16x16' },
+  { size: 32, name: 'favicon-32x32' },
+  { size: 180, name: 'apple-touch-icon' }
+];
+
+const avatarInputPath = path.join(__dirname, '../public/images/Casey/CaseyFriedrich.jpg');
+
+avatarSizes.forEach(({ size, name }) => {
+  const outputPath = path.join(__dirname, '../public/images/Casey', `${name}.webp`);
+  
+  sharp(avatarInputPath)
+    .resize(size, size, {
+      fit: 'cover',
+      position: 'center'
+    })
+    .webp({ 
+      lossless: true,
+      effort: 6
+    })
+    .toFile(outputPath)
+    .then(() => console.log(`Created ${name}.webp (${size}x${size})`))
+    .catch(err => console.error(`Error creating ${name}.webp:`, err));
+}); 
