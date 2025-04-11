@@ -72,6 +72,33 @@ function ProjectCard({ project }) {
   const [value, setValue] = React.useState(0);
   const [open, setOpen] = React.useState(false);
   const [selectedImage, setSelectedImage] = React.useState(null);
+  const [isVisible, setIsVisible] = React.useState(false);
+  const imageRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        rootMargin: '50px',
+        threshold: 0.1
+      }
+    );
+
+    if (imageRef.current) {
+      observer.observe(imageRef.current);
+    }
+
+    return () => {
+      if (imageRef.current) {
+        observer.unobserve(imageRef.current);
+      }
+    };
+  }, []);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -115,18 +142,22 @@ function ProjectCard({ project }) {
           <Box 
             onClick={() => handleClickOpen(project.images[value])}
             sx={{ cursor: 'pointer' }}
+            ref={imageRef}
           >
-            <CardMedia
-              component="img"
-              width={project.images[value].width}
-              height={project.images[value].height}
-              image={project.images[value].src}
-              alt={`${project.title} - Image ${value + 1}`}
-              sx={{
-                objectFit: 'cover',
-                objectPosition: 'top'
-              }}
-            />
+            {isVisible && (
+              <CardMedia
+                component="img"
+                width={project.images[value].width}
+                height={project.images[value].height}
+                image={project.images[value].src}
+                alt={`${project.title} - Image ${value + 1}`}
+                loading="lazy"
+                sx={{
+                  objectFit: 'cover',
+                  objectPosition: 'top'
+                }}
+              />
+            )}
           </Box>
         </Box>
         <CardContent sx={{ flexGrow: 1 }}>
@@ -200,6 +231,7 @@ function ProjectCard({ project }) {
               <img
                 src={selectedImage.fullSize}
                 alt={`${project.title} - Full Size Image`}
+                loading="lazy"
                 style={{
                   width: '100%',
                   height: 'auto',
@@ -210,6 +242,7 @@ function ProjectCard({ project }) {
               <img
                 src={selectedImage.fullSize}
                 alt={`${project.title} - Full Size Image`}
+                loading="lazy"
                 style={{
                   width: '100%',
                   height: 'auto',
