@@ -8,6 +8,7 @@ import Script from 'next/script';
 export const metadata = {
   title: 'Casey Friedrich',
   description: 'Personal portfolio and blog of Casey Friedrich',
+  metadataBase: new URL('https://cfriedrich.net'),
   icons: {
     icon: [
       { url: '/images/Casey/favicon-32x32.webp', sizes: '32x32', type: 'image/webp' },
