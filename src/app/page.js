@@ -1,14 +1,36 @@
 import * as React from 'react';
+import dynamic from 'next/dynamic';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
-import About from '../components/About';
-import Skills from '../components/Skills';
-import Projects from '../components/Projects';
-import Contact from '../components/Contact';
-import Footer from '../components/Footer';
 import AppTheme from '../app/shared-theme/AppTheme';
+
+// Dynamically import components that aren't immediately visible
+const About = dynamic(() => import('../components/About'), {
+  loading: () => <div>Loading...</div>,
+  ssr: false
+});
+
+const Skills = dynamic(() => import('../components/Skills'), {
+  loading: () => <div>Loading...</div>,
+  ssr: false
+});
+
+const Projects = dynamic(() => import('../components/Projects'), {
+  loading: () => <div>Loading...</div>,
+  ssr: false
+});
+
+const Contact = dynamic(() => import('../components/Contact'), {
+  loading: () => <div>Loading...</div>,
+  ssr: false
+});
+
+const Footer = dynamic(() => import('../components/Footer'), {
+  loading: () => <div>Loading...</div>,
+  ssr: false
+});
 
 export default function Home() {
   return (
