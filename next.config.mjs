@@ -1,9 +1,9 @@
 const isProd = process.env.NODE_ENV === 'production';
 const nextConfig = {
   reactStrictMode: true,
-  output: 'standalone',
+  output: 'export',
   // Configure for GitHub Pages root URL
-  assetPrefix: isProd ? '' : '',
+  assetPrefix: isProd ? 'https://cfriedrich.net' : '',
   basePath: isProd ? '' : '',
   trailingSlash: true,
   // Disable image optimization for static export
