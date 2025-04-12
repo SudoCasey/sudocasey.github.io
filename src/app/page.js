@@ -1,36 +1,18 @@
 import * as React from 'react';
-import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import AppTheme from '../app/shared-theme/AppTheme';
+import Loading from '../components/Loading';
 
-// Dynamically import components that aren't immediately visible
-const About = dynamic(() => import('../components/About'), {
-  loading: () => <div>Loading...</div>,
-  ssr: false
-});
-
-const Skills = dynamic(() => import('../components/Skills'), {
-  loading: () => <div>Loading...</div>,
-  ssr: false
-});
-
-const Projects = dynamic(() => import('../components/Projects'), {
-  loading: () => <div>Loading...</div>,
-  ssr: false
-});
-
-const Contact = dynamic(() => import('../components/Contact'), {
-  loading: () => <div>Loading...</div>,
-  ssr: false
-});
-
-const Footer = dynamic(() => import('../components/Footer'), {
-  loading: () => <div>Loading...</div>,
-  ssr: false
-});
+// Import sections directly
+import About from '../components/About';
+import Skills from '../components/Skills';
+import Projects from '../components/Projects';
+import Contact from '../components/Contact';
+import Footer from '../components/Footer';
+import Divider from '@mui/material/Divider';
 
 export default function Home() {
   return (
@@ -38,17 +20,19 @@ export default function Home() {
       <CssBaseline enableColorScheme />
       <Navbar />
       <Hero />
-      <div>
-        <About />
-        <Divider />
-        <Skills />
-        <Divider />
-        <Projects />
-        <Divider />
-        <Contact />
-        <Divider />
-        <Footer />
-      </div>
+      <Suspense fallback={<Loading />}>
+        <div>
+          <About />
+          <Divider />
+          <Skills />
+          <Divider />
+          <Projects />
+          <Divider />
+          <Contact />
+          <Divider />
+          <Footer />
+        </div>
+      </Suspense>
     </AppTheme>
   );
 }
