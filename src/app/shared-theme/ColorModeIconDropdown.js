@@ -46,10 +46,15 @@ export default function ColorModeIconDropdown(props) {
     );
   }
 
+  const getSystemIcon = () => {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return prefersDark ? <DarkModeIcon /> : <LightModeIcon />;
+  };
+
   const icon = {
     light: <LightModeIcon />,
     dark: <DarkModeIcon />,
-    system: <LightModeIcon />,
+    system: getSystemIcon(),
   }[mode || 'system'];
 
   return (
