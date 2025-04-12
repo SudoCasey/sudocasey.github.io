@@ -10,6 +10,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import CloudIcon from '@mui/icons-material/Cloud';
 import SitemarkIcon from './CaseyFriedrichIcon';
+import NextLink from 'next/link';
 
 function Copyright() {
   return (
@@ -93,13 +94,13 @@ export default function Footer() {
           }}
         >
           <div>
-            <Link color="text.secondary" variant="body2" href="#">
+            <Link color="text.secondary" variant="body2" component={NextLink} href="/privacy">
               Privacy Policy
             </Link>
             <Typography sx={{ display: 'inline', mx: 0.5, opacity: 0.5 }}>
               &nbsp;•&nbsp;
             </Typography>
-            <Link color="text.secondary" variant="body2" href="#">
+            <Link color="text.secondary" variant="body2" component={NextLink} href="/terms">
               Terms of Service
             </Link>
             <Copyright />
