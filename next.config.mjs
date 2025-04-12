@@ -1,7 +1,7 @@
 const isProd = process.env.NODE_ENV === 'production';
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export',
+  output: 'standalone',
   // Configure for GitHub Pages root URL
   assetPrefix: isProd ? '' : '',
   basePath: isProd ? '' : '',
@@ -32,6 +32,38 @@ const nextConfig = {
       };
     }
     return config;
+  },
+  // Add headers for static assets
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=0, must-revalidate',
+          },
+        ],
+      },
+      {
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
   },
 };
 
