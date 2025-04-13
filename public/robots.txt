@@ -45,4 +45,4 @@ User-agent: MegaIndex.ru
 Disallow: /
 
 # Sitemap location
-Sitemap: https://sudocasey.github.io/sitemap.xml 
+Sitemap: https://cfriedrich.net/sitemap.xml 
