@@ -19,6 +19,20 @@ import CloseIcon from '@mui/icons-material/Close';
 
 const projects = [
   {
+    title: 'Discord Soundboard Usage Tracker',
+    description: 'A Discord bot that tracks soundboard usage in servers, providing detailed statistics and graphs. Features automatic voice channel management and PostgreSQL storage for persistent data tracking.',
+    images: [{ 
+      src: '/images/Soundboard/soundboard_tracker.webp', 
+      width: 500, 
+      height: 250,
+      fullSize: '/images/Soundboard/soundboard_tracker.png'
+    }],
+    technologies: ['Node.js', 'Discord.js', 'PostgreSQL', 'Docker', 'Express'],
+    github: 'https://github.com/SudoCasey/Soundboard_Usage_Tracker',
+    demo: 'https://hub.docker.com/r/snipersrecon/discord_soundboard_usage_tracker',
+    date: 'December 2024'
+  },
+  {
     title: 'ADashboard',
     description: 'A website crawler that crawls individual pages of a website or recursively crawls all pages of a site, checking for WCAG 2.2 accessibility errors, and provides users with a list of accessibility errors & screenshots of each error where applicable.',
     images: [

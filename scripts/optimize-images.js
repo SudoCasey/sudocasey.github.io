@@ -4,6 +4,15 @@ const fs = require('fs');
 
 const imagesToOptimize = [
   {
+    inputPath: path.join(process.cwd(), 'public/images/Soundboard/soundboard_tracker.webp'),
+    outputDir: path.join(process.cwd(), 'public/images/Soundboard'),
+    sizes: [
+      { width: 250, height: 125, suffix: '-250' },
+      { width: 500, height: 250, suffix: '-500' },
+      { width: 1000, height: 500, suffix: '-1000' }
+    ]
+  },
+  {
     inputPath: path.join(process.cwd(), 'public/images/Casey/CaseyFriedrich.webp'),
     outputDir: path.join(process.cwd(), 'public/images/Casey'),
     sizes: [

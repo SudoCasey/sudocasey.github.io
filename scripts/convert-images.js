@@ -2,6 +2,23 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
+// Convert Soundboard image
+const soundboardImage = path.join(__dirname, '../public/images/Soundboard/soundboard_tracker.png');
+const soundboardWebp = path.join(__dirname, '../public/images/Soundboard/soundboard_tracker.webp');
+
+sharp(soundboardImage)
+  .resize(500, 250, {
+    fit: 'cover',
+    position: 'top'
+  })
+  .webp({ 
+    lossless: true,
+    effort: 6
+  })
+  .toFile(soundboardWebp)
+  .then(() => console.log('Converted soundboard_tracker.png to WebP'))
+  .catch(err => console.error('Error converting soundboard_tracker.png:', err));
+
 // Convert ADAsh images
 const adashImages = [
   'ADAsh1.png',
