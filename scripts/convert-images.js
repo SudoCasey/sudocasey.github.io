@@ -2,101 +2,66 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
-// Convert Soundboard image
-const soundboardImage = path.join(__dirname, '../public/images/Soundboard/soundboard_tracker.png');
-const soundboardWebp = path.join(__dirname, '../public/images/Soundboard/soundboard_tracker.webp');
+// Function to recursively get all files in a directory
+function getAllFiles(dirPath, arrayOfFiles = []) {
+  const files = fs.readdirSync(dirPath);
 
-sharp(soundboardImage)
-  .resize(500, 250, {
-    fit: 'cover',
-    position: 'top'
-  })
-  .webp({ 
-    lossless: true,
-    effort: 6
-  })
-  .toFile(soundboardWebp)
-  .then(() => console.log('Converted soundboard_tracker.png to WebP'))
-  .catch(err => console.error('Error converting soundboard_tracker.png:', err));
+  files.forEach(file => {
+    const fullPath = path.join(dirPath, file);
+    if (fs.statSync(fullPath).isDirectory()) {
+      arrayOfFiles = getAllFiles(fullPath, arrayOfFiles);
+    } else {
+      arrayOfFiles.push(fullPath);
+    }
+  });
 
-// Convert ADAsh images
-const adashImages = [
-  'ADAsh1.png',
-  'ADAsh2.png',
-  'ADAsh3.png',
-  'ADAsh4.png'
-];
+  return arrayOfFiles;
+}
 
-adashImages.forEach(image => {
-  const inputPath = path.join(__dirname, '../public/images/ADAsh', image);
-  const outputPath = path.join(__dirname, '../public/images/ADAsh', image.replace('.png', '.webp'));
+// Function to convert an image to WebP
+async function convertToWebP(inputPath) {
+  const outputPath = inputPath.replace(/\.(png|jpg|jpeg)$/i, '.webp');
   
-  sharp(inputPath)
-    .resize(500, 250, {
-      fit: 'cover',
-      position: 'top'
-    })
-    .webp({ 
-      lossless: true,
-      effort: 6
-    })
-    .toFile(outputPath)
-    .then(() => console.log(`Converted ${image} to WebP`))
-    .catch(err => console.error(`Error converting ${image}:`, err));
-});
+  // Skip if output file already exists
+  if (fs.existsSync(outputPath)) {
+    console.log(`Skipping ${inputPath} - WebP already exists`);
+    return;
+  }
 
-// Convert CCPlugin GIF to WebP
-const ccGifPath = path.join(__dirname, '../public/images/CCPlugin/CC_Gif.gif');
-const ccWebpPath = path.join(__dirname, '../public/images/CCPlugin/CC.webp');
+  try {
+    await sharp(inputPath)
+      .webp({ 
+        lossless: true,
+        effort: 6
+      })
+      .toFile(outputPath);
+    console.log(`Converted ${inputPath} to WebP`);
+  } catch (err) {
+    console.error(`Error converting ${inputPath}:`, err);
+  }
+}
 
-sharp(ccGifPath)
-  .resize(500, 250, {
-    fit: 'cover',
-    position: 'top'
-  })
-  .webp({ 
-    lossless: true,
-    effort: 6
-  })
-  .toFile(ccWebpPath)
-  .then(() => console.log('Converted CC_Gif.gif to WebP'))
-  .catch(err => console.error('Error converting CC_Gif.gif:', err));
-
-// Convert avatar image to WebP in multiple sizes
-const avatarSizes = [
-  { size: 16, name: 'favicon-16x16' },
-  { size: 32, name: 'favicon-32x32' },
-  { size: 180, name: 'apple-touch-icon' }
-];
-
-const avatarInputPath = path.join(__dirname, '../public/images/Casey/CaseyFriedrich.jpg');
-
-// Convert full-size avatar to WebP
-const fullSizeOutputPath = path.join(__dirname, '../public/images/Casey/CaseyFriedrich.webp');
-
-sharp(avatarInputPath)
-  .webp({ 
-    lossless: true,
-    effort: 6
-  })
-  .toFile(fullSizeOutputPath)
-  .then(() => console.log('Created full-size CaseyFriedrich.webp'))
-  .catch(err => console.error('Error creating full-size CaseyFriedrich.webp:', err));
-
-// Convert avatar to different sizes
-avatarSizes.forEach(({ size, name }) => {
-  const outputPath = path.join(__dirname, '../public/images/Casey', `${name}.webp`);
+// Main conversion process
+async function convertAllImages() {
+  const imagesDir = path.join(__dirname, '../public/images');
+  const allFiles = getAllFiles(imagesDir);
   
-  sharp(avatarInputPath)
-    .resize(size, size, {
-      fit: 'cover',
-      position: 'center'
-    })
-    .webp({ 
-      lossless: true,
-      effort: 6
-    })
-    .toFile(outputPath)
-    .then(() => console.log(`Created ${name}.webp (${size}x${size})`))
-    .catch(err => console.error(`Error creating ${name}.webp:`, err));
+  // Filter for PNG and JPG files
+  const imageFiles = allFiles.filter(file => 
+    /\.(png|jpg|jpeg)$/i.test(file) && 
+    !file.includes('favicon') && 
+    !file.includes('apple-touch-icon')
+  );
+
+  // Convert each image
+  for (const imageFile of imageFiles) {
+    await convertToWebP(imageFile);
+  }
+}
+
+// Run the conversion
+convertAllImages().then(() => {
+  console.log('All image conversions completed!');
+}).catch(err => {
+  console.error('Error during conversion process:', err);
 }); 

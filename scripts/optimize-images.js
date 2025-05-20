@@ -2,103 +2,88 @@ const sharp = require('sharp');
 const path = require('path');
 const fs = require('fs');
 
-const imagesToOptimize = [
-  {
-    inputPath: path.join(process.cwd(), 'public/images/Soundboard/soundboard_tracker.webp'),
-    outputDir: path.join(process.cwd(), 'public/images/Soundboard'),
-    sizes: [
-      { width: 250, height: 125, suffix: '-250' },
-      { width: 500, height: 250, suffix: '-500' },
-      { width: 1000, height: 500, suffix: '-1000' }
-    ]
-  },
-  {
-    inputPath: path.join(process.cwd(), 'public/images/Casey/CaseyFriedrich.webp'),
-    outputDir: path.join(process.cwd(), 'public/images/Casey'),
-    sizes: [
-      { width: 100, height: 100, suffix: '-100' },
-      { width: 200, height: 200, suffix: '-200' },
-      { width: 400, height: 400, suffix: '-400' }
-    ]
-  },
-  {
-    inputPath: path.join(process.cwd(), 'public/images/ADAsh/ADAsh1.webp'),
-    outputDir: path.join(process.cwd(), 'public/images/ADAsh'),
-    sizes: [
-      { width: 250, height: 125, suffix: '-250' },
-      { width: 500, height: 250, suffix: '-500' },
-      { width: 1000, height: 500, suffix: '-1000' }
-    ]
-  },
-  {
-    inputPath: path.join(process.cwd(), 'public/images/ADAsh/ADAsh2.webp'),
-    outputDir: path.join(process.cwd(), 'public/images/ADAsh'),
-    sizes: [
-      { width: 250, height: 125, suffix: '-250' },
-      { width: 500, height: 250, suffix: '-500' },
-      { width: 1000, height: 500, suffix: '-1000' }
-    ]
-  },
-  {
-    inputPath: path.join(process.cwd(), 'public/images/ADAsh/ADAsh3.webp'),
-    outputDir: path.join(process.cwd(), 'public/images/ADAsh'),
-    sizes: [
-      { width: 250, height: 125, suffix: '-250' },
-      { width: 500, height: 250, suffix: '-500' },
-      { width: 1000, height: 500, suffix: '-1000' }
-    ]
-  },
-  {
-    inputPath: path.join(process.cwd(), 'public/images/ADAsh/ADAsh4.webp'),
-    outputDir: path.join(process.cwd(), 'public/images/ADAsh'),
-    sizes: [
-      { width: 250, height: 125, suffix: '-250' },
-      { width: 500, height: 250, suffix: '-500' },
-      { width: 1000, height: 500, suffix: '-1000' }
-    ]
-  },
-  {
-    inputPath: path.join(process.cwd(), 'public/images/CCPlugin/CC_Gif.gif'),
-    outputDir: path.join(process.cwd(), 'public/images/CCPlugin'),
-    sizes: [
-      { width: 250, height: 125, suffix: '-250' },
-      { width: 500, height: 250, suffix: '-500' },
-      { width: 1000, height: 500, suffix: '-1000' }
-    ]
-  }
-];
+// Function to recursively get all files in a directory
+function getAllFiles(dirPath, arrayOfFiles = []) {
+  const files = fs.readdirSync(dirPath);
 
-async function optimizeImages() {
-  try {
-    for (const image of imagesToOptimize) {
-      // Ensure output directory exists
-      if (!fs.existsSync(image.outputDir)) {
-        fs.mkdirSync(image.outputDir, { recursive: true });
-      }
-
-      // Generate each size
-      for (const size of image.sizes) {
-        const outputPath = path.join(
-          image.outputDir,
-          `${path.basename(image.inputPath, path.extname(image.inputPath))}${size.suffix}.webp`
-        );
-        
-        await sharp(image.inputPath)
-          .resize(size.width, size.height, {
-            fit: 'cover',
-            position: 'center'
-          })
-          .webp({ quality: 80 })
-          .toFile(outputPath);
-        
-        console.log(`Generated ${outputPath}`);
-      }
+  files.forEach(file => {
+    const fullPath = path.join(dirPath, file);
+    if (fs.statSync(fullPath).isDirectory()) {
+      arrayOfFiles = getAllFiles(fullPath, arrayOfFiles);
+    } else {
+      arrayOfFiles.push(fullPath);
     }
-    
-    console.log('Image optimization complete!');
+  });
+
+  return arrayOfFiles;
+}
+
+// Function to optimize an image in multiple sizes
+async function optimizeImage(inputPath) {
+  const outputDir = path.dirname(inputPath);
+  const baseName = path.basename(inputPath, path.extname(inputPath));
+  
+  // Skip if it's a favicon or apple-touch-icon
+  if (baseName.includes('favicon') || baseName.includes('apple-touch-icon')) {
+    return;
+  }
+
+  const sizes = [
+    { width: 250, suffix: '-250' },
+    { width: 500, suffix: '-500' },
+    { width: 1000, suffix: '-1000' }
+  ];
+
+  try {
+    for (const size of sizes) {
+      const outputPath = path.join(
+        outputDir,
+        `${baseName}${size.suffix}.webp`
+      );
+      
+      // Skip if output file already exists
+      if (fs.existsSync(outputPath)) {
+        console.log(`Skipping ${outputPath} - already exists`);
+        continue;
+      }
+
+      await sharp(inputPath)
+        .resize(size.width, null, {
+          fit: 'inside',
+          withoutEnlargement: true
+        })
+        .webp({ quality: 80 })
+        .toFile(outputPath);
+      
+      console.log(`Generated ${outputPath}`);
+    }
   } catch (error) {
-    console.error('Error optimizing images:', error);
+    console.error(`Error optimizing ${inputPath}:`, error);
   }
 }
 
-optimizeImages(); 
+// Main optimization process
+async function optimizeAllImages() {
+  const imagesDir = path.join(process.cwd(), 'public/images');
+  const allFiles = getAllFiles(imagesDir);
+  
+  // Filter for WebP files
+  const webpFiles = allFiles.filter(file => 
+    file.endsWith('.webp') && 
+    !file.includes('-250.webp') && 
+    !file.includes('-500.webp') && 
+    !file.includes('-1000.webp')
+  );
+
+  // Optimize each image
+  for (const webpFile of webpFiles) {
+    await optimizeImage(webpFile);
+  }
+}
+
+// Run the optimization
+optimizeAllImages().then(() => {
+  console.log('All image optimizations completed!');
+}).catch(error => {
+  console.error('Error during optimization process:', error);
+}); 

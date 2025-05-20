@@ -19,6 +19,33 @@ import CloseIcon from '@mui/icons-material/Close';
 
 const projects = [
   {
+    title: 'Web Dev Toolkit',
+    description: 'A modern web crawler built with Next.js, Material-UI, and Puppeteer. This application allows you to crawl websites, take screenshots, discover all pages within a website, and perform WCAG accessibility testing.',
+    images: [
+      { 
+        src: '/images/WebDevToolkit/web_crawler_demo.gif', 
+        width: 500, 
+        height: 250,
+        fullSize: '/images/WebDevToolkit/web_crawler_demo.gif'
+      },
+      { 
+        src: '/images/WebDevToolkit/Web_Dev_Toolkit_1.webp', 
+        width: 500, 
+        height: 250,
+        fullSize: '/images/WebDevToolkit/Web_Dev_Toolkit_1.webp'
+      },
+      { 
+        src: '/images/WebDevToolkit/Web_Dev_Toolkit_2.webp', 
+        width: 500, 
+        height: 250,
+        fullSize: '/images/WebDevToolkit/Web_Dev_Toolkit_2.webp'
+      }
+    ],
+    technologies: ['Next.js', 'Material-UI', 'Puppeteer', 'TypeScript', 'WCAG 2.2'],
+    github: 'https://github.com/SudoCasey/Web_Crawler',
+    date: 'March 2024'
+  },
+  {
     title: 'Discord Soundboard Usage Tracker',
     description: 'A Discord bot that tracks soundboard usage in servers, providing detailed statistics and graphs. Features automatic voice channel management and PostgreSQL storage for persistent data tracking.',
     images: [{ 
@@ -213,15 +240,17 @@ function ProjectCard({ project }) {
             >
               GitHub
             </Button>
-            <Button
-              variant="contained"
-              size="small"
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Live Demo
-            </Button>
+            {project.demo && (
+              <Button
+                variant="contained"
+                size="small"
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Live Demo
+              </Button>
+            )}
           </Stack>
         </CardContent>
       </Card>
