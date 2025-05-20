@@ -131,16 +131,16 @@ export default function About() {
               About Me
             </Typography>
             <Typography variant="body1" paragraph>
-              Dynamic Full Stack Web Developer specializing in WCAG accessibility with 6 years of experience in enhancing web solutions & leading clients to remediate accessibility violations and improve website sales.
+              Dynamic Full-stack Web Developer and Team Lead with 6 years of experience in agile environments, excelling in web accessibility and cloud deployment strategies. Architected scalable RESTful APIs enhancing web app performance by 80%, and directed the ADAshboard project from conception to deployment using React, Node.js, and MongoDB.
             </Typography>
             <Typography variant="body1" paragraph>
-              Spearheaded the remediation of 200+ client websites using advanced techniques in HTML, CSS, and JavaScript frameworks such as React, leading to 50% improved accessibility on average.
+              As a Web Development Team Lead and WCAG Accessibility SME, I mentored and led teams of front-end and full-stack developers in agile sprints, promoting coding best practices and accessibility-first development. Spearheaded accessibility remediation for over 200 client websites, improving usability for users with disabilities and increasing WCAG 2.2 compliance by an average of 50%.
             </Typography>
             <Typography variant="body1" paragraph>
-              Implemented bespoke web applications using WordPress, Shopify, BigCommerce for scalable client solutions on over 200 projects, while collaborating with clients to strategize and enhance website overhauls, resulting in improved SEO and increased sales conversion rates using data-driven techniques.
+              Developed and launched 25+ bespoke web applications using React, PHP, WordPress, and Shopify, directly contributing to SEO improvements and higher sales conversions. Integrated CRM tools and analytics dashboards using RESTful API to track accessibility progress and support continuous client improvement.
             </Typography>
             <Typography variant="body1">
-              Directed integration of CRM tools within internal teams utilizing agile methodologies, assuaging customer concerns and boosting satisfaction by 30%. Architected scalable RESTful APIs optimizing dynamic data handling using Node.js and Express to improve response times by 40%.
+              Currently seeking a challenging role to leverage strong technical and leadership skills in enhancing web accessibility and performance, with a focus on creating inclusive digital experiences that benefit all users.
             </Typography>
           </Grid>
         </Grid>

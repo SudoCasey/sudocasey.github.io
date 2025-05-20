@@ -10,7 +10,7 @@ import Stack from '@mui/material/Stack';
 const skillCategories = [
   {
     title: 'Frontend',
-    skills: ['Javascript', 'HTML', 'CSS', 'jQuery', 'Bootstrap', 'React', 'Vue.js', 'React Native'],
+    skills: ['Javascript', 'HTML', 'CSS', 'jQuery', 'Bootstrap', 'React', 'Vue.js', 'React Native', 'Next.js'],
   },
   {
     title: 'Backend',
@@ -18,19 +18,19 @@ const skillCategories = [
   },
   {
     title: 'CMS & E-commerce',
-    skills: ['WordPress', 'Shopify', 'BigCommerce', 'Magento'],
+    skills: ['WordPress', 'Shopify', 'BigCommerce', 'Magento', 'Drupal'],
   },
   {
     title: 'DevOps & Tools',
-    skills: ['Git', 'GitHub', 'CI/CD', 'AWS', 'EC2', 'S3', 'Jenkins', 'Jest'],
+    skills: ['Git', 'GitHub', 'CI/CD', 'AWS', 'EC2', 'S3', 'Jenkins', 'Jest', 'CircleCI', 'Docker', 'Lambda'],
   },
   {
     title: 'Accessibility',
-    skills: ['WCAG 2.2', 'Section 508', 'Responsive Design', 'ADA Compliance'],
+    skills: ['WCAG 2.2', 'Section 508', 'Responsive Design', 'ADA Compliance', 'Axe-core', 'Lighthouse'],
   },
   {
     title: 'Soft Skills',
-    skills: ['Customer Service', 'Team Leadership', 'Project Management', 'Problem Solving'],
+    skills: ['Customer Service', 'Team Leadership', 'Project Management', 'Problem Solving', 'Agile Development'],
   },
 ];
 
