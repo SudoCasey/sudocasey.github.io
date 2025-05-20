@@ -66,18 +66,32 @@ export default function Hero() {
             variant="h2"
             sx={{
               display: 'flex',
-              flexDirection: { xs: 'column', sm: 'row' },
+              flexDirection: { xs: 'column', lg: 'row' },
               alignItems: 'center',
+              justifyContent: { xs: 'center', lg: 'flex-start' },
               fontSize: 'clamp(3rem, 10vw, 3.5rem)',
+              '@media (min-width: 1200px)': {
+                flexDirection: 'row'
+              }
             }}
           >
-            Hi, I'm&nbsp;
+            <Typography
+              component="span"
+              variant="h2"
+              sx={{
+                fontSize: 'inherit',
+                textAlign: { xs: 'center', lg: 'left' }
+              }}
+            >
+              Hi, I'm&nbsp;
+            </Typography>
             <Typography
               component="span"
               variant="h2"
               sx={(theme) => ({
                 fontSize: 'inherit',
                 color: 'primary.main',
+                textAlign: { xs: 'center', lg: 'left' },
                 ...theme.applyStyles('dark', {
                   color: 'primary.light',
                 }),
