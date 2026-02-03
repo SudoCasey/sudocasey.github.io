@@ -65,19 +65,14 @@ export default function Navbar() {
             <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                 <Avatar
-                  src="/images/Casey/CaseyFriedrich-100.webp"
-                  srcSet={`
-                    /images/Casey/CaseyFriedrich-100.webp 100w,
-                    /images/Casey/CaseyFriedrich-200.webp 200w,
-                    /images/Casey/CaseyFriedrich-400.webp 400w
-                  `}
-                  sizes="(max-width: 600px) 100px, (max-width: 900px) 200px, 400px"
+                  src="/images/Casey/CaseyFriedrich_Headshot-250.webp"
                   alt="Casey Friedrich"
-                  sx={{ width: 40, height: 40 }}
+                  sx={{ width: 100, height: 100 }}
                 />
                 <Typography variant="h6" component="h2" sx={{ 
                   flexGrow: 1,
-                  color: (theme) => theme.palette.mode === 'light' ? 'text.primary' : 'inherit'
+                  color: (theme) => theme.palette.mode === 'light' ? 'text.primary' : 'inherit',
+                  marginRight: 2,
                 }}>
                   Casey Friedrich
                 </Typography>

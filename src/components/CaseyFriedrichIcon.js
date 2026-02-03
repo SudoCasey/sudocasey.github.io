@@ -5,11 +5,11 @@ export default function CaseyFriedrichIcon() {
   return (
     <Box
       component="img"
-      src="/images/Casey/CaseyFriedrich-100.webp"
+      src="/images/Casey/CaseyFriedrich_Headshot.webp"
       srcSet={`
-        /images/Casey/CaseyFriedrich-100.webp 100w,
-        /images/Casey/CaseyFriedrich-200.webp 200w,
-        /images/Casey/CaseyFriedrich-400.webp 400w
+        /images/Casey/CaseyFriedrich_Headshot-250.webp 250w,
+        /images/Casey/CaseyFriedrich_Headshot-500.webp 500w,
+        /images/Casey/CaseyFriedrich_Headshot-1000.webp 1000w
       `}
       sizes="(max-width: 600px) 100px, (max-width: 900px) 200px, 400px"
       alt="Casey Friedrich"
