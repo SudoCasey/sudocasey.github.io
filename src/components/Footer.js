@@ -14,9 +14,9 @@ import NextLink from 'next/link';
 
 function Copyright() {
   return (
-    <Typography variant="body2" sx={{ color: 'text.secondary', mt: 1 }}>
+    <Typography variant="body2" display="inline" sx={{ color: 'text.secondary', mt: 1 }}>
       {'Copyright © '}
-      <Link color="text.secondary" href="https://github.com/SudoCasey">
+      <Link color="text.secondary" href="https://github.com/SudoCasey/sudocasey.github.io">
         Casey Friedrich
       </Link>
       &nbsp;
@@ -33,7 +33,7 @@ export default function Footer() {
         flexDirection: 'column',
         alignItems: 'center',
         gap: { xs: 4, sm: 8 },
-        py: { xs: 8, sm: 10 },
+        py: { xs: 2, sm: 4 },
         textAlign: 'center',
       }}
     >
@@ -42,7 +42,7 @@ export default function Footer() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: 4,
+          gap: 2,
           width: '100%',
         }}
       >
@@ -90,7 +90,7 @@ export default function Footer() {
             width: '100%',
             borderTop: '1px solid',
             borderColor: 'divider',
-            pt: { xs: 4, sm: 8 },
+            pt: { xs: 2, sm: 4 },
           }}
         >
           <div>
@@ -103,6 +103,9 @@ export default function Footer() {
             <Link color="text.secondary" variant="body2" component={NextLink} href="/terms">
               Terms of Service
             </Link>
+            <Typography sx={{ display: 'inline', mx: 0.5, opacity: 0.5 }}>
+              &nbsp;•&nbsp;
+            </Typography>
             <Copyright />
           </div>
         </Box>
