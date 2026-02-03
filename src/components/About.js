@@ -112,7 +112,6 @@ export default function About() {
                     target="_blank"
                     rel="noopener noreferrer"
                     color="text.secondary"
-                    underline="hover"
                   >
                     github.com/SudoCasey
                   </Link>
@@ -124,7 +123,6 @@ export default function About() {
                     target="_blank"
                     rel="noopener noreferrer"
                     color="text.secondary"
-                    underline="hover"
                   >
                     linkedin.com/in/caseyfriedrich1
                   </Link>
