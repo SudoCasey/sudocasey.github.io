@@ -39,6 +39,17 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 export default function Navbar() {
   const [open, setOpen] = React.useState(false);
+  const [scrolled, setScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+      setScrolled(scrollPosition > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
@@ -61,13 +72,25 @@ export default function Navbar() {
         }}
       >
         <Container maxWidth="lg">
-          <StyledToolbar variant="dense" disableGutters>
+          <StyledToolbar 
+            variant="dense" 
+            sx={{
+              padding: scrolled ? '8px 12px' : '12px 16px',
+              transition: 'padding 0.3s ease',
+            }}
+          >
             <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                 <Avatar
                   src="/images/Casey/CaseyFriedrich_Headshot-250.webp"
                   alt="Casey Friedrich"
-                  sx={{ width: 100, height: 100 }}
+                  component={NextLink}
+                  href="/"
+                  sx={{ 
+                    width: scrolled ? 50 : 100, 
+                    height: scrolled ? 50 : 100,
+                    transition: 'width 0.3s ease, height 0.3s ease',
+                  }}
                 />
                 <Typography variant="h6" component="h2" sx={{ 
                   flexGrow: 1,
@@ -78,10 +101,28 @@ export default function Navbar() {
                 </Typography>
               </Box>
               <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
-                <Button variant="text" href="/" color="secondary" component={NextLink}>
+                <Button 
+                  variant="text" 
+                  href="/" 
+                  color="secondary" 
+                  component={NextLink}
+                  sx={{
+                    height: scrolled ? '2.5rem' : '4rem',
+                    transition: 'height 0.3s ease',
+                  }}
+                >
                   Home
                 </Button>
-                <Button variant="text" href="/contact" color="secondary" component={NextLink}>
+                <Button 
+                  variant="text" 
+                  href="/contact" 
+                  color="secondary" 
+                  component={NextLink}
+                  sx={{
+                    height: scrolled ? '2.5rem' : '4rem',
+                    transition: 'height 0.3s ease',
+                  }}
+                >
                   Contact
                 </Button>
               </Box>

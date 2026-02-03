@@ -11,11 +11,11 @@ export const metadata = {
   metadataBase: new URL('https://cfriedrich.net'),
   icons: {
     icon: [
-      { url: '/images/Casey/favicon-32x32.webp', sizes: '32x32', type: 'image/webp' },
-      { url: '/images/Casey/favicon-16x16.webp', sizes: '16x16', type: 'image/webp' },
+      { url: '/images/Casey/CaseyFriedrich_Headshot_favicon-32x32.webp', sizes: '32x32', type: 'image/webp' },
+      { url: '/images/Casey/CaseyFriedrich_Headshot_favicon-16x16.webp', sizes: '16x16', type: 'image/webp' },
     ],
     apple: [
-      { url: '/images/Casey/apple-touch-icon.webp', sizes: '180x180', type: 'image/webp' },
+      { url: '/images/Casey/CaseyFriedrich_Headshot-250.webp', sizes: '180x180', type: 'image/webp' },
     ],
   },
   openGraph: {
@@ -37,9 +37,9 @@ export default function RootLayout(props) {
       <head>
         <meta httpEquiv="Cache-Control" content="public, max-age=31536000, immutable" />
         <meta httpEquiv="Expires" content="31536000" />
-        <link rel="icon" type="image/webp" href="/images/Casey/favicon-32x32.webp" sizes="32x32" />
-        <link rel="icon" type="image/webp" href="/images/Casey/favicon-16x16.webp" sizes="16x16" />
-        <link rel="apple-touch-icon" type="image/webp" href="/images/Casey/apple-touch-icon.webp" sizes="180x180" />
+        <link rel="icon" type="image/webp" href="/images/Casey/CaseyFriedrich_Headshot_favicon-32x32.webp" sizes="32x32" />
+        <link rel="icon" type="image/webp" href="/images/Casey/CaseyFriedrich_Headshot_favicon-16x16.webp" sizes="16x16" />
+        <link rel="apple-touch-icon" type="image/webp" href="/images/Casey/CaseyFriedrich_Headshot-250.webp" sizes="180x180" />
       </head>
       <body>
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
