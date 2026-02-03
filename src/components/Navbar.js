@@ -17,6 +17,9 @@ import ColorModeIconDropdown from '../app/shared-theme/ColorModeIconDropdown';
 import NextLink from 'next/link';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
+import { useBackgroundEffect } from '../contexts/BackgroundEffectContext';
+import PaletteIcon from '@mui/icons-material/Palette';
+import PaletteOutlinedIcon from '@mui/icons-material/PaletteOutlined';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
@@ -41,6 +44,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 export default function Navbar() {
   const [open, setOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
+  const { enabled, toggle } = useBackgroundEffect();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -141,9 +145,43 @@ export default function Navbar() {
               <Button color="primary" variant="contained" size="small">
                 Sign up
               </Button>*/}
+              <IconButton
+                onClick={toggle}
+                aria-label={enabled ? 'Disable background effect' : 'Enable background effect'}
+                sx={{
+                  border: '1px solid',
+                  borderColor: 'divider',
+                  bgcolor: enabled ? 'primary.light' : 'transparent',
+                  color: enabled ? 'primary.main' : 'text.secondary',
+                  '&:hover': {
+                    bgcolor: enabled ? 'primary.main' : 'action.hover',
+                    color: enabled ? 'primary.contrastText' : 'text.primary',
+                  },
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                {enabled ? <PaletteIcon /> : <PaletteOutlinedIcon />}
+              </IconButton>
               <ColorModeIconDropdown />
             </Box>
             <Box sx={{ display: { xs: 'flex', md: 'none' }, gap: 1 }}>
+              <IconButton
+                onClick={toggle}
+                aria-label={enabled ? 'Disable background effect' : 'Enable background effect'}
+                sx={{
+                  border: '1px solid',
+                  borderColor: 'divider',
+                  bgcolor: enabled ? 'primary.light' : 'transparent',
+                  color: enabled ? 'primary.main' : 'text.secondary',
+                  '&:hover': {
+                    bgcolor: enabled ? 'primary.main' : 'action.hover',
+                    color: enabled ? 'primary.contrastText' : 'text.primary',
+                  },
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                {enabled ? <PaletteIcon /> : <PaletteOutlinedIcon />}
+              </IconButton>
               <ColorModeIconDropdown size="medium" />
               <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
                 <MenuIcon />

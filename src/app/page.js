@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import AppTheme from '../app/shared-theme/AppTheme';
 import Loading from '../components/Loading';
+import PageWrapper from '../components/PageWrapper';
 
 // Import sections directly
 import About from '../components/About';
@@ -17,22 +18,24 @@ import Divider from '@mui/material/Divider';
 export default function Home() {
   return (
     <AppTheme>
-      <CssBaseline enableColorScheme />
-      <Navbar />
-      <Hero />
-      <Suspense fallback={<Loading />}>
-        <div>
-          <About />
-          <Divider />
-          <Skills />
-          <Divider />
-          <Projects />
-          <Divider />
-          <Contact />
-          <Divider />
-          <Footer />
-        </div>
-      </Suspense>
+      <PageWrapper>
+        <CssBaseline enableColorScheme />
+        <Navbar />
+        <Hero />
+        <Suspense fallback={<Loading />}>
+          <div>
+            <About />
+            <Divider />
+            <Skills />
+            <Divider />
+            <Projects />
+            <Divider />
+            <Contact />
+            <Divider />
+            <Footer />
+          </div>
+        </Suspense>
+      </PageWrapper>
     </AppTheme>
   );
 }
