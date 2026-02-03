@@ -27,9 +27,8 @@ export default function Hero() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          pt: { xs: 14, sm: 20 },
+          pt: { xs: 18, sm: 25 },
           pb: { xs: 8, sm: 12 },
-          marginTop: '20px',
         }}
       >
         <Stack
