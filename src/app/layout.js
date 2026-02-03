@@ -4,6 +4,14 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from '@/theme';
 import Script from 'next/script';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({
+  weight: ['300', '400', '500', '600', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 export const metadata = {
   title: 'Casey Friedrich',
@@ -33,7 +41,7 @@ export const metadata = {
 
 export default function RootLayout(props) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <head>
         <meta httpEquiv="Cache-Control" content="public, max-age=31536000, immutable" />
         <meta httpEquiv="Expires" content="31536000" />
@@ -41,7 +49,7 @@ export default function RootLayout(props) {
         <link rel="icon" type="image/webp" href="/images/Casey/CaseyFriedrich_Headshot_favicon-16x16.webp" sizes="16x16" />
         <link rel="apple-touch-icon" type="image/webp" href="/images/Casey/CaseyFriedrich_Headshot-250.webp" sizes="180x180" />
       </head>
-      <body>
+      <body style={{ fontFamily: 'var(--font-inter)' }}>
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <ThemeProvider theme={theme}>
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}

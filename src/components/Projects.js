@@ -161,9 +161,11 @@ function ProjectCard({ project }) {
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          transition: 'transform 0.2s',
+          borderRadius: 3,
+          transition: 'transform 0.3s ease, box-shadow 0.3s ease',
           '&:hover': {
-            transform: 'translateY(-4px)',
+            transform: 'translateY(-8px)',
+            boxShadow: 4,
           },
         }}
         id={project.title}

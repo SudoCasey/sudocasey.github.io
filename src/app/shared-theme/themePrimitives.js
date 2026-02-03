@@ -160,52 +160,66 @@ export const getDesignTokens = (mode) => {
       },
     },
     typography: {
-      fontFamily: 'Inter, sans-serif',
+      fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
       h1: {
-        fontSize: defaultTheme.typography.pxToRem(48),
-        fontWeight: 600,
-        lineHeight: 1.2,
-        letterSpacing: -0.5,
+        fontSize: defaultTheme.typography.pxToRem(56),
+        fontWeight: 700,
+        lineHeight: 1.1,
+        letterSpacing: '-0.02em',
       },
       h2: {
-        fontSize: defaultTheme.typography.pxToRem(36),
-        fontWeight: 600,
+        fontSize: defaultTheme.typography.pxToRem(40),
+        fontWeight: 700,
         lineHeight: 1.2,
+        letterSpacing: '-0.01em',
       },
       h3: {
-        fontSize: defaultTheme.typography.pxToRem(30),
-        lineHeight: 1.2,
+        fontSize: defaultTheme.typography.pxToRem(32),
+        fontWeight: 600,
+        lineHeight: 1.3,
+        letterSpacing: '-0.01em',
       },
       h4: {
-        fontSize: defaultTheme.typography.pxToRem(24),
+        fontSize: defaultTheme.typography.pxToRem(28),
         fontWeight: 600,
-        lineHeight: 1.5,
+        lineHeight: 1.4,
+        letterSpacing: '-0.01em',
       },
       h5: {
-        fontSize: defaultTheme.typography.pxToRem(20),
+        fontSize: defaultTheme.typography.pxToRem(22),
         fontWeight: 600,
+        lineHeight: 1.4,
       },
       h6: {
         fontSize: defaultTheme.typography.pxToRem(18),
         fontWeight: 600,
+        lineHeight: 1.5,
       },
       subtitle1: {
         fontSize: defaultTheme.typography.pxToRem(18),
+        fontWeight: 500,
+        lineHeight: 1.6,
       },
       subtitle2: {
-        fontSize: defaultTheme.typography.pxToRem(14),
+        fontSize: defaultTheme.typography.pxToRem(16),
         fontWeight: 500,
+        lineHeight: 1.5,
       },
       body1: {
-        fontSize: defaultTheme.typography.pxToRem(14),
+        fontSize: defaultTheme.typography.pxToRem(16),
+        fontWeight: 400,
+        lineHeight: 1.7,
+        letterSpacing: '0.01em',
       },
       body2: {
         fontSize: defaultTheme.typography.pxToRem(14),
         fontWeight: 400,
+        lineHeight: 1.6,
       },
       caption: {
         fontSize: defaultTheme.typography.pxToRem(12),
         fontWeight: 400,
+        lineHeight: 1.5,
       },
     },
     shape: {
@@ -318,57 +332,71 @@ export const colorSchemes = {
 };
 
 export const typography = {
-  fontFamily: 'Inter, sans-serif',
+  fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
   h1: {
-    fontSize: defaultTheme.typography.pxToRem(48),
-    fontWeight: 600,
-    lineHeight: 1.2,
-    letterSpacing: -0.5,
+    fontSize: defaultTheme.typography.pxToRem(56),
+    fontWeight: 700,
+    lineHeight: 1.1,
+    letterSpacing: '-0.02em',
   },
   h2: {
-    fontSize: defaultTheme.typography.pxToRem(36),
-    fontWeight: 600,
+    fontSize: defaultTheme.typography.pxToRem(40),
+    fontWeight: 700,
     lineHeight: 1.2,
+    letterSpacing: '-0.01em',
   },
   h3: {
-    fontSize: defaultTheme.typography.pxToRem(30),
-    lineHeight: 1.2,
+    fontSize: defaultTheme.typography.pxToRem(32),
+    fontWeight: 600,
+    lineHeight: 1.3,
+    letterSpacing: '-0.01em',
   },
   h4: {
-    fontSize: defaultTheme.typography.pxToRem(24),
+    fontSize: defaultTheme.typography.pxToRem(28),
     fontWeight: 600,
-    lineHeight: 1.5,
+    lineHeight: 1.4,
+    letterSpacing: '-0.01em',
   },
   h5: {
-    fontSize: defaultTheme.typography.pxToRem(20),
+    fontSize: defaultTheme.typography.pxToRem(22),
     fontWeight: 600,
+    lineHeight: 1.4,
   },
   h6: {
     fontSize: defaultTheme.typography.pxToRem(18),
     fontWeight: 600,
+    lineHeight: 1.5,
   },
   subtitle1: {
     fontSize: defaultTheme.typography.pxToRem(18),
+    fontWeight: 500,
+    lineHeight: 1.6,
   },
   subtitle2: {
-    fontSize: defaultTheme.typography.pxToRem(14),
+    fontSize: defaultTheme.typography.pxToRem(16),
     fontWeight: 500,
+    lineHeight: 1.5,
   },
   body1: {
-    fontSize: defaultTheme.typography.pxToRem(14),
+    fontSize: defaultTheme.typography.pxToRem(16),
+    fontWeight: 400,
+    lineHeight: 1.7,
+    letterSpacing: '0.01em',
   },
   body2: {
     fontSize: defaultTheme.typography.pxToRem(14),
     fontWeight: 400,
+    lineHeight: 1.6,
   },
   caption: {
     fontSize: defaultTheme.typography.pxToRem(12),
     fontWeight: 400,
+    lineHeight: 1.5,
   },
 };
 
 export const shape = {
-  borderRadius: 8,
+  borderRadius: 12,
 };
 
 const defaultShadows = [

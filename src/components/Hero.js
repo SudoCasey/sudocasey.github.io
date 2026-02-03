@@ -33,7 +33,7 @@ export default function Hero() {
         }}
       >
         <Stack
-          spacing={2}
+          spacing={3}
           useFlexGap
           sx={{ alignItems: 'center', width: { xs: '100%', sm: '70%' } }}
         >

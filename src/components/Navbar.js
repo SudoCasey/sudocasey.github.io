@@ -23,15 +23,16 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'space-between',
   flexShrink: 0,
-  borderRadius: `calc(${theme.shape.borderRadius}px + 8px)`,
-  backdropFilter: 'blur(24px)',
+  borderRadius: `calc(${theme.shape.borderRadius}px + 4px)`,
+  backdropFilter: 'blur(20px) saturate(180%)',
   border: '1px solid',
   borderColor: (theme.vars || theme).palette.divider,
   backgroundColor: theme.vars
-    ? `rgba(${theme.vars.palette.background.defaultChannel} / 0.4)`
-    : alpha(theme.palette.background.default, 0.4),
+    ? `rgba(${theme.vars.palette.background.defaultChannel} / 0.7)`
+    : alpha(theme.palette.background.default, 0.7),
   boxShadow: (theme.vars || theme).shadows[1],
   padding: '8px 12px',
+  transition: 'all 0.3s ease',
   [theme.breakpoints.up('sm')]: {
     marginbottom: theme.spacing(10),
   },

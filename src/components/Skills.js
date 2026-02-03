@@ -61,6 +61,11 @@ export default function Skills() {
                   bgcolor: 'background.paper',
                   boxShadow: 1,
                   height: '100%',
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                  '&:hover': {
+                    transform: 'translateY(-4px)',
+                    boxShadow: 3,
+                  },
                 }}
               >
                 <Typography variant="h6" component="h3" gutterBottom>
@@ -75,6 +80,12 @@ export default function Skills() {
                         m: 0.5,
                         bgcolor: 'primary.light',
                         color: 'primary.contrastText',
+                        fontWeight: 500,
+                        fontSize: '0.875rem',
+                        transition: 'all 0.2s ease',
+                        '&:hover': {
+                          transform: 'scale(1.05)',
+                        },
                       }}
                     />
                   ))}
