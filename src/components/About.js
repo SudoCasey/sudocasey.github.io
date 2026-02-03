@@ -11,6 +11,8 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Stack from '@mui/material/Stack';
 import Link from '@mui/material/Link';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
 
 export default function About() {
   const [isVisible, setIsVisible] = React.useState(false);
@@ -83,10 +85,14 @@ export default function About() {
               <Typography variant="h5" component="h2" gutterBottom sx={{ textAlign: 'center' }}>
                 Casey Friedrich
               </Typography>
-              <Typography variant="subtitle1" component="h3" color="text.secondary" sx={{ textAlign: 'center' }}>
-                Full Stack Web Developer & WCAG Accessibility Expert
+              <Typography variant="subtitle2" component="h3" color="text.secondary" sx={{ textAlign: 'center' }}>
+                <List >
+                  <ListItem sx={{py:0.25}}>Full Stack Web Developer</ListItem>
+                  <ListItem sx={{py:0.25}}>WCAG Accessibility Expert</ListItem>
+                  <ListItem sx={{py:0.25}}>Problem Solver</ListItem>
+                </List>
               </Typography>
-              <Stack spacing={1} sx={{ mt: 2 }}>
+              <Stack spacing={1}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <LocationOnIcon color="action" />
                   <Typography variant="body2" color="text.secondary">
@@ -131,16 +137,13 @@ export default function About() {
               About Me
             </Typography>
             <Typography variant="body1" paragraph>
-              Dynamic Full-stack Web Developer and Team Lead with 6 years of experience in agile environments, excelling in web accessibility and cloud deployment strategies. Architected scalable RESTful APIs enhancing web app performance by 80%, and directed the ADAshboard project from conception to deployment using React, Node.js, and MongoDB.
+              Dynamic Full-stack Web Developer and Manager with 7+ years of experience in agile environments, excelling in web accessibility and cloud deployment strategies. Currently serving as Web Developer Manager at SEO For Real Estate Investors, where I direct a development team in building and maintaining SEO-optimized websites for real estate investment businesses.
             </Typography>
             <Typography variant="body1" paragraph>
-              As a Web Development Team Lead and WCAG Accessibility SME, I mentored and led teams of front-end and full-stack developers in agile sprints, promoting coding best practices and accessibility-first development. Spearheaded accessibility remediation for over 200 client websites, improving usability for users with disabilities and increasing WCAG 2.2 compliance by an average of 50%.
+              Previously, as Web Development Team Lead and WCAG Accessibility SME at ADA Site Compliance, I mentored and led teams of developers in agile sprints, promoting coding best practices and accessibility-first development. I architected scalable RESTful APIs that improved web app performance and database fetch speeds by 80% in the <a href="/#ADAshboard">"ADAshboard"</a>, and implemented DevOps pipelines with CircleCI, Docker, and AWS for improved deployment speed and reliability.
             </Typography>
             <Typography variant="body1" paragraph>
-              Developed and launched 25+ bespoke web applications using React, PHP, WordPress, and Shopify, directly contributing to SEO improvements and higher sales conversions. Integrated CRM tools and analytics dashboards using RESTful API to track accessibility progress and support continuous client improvement.
-            </Typography>
-            <Typography variant="body1">
-              Currently seeking a challenging role to leverage strong technical and leadership skills in enhancing web accessibility and performance, with a focus on creating inclusive digital experiences that benefit all users.
+              I served as Subject Matter Expert on WCAG 2.2 and Section 508 standards, influencing product design and client compliance strategy. I spearheaded accessibility remediation for over 200 client websites, improving usability for users with disabilities, increasing WCAG 2.2 compliance across websites, mobile apps on iOS & Android, and preventing legal liability by addressing accessibility issues in clients' received legal threats. I also developed and launched 25+ bespoke web applications using React, PHP, WordPress, and Shopify, directly contributing to SEO improvements and higher sales conversions.
             </Typography>
           </Grid>
         </Grid>

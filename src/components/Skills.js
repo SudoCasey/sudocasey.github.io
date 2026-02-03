@@ -14,23 +14,19 @@ const skillCategories = [
   },
   {
     title: 'Backend',
-    skills: ['Node.js', 'PHP', 'Python', 'Express', 'SQL', 'MongoDB'],
+    skills: ['Node.js', 'PHP', 'Python', 'Express', 'SQL', 'PostgreSQL', 'MongoDB'],
   },
   {
     title: 'CMS & E-commerce',
     skills: ['WordPress', 'Shopify', 'BigCommerce', 'Magento', 'Drupal'],
   },
   {
-    title: 'DevOps & Tools',
-    skills: ['Git', 'GitHub', 'CI/CD', 'AWS', 'EC2', 'S3', 'Jenkins', 'Jest', 'CircleCI', 'Docker', 'Lambda'],
+    title: 'DevOps',
+    skills: ['Git', 'GitHub', 'CI/CD', 'CircleCI', 'AWS', 'EC2', 'S3', 'Lambda', 'Docker', 'Jest', 'Jenkins'],
   },
   {
     title: 'Accessibility',
     skills: ['WCAG 2.2', 'Section 508', 'Responsive Design', 'ADA Compliance', 'Axe-core', 'Lighthouse'],
-  },
-  {
-    title: 'Soft Skills',
-    skills: ['Customer Service', 'Team Leadership', 'Project Management', 'Problem Solving', 'Agile Development'],
   },
 ];
 
@@ -55,7 +51,7 @@ export default function Skills() {
         >
           A comprehensive overview of my technical and professional capabilities
         </Typography>
-        <Grid container spacing={4}>
+        <Grid container spacing={4} justifyContent={'space-evenly'}>
           {skillCategories.map((category, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Box

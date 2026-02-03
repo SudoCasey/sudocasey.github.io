@@ -82,7 +82,7 @@ export default function Hero() {
             sx={{
               textAlign: 'center',
               color: 'text.secondary',
-              width: { sm: '100%', md: '80%' },
+              width: { sm: '100%', md: '100%' },
             }}
           >
             Full Stack Web Developer & WCAG Accessibility Expert
@@ -95,7 +95,7 @@ export default function Hero() {
               width: { sm: '100%', md: '80%' },
             }}
           >
-            Dynamic Full Stack Web Developer specializing in WCAG accessibility with 6 years of experience in enhancing web solutions & leading clients to remediate accessibility violations and improve website sales.
+            A nerd in all aspects of life. I love to code, learn, and build things. I can't resist a good challenge, and I'm always looking for new ways to improve my skills.
           </Typography>
           <Stack
             direction={{ xs: 'column', sm: 'row' }}

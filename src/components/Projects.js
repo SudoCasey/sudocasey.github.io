@@ -60,7 +60,7 @@ const projects = [
     date: 'December 2024'
   },
   {
-    title: 'ADashboard',
+    title: 'ADAshboard',
     description: 'A website crawler that crawls individual pages of a website or recursively crawls all pages of a site, checking for WCAG 2.2 accessibility errors, and provides users with a list of accessibility errors & screenshots of each error where applicable.',
     images: [
       { 
@@ -166,6 +166,7 @@ function ProjectCard({ project }) {
             transform: 'translateY(-4px)',
           },
         }}
+        id={project.title}
       >
         <Box sx={{ width: '100%' }}>
           <Tabs
