@@ -378,10 +378,13 @@ export const inputsCustomizations = {
   MuiOutlinedInput: {
     styleOverrides: {
       input: {
-        padding: 0,
+        padding: '16.5px 14px',
+        '&.MuiInputBase-inputMultiline': {
+          padding: '16.5px 14px',
+        },
       },
       root: ({ theme }) => ({
-        padding: '8px 12px',
+        padding: 0,
         color: (theme.vars || theme).palette.text.primary,
         borderRadius: (theme.vars || theme).shape.borderRadius,
         border: `1px solid ${(theme.vars || theme).palette.divider}`,
@@ -403,17 +406,37 @@ export const inputsCustomizations = {
           {
             props: {
               size: 'small',
+              multiline: false,
             },
             style: {
               height: '2.25rem',
+              '& .MuiInputBase-input': {
+                padding: '8.5px 14px',
+              },
             },
           },
           {
             props: {
               size: 'medium',
+              multiline: false,
             },
             style: {
               height: '2.5rem',
+              '& .MuiInputBase-input': {
+                padding: '10.5px 14px',
+              },
+            },
+          },
+          {
+            props: {
+              multiline: true,
+            },
+            style: {
+              minHeight: '56px',
+              '& .MuiInputBase-input': {
+                padding: '16.5px 14px',
+                height: 'auto !important',
+              },
             },
           },
         ],
@@ -438,6 +461,36 @@ export const inputsCustomizations = {
       root: ({ theme }) => ({
         typography: theme.typography.caption,
         marginBottom: 8,
+      }),
+    },
+  },
+  MuiInputLabel: {
+    styleOverrides: {
+      root: ({ theme }) => ({
+        '&.MuiInputLabel-outlined': {
+          transform: 'translate(14px, 11px) scale(1)',
+          '&.MuiInputLabel-sizeSmall': {
+            transform: 'translate(14px, 12px) scale(1)',
+            '&.MuiInputLabel-shrink': {
+              transform: 'translate(14px, -9px) scale(0.75)',
+            },
+          },
+          '&.MuiInputLabel-sizeMedium': {
+            transform: 'translate(14px, 11px) scale(1)',
+            '&.MuiInputLabel-shrink': {
+              transform: 'translate(14px, -9px) scale(0.75)',
+            },
+          },
+          '&.MuiInputLabel-shrink': {
+            transform: 'translate(14px, -9px) scale(0.75)',
+            backgroundColor: (theme.vars || theme).palette.background.default,
+            paddingLeft: '4px',
+            paddingRight: '4px',
+          },
+        },
+        '&.Mui-focused': {
+          color: (theme.vars || theme).palette.primary.main,
+        },
       }),
     },
   },
