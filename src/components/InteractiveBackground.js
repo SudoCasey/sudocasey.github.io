@@ -2,7 +2,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { useBackgroundEffect } from '../contexts/BackgroundEffectContext';
-import { useTheme } from '@mui/material/styles';
+import { useTheme, useMediaQuery } from '@mui/material/styles';
 
 // Helper function to convert HSL to RGB
 function hslToRgb(h, s, l) {
@@ -35,6 +35,7 @@ export default function InteractiveBackground() {
   const theme = useTheme();
   const containerRef = React.useRef(null);
   const vantaEffect = React.useRef(null);
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const isDark = theme.palette.mode === 'dark';
 
@@ -78,6 +79,11 @@ export default function InteractiveBackground() {
         ? [119, 119, 119] // #777 gray
         : hslToRgb(220, 35, 3); // gray[900] - dark-blue/black
 
+      // Adjust parameters for mobile: fewer points, more spacing
+      const points = isMobile ? 4.00 : 6.00;
+      const maxDistance = isMobile ? 35.00 : 27.00;
+      const spacing = isMobile ? 35.00 : 20.00;
+
       // Initialize Vanta Net effect
       if (VANTA && VANTA.NET && THREE_JS) {
         try {
@@ -86,16 +92,16 @@ export default function InteractiveBackground() {
             THREE: THREE_JS,
             mouseControls: true,
             touchControls: true,
-            gyroControls: false,
+            gyroControls: isMobile,
             minHeight: 200.00,
             minWidth: 200.00,
             scale: 1.00,
             scaleMobile: 1.00,
             color: lineColor[0] * 0x10000 + lineColor[1] * 0x100 + lineColor[2],
             backgroundColor: backgroundColor[0] * 0x10000 + backgroundColor[1] * 0x100 + backgroundColor[2],
-            points: 6.00,
-            maxDistance: 27.00,
-            spacing: 20.00,
+            points: points,
+            maxDistance: maxDistance,
+            spacing: spacing,
             showLines: true,
             showDots: false,
           });
@@ -114,7 +120,7 @@ export default function InteractiveBackground() {
         vantaEffect.current = null;
       }
     };
-  }, [enabled, isDark]);
+  }, [enabled, isDark, isMobile]);
 
   if (!enabled) return null;
 
