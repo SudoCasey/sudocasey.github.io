@@ -2,7 +2,8 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { useBackgroundEffect } from '../contexts/BackgroundEffectContext';
-import { useTheme, useMediaQuery } from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 // Helper function to convert HSL to RGB
 function hslToRgb(h, s, l) {
