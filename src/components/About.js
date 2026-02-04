@@ -60,6 +60,10 @@ export default function About() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 gap: 2,
+                backgroundColor: 'background.paper',
+                padding: 3,
+                borderRadius: 2,
+                boxShadow: (theme) => theme.shadows[2],
               }}
               ref={imageRef}
             >
@@ -131,9 +135,17 @@ export default function About() {
             </Box>
           </Grid>
           <Grid item xs={12} md={8}>
-            <Typography variant="h4" component="h2" gutterBottom>
-              About Me
-            </Typography>
+            <Box
+              sx={{
+                backgroundColor: 'background.paper',
+                padding: 3,
+                borderRadius: 2,
+                boxShadow: (theme) => theme.shadows[2],
+              }}
+            >
+              <Typography variant="h4" component="h2" gutterBottom>
+                About Me
+              </Typography>
             <Typography variant="body1" paragraph>
               Dynamic Full-stack Web Developer and Manager with 7+ years of experience in agile environments, excelling in web accessibility and cloud deployment strategies. Currently serving as Web Developer Manager at SEO For Real Estate Investors, where I direct a development team in building and maintaining SEO-optimized websites for real estate investment businesses.
             </Typography>
@@ -143,6 +155,7 @@ export default function About() {
             <Typography variant="body1" paragraph>
               I served as Subject Matter Expert on WCAG 2.2 and Section 508 standards, influencing product design and client compliance strategy. I spearheaded accessibility remediation for over 200 client websites, improving usability for users with disabilities, increasing WCAG 2.2 compliance across websites, mobile apps on iOS & Android, and preventing legal liability by addressing accessibility issues in clients' received legal threats. I also developed and launched 25+ bespoke web applications using React, PHP, WordPress, and Shopify, directly contributing to SEO improvements and higher sales conversions.
             </Typography>
+            </Box>
           </Grid>
         </Grid>
       </Container>
