@@ -8,7 +8,7 @@ const StyledBox = styled('div')(({ theme }) => ({
     width: '100%',
     marginTop: theme.spacing(8),
     [theme.breakpoints.up('sm')]: {
-      marginTop: theme.spacing(10),
+      marginTop: theme.spacing(20),
     },
   }));
 

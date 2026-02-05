@@ -73,8 +73,8 @@ export default function Contact() {
     <Box
       id="contact"
       sx={{
-        pt: { xs: 4, sm: 12 },
-        pb: { xs: 8, sm: 16 },
+        pt: { xs: 0, sm: 0 },
+        pb: { xs: 0, sm: 0 },
       }}
     >
       <Container>

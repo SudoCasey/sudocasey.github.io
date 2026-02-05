@@ -30,8 +30,8 @@ export default function Home() {
             <Divider />
             <Projects />
             <Divider />
+            <div style={{ height: '100px' }} />
             <Contact />
-            <Divider />
             <Footer />
           </div>
         </Suspense>

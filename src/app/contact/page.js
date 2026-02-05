@@ -19,10 +19,10 @@ export default function ContactPage() {
                     <CssBaseline enableColorScheme />
                     <Navbar />
                     <NavbarSpacer />
-                    <Divider />
                     <Box
                         sx={{
-                            my: 4,
+                            pt: { xs: 0, sm: 0 },
+                            pb: { xs: 0, sm: 0 },
                             display: "flex",
                             flexDirection: "column",
                             justifyContent: "center",
@@ -31,7 +31,6 @@ export default function ContactPage() {
                     >
                         <Contact />
                     </Box>
-                    <Divider />
                     <Footer />
                 </PageWrapper>
             </AppTheme>
