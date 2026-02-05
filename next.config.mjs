@@ -14,8 +14,7 @@ const nextConfig = {
   distDir: 'out',
   // Performance: Enable compression
   compress: true,
-  // Performance: Optimize production builds
-  swcMinify: true,
+  // Note: swcMinify is enabled by default in Next.js 15+
   // Performance: Enable build caching
   experimental: {
     turbo: {
@@ -23,8 +22,7 @@ const nextConfig = {
         // Add any aliases if needed
       },
     },
-    // Optimize CSS
-    optimizeCss: true,
+    // Note: optimizeCss requires critters package, removed to avoid build errors
   },
   // Performance: Configure build cache and optimizations
   webpack: (config, { dev, isServer }) => {
@@ -32,9 +30,6 @@ const nextConfig = {
     if (!dev && !isServer) {
       config.cache = {
         type: 'filesystem',
-        buildDependencies: {
-          config: [import.meta.url],
-        },
       };
       
       // Performance: Optimize bundle splitting for client-side
