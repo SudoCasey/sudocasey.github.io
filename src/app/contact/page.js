@@ -28,7 +28,9 @@ export default function ContactPage() {
                             alignItems: "center",
                         }}
                     >
-                        <Contact />
+                        <main>
+                            <Contact />
+                        </main>
                     </Box>
                     <Footer />
                 </PageWrapper>

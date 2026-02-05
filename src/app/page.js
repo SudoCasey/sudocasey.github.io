@@ -21,20 +21,23 @@ export default function Home() {
       <PageWrapper>
         <CssBaseline enableColorScheme />
         <Navbar />
-        <Hero />
-        <Suspense fallback={<Loading />}>
-          <div>
-            <About />
-            <Divider />
-            <Skills />
-            <Divider />
-            <Projects />
-            <Divider />
-            <div style={{ height: '100px' }} />
-            <Contact />
-            <Footer />
-          </div>
-        </Suspense>
+        <main>
+          <Hero />
+          <Suspense fallback={<Loading />}>
+            <div>
+              <About />
+              <Divider />
+              <Skills />
+              <Divider />
+              <Projects />
+              <Divider />
+              <div style={{ height: '100px' }} />
+              <Contact />
+              <Footer />
+            </div>
+          </Suspense>
+        </main>
+
       </PageWrapper>
     </AppTheme>
   );
