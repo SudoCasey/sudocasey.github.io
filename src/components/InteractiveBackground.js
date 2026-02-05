@@ -131,7 +131,8 @@ export default function InteractiveBackground() {
       
       if (!THREE_JS) {
         console.error('❌ THREE.js extraction failed');
-        return;
+        // Return a rejected promise to properly handle the error
+        return Promise.reject(new Error('THREE.js extraction failed'));
       }
       
       // CRITICAL: Set THREE on window BEFORE loading Vanta
@@ -141,13 +142,49 @@ export default function InteractiveBackground() {
       }
       
       // NOW load Vanta after THREE is available
-      const vantaModule = isDark 
+      const vantaModulePromise = isDark 
         ? import('vanta/dist/vanta.net.min.js')
         : import('vanta/dist/vanta.dots.min.js');
       
-      return Promise.all([Promise.resolve(THREE_JS), vantaModule]);
-    }).then(([THREE_JS, VANTA_MODULE]) => {
-      if (!mounted || !containerRef.current) return;
+      // Ensure both promises resolve properly
+      return Promise.all([
+        Promise.resolve(THREE_JS),
+        vantaModulePromise.catch((error) => {
+          console.error('❌ Failed to load Vanta module:', error);
+          throw error; // Re-throw to be caught by outer catch
+        })
+      ]);
+    }).then((result) => {
+      // Check if component is still mounted first
+      if (!mounted) {
+        return Promise.resolve(); // Component unmounted, exit gracefully
+      }
+      
+      // Safely destructure the result
+      if (!result || !Array.isArray(result) || result.length < 2) {
+        // Only log error if component is still mounted (not a cleanup run)
+        if (mounted) {
+          console.error('❌ Invalid promise result:', result);
+        }
+        return Promise.resolve(); // Return resolved promise instead of undefined
+      }
+      
+      const [THREE_JS, VANTA_MODULE] = result;
+      
+      if (!THREE_JS || !VANTA_MODULE) {
+        // Only log error if component is still mounted
+        if (mounted) {
+          console.error('❌ Missing THREE_JS or VANTA_MODULE', {
+            hasTHREE_JS: !!THREE_JS,
+            hasVANTA_MODULE: !!VANTA_MODULE,
+          });
+        }
+        return Promise.resolve(); // Return resolved promise instead of undefined
+      }
+      
+      if (!containerRef.current) {
+        return Promise.resolve(); // Container not ready, exit gracefully
+      }
 
       // Small delay to ensure DOM is ready
       timeoutId = setTimeout(() => {
