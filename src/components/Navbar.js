@@ -147,18 +147,9 @@ export default function Navbar() {
               </Button>*/}
               <IconButton
                 onClick={toggle}
+                disableRipple
+                size="small"
                 aria-label={enabled ? 'Disable background effect' : 'Enable background effect'}
-                sx={{
-                  border: '1px solid',
-                  borderColor: 'divider',
-                  bgcolor: enabled ? 'primary.light' : 'transparent',
-                  color: enabled ? 'primary.main' : 'text.secondary',
-                  '&:hover': {
-                    bgcolor: enabled ? 'primary.main' : 'action.hover',
-                    color: enabled ? 'primary.contrastText' : 'text.primary',
-                  },
-                  transition: 'all 0.2s ease',
-                }}
               >
                 {enabled ? <PaletteIcon /> : <PaletteOutlinedIcon />}
               </IconButton>
@@ -167,22 +158,13 @@ export default function Navbar() {
             <Box sx={{ display: { xs: 'flex', md: 'none' }, gap: 1 }}>
               <IconButton
                 onClick={toggle}
+                disableRipple
+                size="small"
                 aria-label={enabled ? 'Disable background effect' : 'Enable background effect'}
-                sx={{
-                  border: '1px solid',
-                  borderColor: 'divider',
-                  bgcolor: enabled ? 'primary.light' : 'transparent',
-                  color: enabled ? 'primary.main' : 'text.secondary',
-                  '&:hover': {
-                    bgcolor: enabled ? 'primary.main' : 'action.hover',
-                    color: enabled ? 'primary.contrastText' : 'text.primary',
-                  },
-                  transition: 'all 0.2s ease',
-                }}
               >
                 {enabled ? <PaletteIcon /> : <PaletteOutlinedIcon />}
               </IconButton>
-              <ColorModeIconDropdown size="medium" />
+              <ColorModeIconDropdown size="small" />
               <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
                 <MenuIcon />
               </IconButton>
