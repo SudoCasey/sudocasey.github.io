@@ -15,6 +15,12 @@ const nextConfig = {
   // Performance: Enable compression
   compress: true,
   // Note: swcMinify is enabled by default in Next.js 15+
+  // Performance: Target modern browsers to reduce legacy JavaScript
+  compiler: {
+    removeConsole: isProd ? {
+      exclude: ['error', 'warn'],
+    } : false,
+  },
   // Performance: Enable build caching
   experimental: {
     turbo: {
@@ -37,8 +43,13 @@ const nextConfig = {
         config.optimization = {
           ...config.optimization,
           moduleIds: 'deterministic',
+          // Performance: Enable tree shaking
+          usedExports: true,
+          sideEffects: false,
           splitChunks: {
             chunks: 'all',
+            minSize: 20000, // Only split chunks larger than 20KB
+            maxSize: 244000, // Max chunk size for better caching
             cacheGroups: {
               default: false,
               vendors: false,
@@ -49,6 +60,7 @@ const nextConfig = {
                 chunks: 'all',
                 priority: 30,
                 reuseExistingChunk: true,
+                enforce: true,
               },
               // Separate chunk for THREE.js and Vanta (large libraries, loaded dynamically)
               three: {
@@ -56,6 +68,7 @@ const nextConfig = {
                 test: /[\\/]node_modules[\\/](three|vanta)[\\/]/,
                 chunks: 'async', // Only split async chunks for these
                 priority: 30,
+                enforce: true,
               },
               // Vendor chunk for other node_modules
               vendor: {
@@ -64,6 +77,7 @@ const nextConfig = {
                 test: /[\\/]node_modules[\\/]/,
                 priority: 20,
                 reuseExistingChunk: true,
+                minChunks: 2,
               },
               // Common chunk for shared code
               common: {

@@ -1,8 +1,11 @@
-const CACHE_NAME = 'casey-friedrich-v1';
-const STATIC_CACHE_NAME = 'casey-friedrich-static-v1';
-const IMAGE_CACHE_NAME = 'casey-friedrich-images-v1';
+const CACHE_NAME = 'casey-friedrich-v2';
+const STATIC_CACHE_NAME = 'casey-friedrich-static-v2';
+const IMAGE_CACHE_NAME = 'casey-friedrich-images-v2';
+const JS_CACHE_NAME = 'casey-friedrich-js-v2';
+const CSS_CACHE_NAME = 'casey-friedrich-css-v2';
 
-// Performance: Cache static assets
+// Performance: Cache static assets for GitHub Pages
+// GitHub Pages doesn't support custom headers, so we rely on service worker caching
 const staticAssets = [
   '/',
   '/favicon.ico',
@@ -27,7 +30,13 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames
-          .filter((name) => name !== CACHE_NAME && name !== STATIC_CACHE_NAME && name !== IMAGE_CACHE_NAME)
+          .filter((name) => 
+            name !== CACHE_NAME && 
+            name !== STATIC_CACHE_NAME && 
+            name !== IMAGE_CACHE_NAME &&
+            name !== JS_CACHE_NAME &&
+            name !== CSS_CACHE_NAME
+          )
           .map((name) => caches.delete(name))
       );
     }).then(() => {
@@ -51,10 +60,52 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Performance: Cache images with cache-first strategy
+  // Performance: Cache images with cache-first strategy (1 year)
   if (request.destination === 'image') {
     event.respondWith(
       caches.open(IMAGE_CACHE_NAME).then((cache) => {
+        return cache.match(request).then((cachedResponse) => {
+          if (cachedResponse) {
+            return cachedResponse;
+          }
+          return fetch(request).then((response) => {
+            if (response.ok) {
+              // Clone response before caching
+              const responseToCache = response.clone();
+              cache.put(request, responseToCache);
+            }
+            return response;
+          });
+        });
+      })
+    );
+    return;
+  }
+
+  // Performance: Cache JavaScript files with long cache (1 year)
+  if (url.pathname.match(/\.js$/) || url.pathname.includes('/chunks/') || url.pathname.includes('/_next/static/')) {
+    event.respondWith(
+      caches.open(JS_CACHE_NAME).then((cache) => {
+        return cache.match(request).then((cachedResponse) => {
+          if (cachedResponse) {
+            return cachedResponse;
+          }
+          return fetch(request).then((response) => {
+            if (response.ok) {
+              cache.put(request, response.clone());
+            }
+            return response;
+          });
+        });
+      })
+    );
+    return;
+  }
+
+  // Performance: Cache CSS files with long cache (1 year)
+  if (url.pathname.match(/\.css$/) || url.pathname.includes('/_next/static/css/')) {
+    event.respondWith(
+      caches.open(CSS_CACHE_NAME).then((cache) => {
         return cache.match(request).then((cachedResponse) => {
           if (cachedResponse) {
             return cachedResponse;

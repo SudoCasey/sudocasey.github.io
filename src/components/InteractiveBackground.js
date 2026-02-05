@@ -46,6 +46,17 @@ export default function InteractiveBackground() {
 
     let mounted = true;
     let timeoutId = null;
+    
+    // Performance: Defer THREE.js/Vanta.js loading until after initial render
+    // Use requestIdleCallback to load when browser is idle
+    const loadWhenIdle = (callback) => {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(callback, { timeout: 2000 });
+      } else {
+        // Fallback: delay by 1 second after page load
+        setTimeout(callback, 1000);
+      }
+    };
 
     // Clean up existing effect first (before loading new modules)
     const cleanupEffect = () => {
@@ -79,8 +90,12 @@ export default function InteractiveBackground() {
     // Clean up before loading new modules
     cleanupEffect();
 
-    // Load THREE.js FIRST, then Vanta - Vanta needs THREE to be available
-    import('three').then((THREE_MODULE) => {
+    // Performance: Defer loading heavy THREE.js/Vanta.js libraries
+    loadWhenIdle(() => {
+      if (!mounted || !containerRef.current) return;
+      
+      // Load THREE.js FIRST, then Vanta - Vanta needs THREE to be available
+      import('three').then((THREE_MODULE) => {
       if (!mounted) return;
 
       // Extract THREE.js immediately
@@ -336,6 +351,7 @@ export default function InteractiveBackground() {
     }).catch((error) => {
       console.error('Error loading Vanta.js or THREE.js:', error);
     });
+    }); // Close loadWhenIdle callback
 
     return () => {
       mounted = false;

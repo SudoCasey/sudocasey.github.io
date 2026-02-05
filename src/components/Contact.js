@@ -117,6 +117,7 @@ export default function Contact() {
                 onChange={handleChange}
                 variant="outlined"
                 disabled={isSubmitting}
+                autoComplete="off"
               />
               <TextField
                 required
@@ -128,6 +129,7 @@ export default function Contact() {
                 onChange={handleChange}
                 variant="outlined"
                 disabled={isSubmitting}
+                autoComplete="off"
               />
               <TextField
                 required
@@ -140,6 +142,7 @@ export default function Contact() {
                 multiline
                 rows={6}
                 disabled={isSubmitting}
+                autoComplete="off"
                 sx={{
                   '& .MuiOutlinedInput-root': {
                     alignItems: 'flex-start',
