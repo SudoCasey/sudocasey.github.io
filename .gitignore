@@ -138,3 +138,6 @@ dist
 # lighthouse
 lighthouse-result.json
 lighthouse-report.html
+
+#cookie clicker game
+/cookie-clicker-game/
