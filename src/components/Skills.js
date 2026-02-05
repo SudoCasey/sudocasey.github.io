@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
+import { alpha } from '@mui/material/styles';
 
 const skillCategories = [
   {
@@ -58,7 +59,7 @@ export default function Skills() {
                 sx={{
                   p: 3,
                   borderRadius: 2,
-                  bgcolor: 'background.paper',
+                  bgcolor: (theme) => alpha(theme.palette.background.paper, 0.75),
                   boxShadow: 1,
                   height: '100%',
                   transition: 'transform 0.2s ease, box-shadow 0.2s ease',

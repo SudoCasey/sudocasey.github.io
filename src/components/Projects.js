@@ -16,6 +16,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import { alpha } from '@mui/material/styles';
 
 const projects = [
   {
@@ -162,6 +163,7 @@ function ProjectCard({ project }) {
           display: 'flex',
           flexDirection: 'column',
           borderRadius: 3,
+          bgcolor: (theme) => alpha(theme.palette.background.paper, 0.75),
           transition: 'transform 0.3s ease, box-shadow 0.3s ease',
           '&:hover': {
             transform: 'translateY(-8px)',

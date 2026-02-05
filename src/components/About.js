@@ -13,6 +13,7 @@ import Stack from '@mui/material/Stack';
 import Link from '@mui/material/Link';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
+import { alpha } from '@mui/material/styles';
 
 export default function About() {
   const [isVisible, setIsVisible] = React.useState(false);
@@ -60,7 +61,7 @@ export default function About() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 gap: 2,
-                backgroundColor: 'background.paper',
+                backgroundColor: (theme) => alpha(theme.palette.background.paper, 0.75),
                 padding: 3,
                 borderRadius: 2,
                 boxShadow: (theme) => theme.shadows[2],
@@ -137,7 +138,7 @@ export default function About() {
           <Grid item xs={12} md={8}>
             <Box
               sx={{
-                backgroundColor: 'background.paper',
+                backgroundColor: (theme) => alpha(theme.palette.background.paper, 0.75),
                 padding: 3,
                 borderRadius: 2,
                 boxShadow: (theme) => theme.shadows[2],
