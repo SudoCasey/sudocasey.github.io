@@ -1,0 +1,28 @@
+{
+  "name": "Casey Friedrich - Portfolio",
+  "short_name": "Casey Friedrich",
+  "description": "Personal portfolio and blog of Casey Friedrich - Full Stack Web Developer & WCAG Accessibility Expert",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1976d2",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/Casey/CaseyFriedrich_Headshot_favicon-16x16.webp",
+      "sizes": "16x16",
+      "type": "image/webp"
+    },
+    {
+      "src": "/images/Casey/CaseyFriedrich_Headshot_favicon-32x32.webp",
+      "sizes": "32x32",
+      "type": "image/webp"
+    },
+    {
+      "src": "/images/Casey/CaseyFriedrich_Headshot-250.webp",
+      "sizes": "180x180",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ]
+}
