@@ -98,6 +98,7 @@ export default function Contact() {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 3,
+                textAlign: { xs: 'center', md: 'left' },
               }}
             >
               <Typography variant="h6" component="h3" gutterBottom>
@@ -159,9 +160,13 @@ export default function Contact() {
                 type="submit"
                 variant="contained"
                 size="large"
+                fullWidth
                 startIcon={isSubmitting ? <CircularProgress size={20} color="inherit" /> : <SendIcon />}
                 disabled={isSubmitting}
-                sx={{ alignSelf: 'flex-start' }}
+                sx={{ 
+                  alignSelf: { xs: 'stretch', md: 'flex-start' },
+                  width: { xs: '100%', md: 'auto' },
+                }}
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </Button>
@@ -174,6 +179,7 @@ export default function Contact() {
                 flexDirection: 'column',
                 gap: 4,
                 height: '100%',
+                textAlign: { xs: 'center', md: 'left' },
               }}
             >
               <Box>
@@ -186,34 +192,50 @@ export default function Contact() {
                 <Button
                   variant="contained"
                   size="large"
+                  fullWidth
                   startIcon={<LinkedInIcon />}
                   href="https://www.linkedin.com/in/caseyfriedrich1/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  sx={{
+                    width: { xs: '100%', md: 'auto' },
+                  }}
                 >
                   Message Me on LinkedIn
                 </Button>
               </Box>
-              <Box>
+              <Box sx={{ width: { xs: '100%', md: 'auto' } }}>
                 <Typography variant="h6" component="h3" gutterBottom>
                   Other Ways to Connect
                 </Typography>
-                <Stack direction="row" spacing={2} flexWrap="wrap">
+                <Stack 
+                  direction={{ xs: 'column', md: 'row' }} 
+                  spacing={2} 
+                  sx={{ width: { xs: '100%', md: 'auto' } }}
+                >
                   <Button
                     variant="outlined"
+                    fullWidth
                     startIcon={<GitHubIcon />}
                     href="https://github.com/SudoCasey"
                     target="_blank"
                     rel="noopener noreferrer"
+                    sx={{
+                      width: { xs: '100%', md: 'auto' },
+                    }}
                   >
                     GitHub
                   </Button>
                   <Button
                     variant="outlined"
+                    fullWidth
                     startIcon={<CloudIcon />}
                     href="https://bsky.app/profile/caseyfriedrich.bsky.social"
                     target="_blank"
                     rel="noopener noreferrer"
+                    sx={{
+                      width: { xs: '100%', md: 'auto' },
+                    }}
                   >
                     Bluesky
                   </Button>

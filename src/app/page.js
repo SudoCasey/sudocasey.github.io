@@ -7,7 +7,7 @@ import AppTheme from '../app/shared-theme/AppTheme';
 import Loading from '../components/Loading';
 import PageWrapper from '../components/PageWrapper';
 import Divider from '@mui/material/Divider';
-
+import NavbarSpacer from '../components/NavbarSpacer';
 // Import sections directly
 import About from '../components/About';
 import Skills from '../components/Skills';

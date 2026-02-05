@@ -4,7 +4,6 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Navbar from "../../components/Navbar";
-import Divider from "@mui/material/Divider";
 import Footer from "../../components/Footer";
 import AppTheme from "../shared-theme/AppTheme";
 import NavbarSpacer from "../../components/NavbarSpacer";
@@ -21,7 +20,7 @@ export default function ContactPage() {
                     <NavbarSpacer />
                     <Box
                         sx={{
-                            pt: { xs: 0, sm: 0 },
+                            pt: { xs: 15, sm: 5 },
                             pb: { xs: 0, sm: 0 },
                             display: "flex",
                             flexDirection: "column",
