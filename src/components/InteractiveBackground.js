@@ -1,5 +1,6 @@
 "use client";
 import * as React from 'react';
+import dynamic from 'next/dynamic';
 import Box from '@mui/material/Box';
 import { useBackgroundEffect } from '../contexts/BackgroundEffectContext';
 import { useTheme } from '@mui/material/styles';

@@ -1,19 +1,8 @@
 User-agent: *
 Allow: /
-Disallow: /cgi-bin/
-Disallow: /tmp/
-Disallow: /private/
-Disallow: /admin/
-Disallow: /wp-admin/
-Disallow: /wp-login.php
-Disallow: /?*
-Disallow: /*?
-Disallow: /*.php$
-Disallow: /*.js$
-Disallow: /*.css$
-Disallow: /*.swf$
-Disallow: /*.xml$
-Disallow: /*.json$
+Disallow: /api/
+Disallow: /_next/
+Disallow: /out/
 
 # Allow common search engines
 User-agent: Googlebot

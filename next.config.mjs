@@ -12,59 +12,82 @@ const nextConfig = {
   },
   // Ensure proper static export
   distDir: 'out',
-  // Enable build caching
+  // Performance: Enable compression
+  compress: true,
+  // Performance: Optimize production builds
+  swcMinify: true,
+  // Performance: Enable build caching
   experimental: {
     turbo: {
       resolveAlias: {
         // Add any aliases if needed
       },
     },
+    // Optimize CSS
+    optimizeCss: true,
   },
-  // Configure build cache
+  // Performance: Configure build cache and optimizations
   webpack: (config, { dev, isServer }) => {
     // Enable caching in production
-    if (!dev) {
+    if (!dev && !isServer) {
       config.cache = {
         type: 'filesystem',
         buildDependencies: {
           config: [import.meta.url],
         },
       };
+      
+      // Performance: Optimize bundle splitting for client-side
+      if (!isServer) {
+        config.optimization = {
+          ...config.optimization,
+          moduleIds: 'deterministic',
+          splitChunks: {
+            chunks: 'all',
+            cacheGroups: {
+              default: false,
+              vendors: false,
+              // Separate chunk for MUI (large library)
+              mui: {
+                name: 'mui',
+                test: /[\\/]node_modules[\\/]@mui[\\/]/,
+                chunks: 'all',
+                priority: 30,
+                reuseExistingChunk: true,
+              },
+              // Separate chunk for THREE.js and Vanta (large libraries, loaded dynamically)
+              three: {
+                name: 'three',
+                test: /[\\/]node_modules[\\/](three|vanta)[\\/]/,
+                chunks: 'async', // Only split async chunks for these
+                priority: 30,
+              },
+              // Vendor chunk for other node_modules
+              vendor: {
+                name: 'vendor',
+                chunks: 'all',
+                test: /[\\/]node_modules[\\/]/,
+                priority: 20,
+                reuseExistingChunk: true,
+              },
+              // Common chunk for shared code
+              common: {
+                name: 'common',
+                minChunks: 2,
+                chunks: 'all',
+                priority: 10,
+                reuseExistingChunk: true,
+                enforce: true,
+              },
+            },
+          },
+        };
+      }
     }
     return config;
   },
-  // Add headers for static assets
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=0, must-revalidate',
-          },
-        ],
-      },
-      {
-        source: '/_next/static/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/static/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-    ];
-  },
+  // Note: headers() not available with static export
+  // Cache headers should be configured at the server/CDN level
 };
 
 export default nextConfig;

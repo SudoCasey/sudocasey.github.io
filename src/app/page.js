@@ -6,6 +6,7 @@ import Hero from '../components/Hero';
 import AppTheme from '../app/shared-theme/AppTheme';
 import Loading from '../components/Loading';
 import PageWrapper from '../components/PageWrapper';
+import Divider from '@mui/material/Divider';
 
 // Import sections directly
 import About from '../components/About';
@@ -13,7 +14,6 @@ import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
-import Divider from '@mui/material/Divider';
 
 export default function Home() {
   return (
