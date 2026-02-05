@@ -138,7 +138,6 @@ export default function InteractiveBackground() {
       // CRITICAL: Set THREE on window BEFORE loading Vanta
       if (typeof window !== 'undefined') {
         window.THREE = THREE_JS;
-        console.log('✓ THREE set on window.THREE (before Vanta load)');
       }
       
       // NOW load Vanta after THREE is available
@@ -202,12 +201,6 @@ export default function InteractiveBackground() {
           }
         }
         
-        console.log('✓ THREE_JS ready for Vanta:', {
-          hasPerspectiveCamera: !!THREE_JS.PerspectiveCamera,
-          hasScene: !!THREE_JS.Scene,
-          window_THREE_set: typeof window !== 'undefined' && !!window.THREE,
-        });
-        
         // Extract VANTA
         let VANTA = null;
         if (VANTA_MODULE) {
@@ -266,12 +259,6 @@ export default function InteractiveBackground() {
                 return;
               }
               
-              console.log('✓ Initializing Vanta NET with THREE:', {
-                hasPerspectiveCamera: !!THREE_FOR_VANTA.PerspectiveCamera,
-                hasScene: !!THREE_FOR_VANTA.Scene,
-                isWindowTHREE: THREE_FOR_VANTA === (typeof window !== 'undefined' ? window.THREE : null),
-              });
-              
               vantaEffect.current = VANTA.NET({
                 el: containerRef.current,
                 THREE: THREE_FOR_VANTA,
@@ -323,12 +310,6 @@ export default function InteractiveBackground() {
                 });
                 return;
               }
-              
-              console.log('✓ Initializing Vanta DOTS with THREE:', {
-                hasPerspectiveCamera: !!THREE_FOR_VANTA.PerspectiveCamera,
-                hasScene: !!THREE_FOR_VANTA.Scene,
-                isWindowTHREE: THREE_FOR_VANTA === (typeof window !== 'undefined' ? window.THREE : null),
-              });
               
               vantaEffect.current = VANTA.DOTS({
                 el: containerRef.current,
