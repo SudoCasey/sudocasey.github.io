@@ -120,6 +120,18 @@ export default function Navbar() {
                 </Button>
                 <Button 
                   variant="text" 
+                  href="/cookie-clicker" 
+                  color="secondary" 
+                  component={NextLink}
+                  sx={{
+                    height: scrolled ? '2.5rem' : '4rem',
+                    transition: 'height 0.3s ease',
+                  }}
+                >
+                  Cookie Clicker
+                </Button>
+                <Button 
+                  variant="text" 
                   href="/contact" 
                   color="secondary" 
                   component={NextLink}
@@ -191,6 +203,7 @@ export default function Navbar() {
                   </Box>
 
                   <MenuItem href="/" color="secondary" component={NextLink}>Home</MenuItem>
+                  <MenuItem href="/cookie-clicker" color="secondary" component={NextLink}>Cookie Clicker</MenuItem>
                   <MenuItem href="/contact" color="secondary" component={NextLink}>Contact</MenuItem>
                   {/*<MenuItem>Features</MenuItem>
                   <MenuItem>Testimonials</MenuItem>

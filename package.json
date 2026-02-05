@@ -4,8 +4,8 @@
   "private": true,
   "homepage": "https://sudocasey.github.io",
   "scripts": {
-    "dev": "next dev",
-    "build": "node scripts/setup-cache.js && next build",
+    "dev": "node scripts/setup-cookie-clicker.js && next dev",
+    "build": "node scripts/setup-cache.js && node scripts/setup-cookie-clicker.js && next build",
     "start": "next start",
     "lint": "next lint",
     "convert-images": "node scripts/convert-images.js",
@@ -23,6 +23,7 @@
     "next": "^15.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "sass": "^1.77.0",
     "sharp": "^0.32.6",
     "three": "^0.182.0",
     "vanta": "^0.5.24"
