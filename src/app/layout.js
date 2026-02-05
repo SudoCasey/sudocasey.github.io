@@ -44,7 +44,7 @@ export const metadata = {
   openGraph: {
     title: 'Casey Friedrich',
     description: 'Personal portfolio and blog of Casey Friedrich',
-    images: '/images/Casey/CaseyFriedrich.webp',
+    images: '/images/Casey/CaseyFriedrich_Headshot2-1000.webp',
     type: 'website',
     siteName: 'Casey Friedrich',
   },
@@ -52,7 +52,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Casey Friedrich',
     description: 'Personal portfolio and blog of Casey Friedrich',
-    images: '/images/Casey/CaseyFriedrich.webp',
+    images: '/images/Casey/CaseyFriedrich_Headshot2-1000.webp',
   },
 };
 
