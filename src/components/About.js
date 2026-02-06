@@ -147,10 +147,18 @@ export default function About() {
                 About Me
               </Typography>
             <Typography variant="body1" paragraph>
-              Dynamic Full-stack Web Developer and Manager with 7+ years of experience in agile environments, excelling in web accessibility and cloud deployment strategies. Currently serving as Web Developer Manager at SEO For Real Estate Investors, where I direct a development team in building and maintaining SEO-optimized websites for real estate investment businesses.
+              Dynamic Full-stack Web Developer and Manager with 7+ years of experience in agile environments, excelling in web accessibility and cloud deployment strategies. Currently serving as Web Developer Manager at{' '}
+              <Link href="https://seoforrealestateinvestors.com" target="_blank" rel="noopener noreferrer">
+                SEO For Real Estate Investors
+              </Link>
+              , where I direct a development team in building and maintaining SEO-optimized websites for real estate investment businesses.
             </Typography>
             <Typography variant="body1" paragraph>
-              Previously, as Web Development Team Lead and WCAG Accessibility SME at ADA Site Compliance, I mentored and led teams of developers in agile sprints, promoting coding best practices and accessibility-first development. I architected scalable RESTful APIs that improved web app performance and database fetch speeds by 80% in the <a href="/#ADAshboard">"ADAshboard"</a>, and implemented DevOps pipelines with CircleCI, Docker, and AWS for improved deployment speed and reliability.
+              Previously, as Web Development Team Lead and WCAG Accessibility SME at{' '}
+              <Link href="https://adasitecompliance.com" target="_blank" rel="noopener noreferrer">
+                ADA Site Compliance
+              </Link>
+              , I mentored and led teams of developers in agile sprints, promoting coding best practices and accessibility-first development. I architected scalable RESTful APIs that improved web app performance and database fetch speeds by 80% in the <Link href="/#ADAshboard">"ADAshboard"</Link>, and implemented DevOps pipelines with CircleCI, Docker, and AWS for improved deployment speed and reliability.
             </Typography>
             <Typography variant="body1" paragraph>
               I served as Subject Matter Expert on WCAG 2.2 and Section 508 standards, influencing product design and client compliance strategy. I spearheaded accessibility remediation for over 200 client websites, improving usability for users with disabilities, increasing WCAG 2.2 compliance across websites, mobile apps on iOS & Android, and preventing legal liability by addressing accessibility issues in clients' received legal threats. I also developed and launched 25+ bespoke web applications using React, PHP, WordPress, and Shopify, directly contributing to SEO improvements and higher sales conversions.
