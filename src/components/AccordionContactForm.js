@@ -1,13 +1,13 @@
 'use client';
 
 import * as React from 'react';
+import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -28,7 +28,12 @@ export default function AccordionContactForm({
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [status, setStatus] = React.useState({ type: '', message: '' });
   const [snackbarOpen, setSnackbarOpen] = React.useState(false);
+  const [errorSnackbarOpen, setErrorSnackbarOpen] = React.useState(false);
+  const theme = useTheme();
   const formRef = React.useRef(null);
+
+  const successBg = theme.palette.mode === 'dark' ? '#0d3312' : '#1b5e20';
+  const errorBg = theme.palette.mode === 'dark' ? '#6d1515' : '#b71c1c';
   const emailInputRef = React.useRef(null);
   const messageInputRef = React.useRef(null);
 
@@ -89,10 +94,9 @@ export default function AccordionContactForm({
         throw new Error(data.message || 'Something went wrong');
       }
     } catch (err) {
-      setStatus({
-        type: 'error',
-        message: err.message || errorMessageFallback,
-      });
+      const errorMsg = err.message || errorMessageFallback;
+      setStatus({ type: 'error', message: errorMsg });
+      setErrorSnackbarOpen(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -185,11 +189,6 @@ export default function AccordionContactForm({
             >
               {isSubmitting ? 'Sending…' : 'Send'}
             </Button>
-            {status.type === 'error' && status.message && (
-              <Typography variant="caption" color="error.main" sx={{ display: 'block' }}>
-                {status.message}
-              </Typography>
-            )}
           </AccordionDetails>
         </Accordion>
       </Box>
@@ -205,12 +204,32 @@ export default function AccordionContactForm({
           severity="success"
           sx={{
             width: '100%',
-            backgroundColor: '#1b5e20',
+            backgroundColor: successBg,
             color: '#fff',
             '& .MuiAlert-icon': { color: '#fff' },
           }}
         >
           {successMessage}
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={errorSnackbarOpen}
+        autoHideDuration={5000}
+        onClose={() => setErrorSnackbarOpen(false)}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert
+          role="alert"
+          onClose={() => setErrorSnackbarOpen(false)}
+          severity="error"
+          sx={{
+            width: '100%',
+            backgroundColor: errorBg,
+            color: '#fff',
+            '& .MuiAlert-icon': { color: '#fff' },
+          }}
+        >
+          {status.type === 'error' ? status.message : ''}
         </Alert>
       </Snackbar>
     </Box>
