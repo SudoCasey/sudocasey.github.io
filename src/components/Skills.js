@@ -77,17 +77,32 @@ export default function Skills() {
                     <Chip
                       key={skillIndex}
                       label={skill}
-                      sx={{
+                      variant="outlined"
+                      sx={(theme) => ({
                         m: 0.5,
-                        bgcolor: 'primary.light',
-                        color: 'primary.contrastText',
                         fontWeight: 500,
                         fontSize: '0.875rem',
                         transition: 'all 0.2s ease',
                         '&:hover': {
                           transform: 'scale(1.05)',
                         },
-                      }}
+                        ...(theme.palette.mode === 'light'
+                          ? {
+                              backgroundColor: 'transparent',
+                              color: 'primary.dark',
+                              borderColor: 'primary.dark',
+                              '&:hover': {
+                                transform: 'scale(1.05)',
+                                backgroundColor: 'transparent',
+                                borderColor: 'primary.dark',
+                              },
+                            }
+                          : {
+                              bgcolor: 'primary.light',
+                              color: 'primary.contrastText',
+                              borderColor: 'primary.light',
+                            }),
+                      })}
                     />
                   ))}
                 </Stack>
