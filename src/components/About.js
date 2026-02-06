@@ -5,15 +5,7 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Stack from '@mui/material/Stack';
@@ -21,87 +13,11 @@ import Link from '@mui/material/Link';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import { alpha } from '@mui/material/styles';
-
-const WEB3FORMS_ACCESS_KEY = '1f45b1ce-4dfc-4711-bee8-200c051b7a55';
+import AccordionContactForm from './AccordionContactForm';
 
 export default function About() {
   const [isVisible, setIsVisible] = React.useState(false);
-  const [email, setEmail] = React.useState('');
-  const [message, setMessage] = React.useState('');
-  const [expandedByUser, setExpandedByUser] = React.useState(false);
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [status, setStatus] = React.useState({ type: '', message: '' });
-  const [snackbarOpen, setSnackbarOpen] = React.useState(false);
   const imageRef = React.useRef(null);
-  const formRef = React.useRef(null);
-  const emailInputRef = React.useRef(null);
-  const messageInputRef = React.useRef(null);
-
-  const accordionExpanded = expandedByUser;
-
-  React.useEffect(() => {
-    const el = emailInputRef.current;
-    if (el) el.setCustomValidity(email.trim() ? '' : 'Please enter your email');
-  }, [email]);
-
-  React.useEffect(() => {
-    const el = messageInputRef.current;
-    if (el) el.setCustomValidity(message.trim() ? '' : 'Please enter your message');
-  }, [message]);
-
-  const handleAccordionChange = (_, isExpanded) => {
-    setExpandedByUser(isExpanded);
-  };
-
-  const handleFormBlur = () => {
-    setTimeout(() => {
-      if (formRef.current && !formRef.current.contains(document.activeElement)) {
-        setExpandedByUser(false);
-      }
-    }, 0);
-  };
-
-  React.useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (formRef.current && !formRef.current.contains(e.target)) {
-        setExpandedByUser(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setStatus({ type: '', message: '' });
-    try {
-      const formDataToSend = new FormData();
-      formDataToSend.append('name', 'Portfolio accordion');
-      formDataToSend.append('email', email);
-      formDataToSend.append('message', message);
-      formDataToSend.append('access_key', WEB3FORMS_ACCESS_KEY);
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formDataToSend,
-      });
-      const data = await response.json();
-      if (data.success) {
-        setSnackbarOpen(true);
-        setEmail('');
-        setMessage('');
-      } else {
-        throw new Error(data.message || 'Something went wrong');
-      }
-    } catch (err) {
-      setStatus({
-        type: 'error',
-        message: err.message || 'Failed to send. Try the Contact page or LinkedIn.',
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -182,99 +98,8 @@ export default function About() {
                   <ListItem sx={{py:0.25}}>Problem Solver</ListItem>
                 </List>
               </Typography>
-              <Box component="form" ref={formRef} onSubmit={handleSubmit} sx={{ width: '100%' }}>
-                <Accordion
-                  expanded={accordionExpanded}
-                  onChange={handleAccordionChange}
-                  sx={{ width: '100%', '&:before': { display: 'none' } }}
-                >
-                  <AccordionSummary
-                  tabIndex="-1"
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="quick-contact-content"
-                    id="quick-contact-header"
-                    sx={{
-                      minHeight: 56,
-                      paddingRight: 1,
-                      '& .MuiAccordionSummary-content': {
-                        margin: 0,
-                        paddingRight: 1,
-                        marginRight: 0,
-                        alignItems: 'center',
-                      },
-                      '& .MuiAccordionSummary-expandIconWrapper': { marginLeft: 0 },
-                    }}
-                  >
-                    <TextField
-                      fullWidth
-                      size="small"
-                      type="email"
-                      required={accordionExpanded}
-                      inputRef={emailInputRef}
-                      label={accordionExpanded ? 'Email' : 'Message me...'}
-                      placeholder={accordionExpanded ? 'Email' : 'Message me...'}
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      onFocus={() => setExpandedByUser(true)}
-                      onBlur={handleFormBlur}
-                      onClick={(e) => e.stopPropagation()}
-                      autoComplete="email"
-                      sx={{
-                        '& .MuiInputLabel-outlined': {
-                          '&.MuiInputLabel-sizeSmall': {
-                            transform: 'translate(14px, 7px) scale(1)',
-                          },
-                          '&.MuiInputLabel-shrink': {
-                            transform: 'translate(14px, -9px) scale(0.75)',
-                          },
-                        },
-                      }}
-                    />
-                  </AccordionSummary>
-                  <AccordionDetails
-                    sx={{
-                      flexDirection: 'column',
-                      gap: 2,
-                      pt: 0,
-                      paddingLeft: 2,
-                      paddingRight: 2,
-                    }}
-                  >
-                    <TextField
-                      fullWidth
-                      multiline
-                      minRows={2}
-                      maxRows={4}
-                      required
-                      inputRef={messageInputRef}
-                      label="Message"
-                      placeholder="Message"
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      onBlur={handleFormBlur}
-                      name="message"
-                      autoComplete="off"
-                    />
-                    <Button
-                      type="submit"
-                      variant="contained"
-                      color="primary"
-                      disabled={isSubmitting}
-                      fullWidth
-                      sx={{ mt: 1 }}
-                      onBlur={handleFormBlur}
-                    >
-                      {isSubmitting ? 'Sending…' : 'Send'}
-                    </Button>
-                    {status.type === 'error' && status.message && (
-                      <Typography variant="caption" color="error.main" sx={{ display: 'block' }}>
-                        {status.message}
-                      </Typography>
-                    )}
-                  </AccordionDetails>
-                </Accordion>
-              </Box>
-              <Stack spacing={1}>
+              <AccordionContactForm />
+              <Stack spacing={2}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <LocationOnIcon color="action" />
                   <Typography variant="body2" color="text.secondary">
@@ -331,26 +156,6 @@ export default function About() {
           </Grid>
         </Grid>
       </Container>
-      <Snackbar
-        open={snackbarOpen}
-        autoHideDuration={3000}
-        onClose={() => setSnackbarOpen(false)}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-      >
-        <Alert
-          onClose={() => setSnackbarOpen(false)}
-          severity="success"
-          sx={{
-            width: '100%',
-            backgroundColor: '#1b5e20',
-            color: '#fff',
-            '& .MuiAlert-icon': { color: '#fff' },
-          }}
-          role="alert"
-        >
-          Thanks! Your message was sent.
-        </Alert>
-      </Snackbar>
     </Box>
   );
 } 
