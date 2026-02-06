@@ -1,8 +1,9 @@
-const CACHE_NAME = 'casey-friedrich-v2';
-const STATIC_CACHE_NAME = 'casey-friedrich-static-v2';
-const IMAGE_CACHE_NAME = 'casey-friedrich-images-v2';
-const JS_CACHE_NAME = 'casey-friedrich-js-v2';
-const CSS_CACHE_NAME = 'casey-friedrich-css-v2';
+const CACHE_NAME = 'casey-friedrich-v3';
+const STATIC_CACHE_NAME = 'casey-friedrich-static-v3';
+const IMAGE_CACHE_NAME = 'casey-friedrich-images-v3';
+const JS_CACHE_NAME = 'casey-friedrich-js-v3';
+const CSS_CACHE_NAME = 'casey-friedrich-css-v3';
+const FONT_CACHE_NAME = 'casey-friedrich-fonts-v3';
 
 // Performance: Cache static assets for GitHub Pages
 // GitHub Pages doesn't support custom headers, so we rely on service worker caching
@@ -35,7 +36,8 @@ self.addEventListener('activate', (event) => {
             name !== STATIC_CACHE_NAME && 
             name !== IMAGE_CACHE_NAME &&
             name !== JS_CACHE_NAME &&
-            name !== CSS_CACHE_NAME
+            name !== CSS_CACHE_NAME &&
+            name !== FONT_CACHE_NAME
           )
           .map((name) => caches.delete(name))
       );
@@ -74,6 +76,22 @@ self.addEventListener('fetch', (event) => {
               const responseToCache = response.clone();
               cache.put(request, responseToCache);
             }
+            return response;
+          });
+        });
+      })
+    );
+    return;
+  }
+
+  // Performance: Cache fonts with cache-first (woff2, woff, ttf)
+  if (url.pathname.match(/\.(woff2?|ttf|eot)$/) || url.pathname.includes('/_next/static/media/')) {
+    event.respondWith(
+      caches.open(FONT_CACHE_NAME).then((cache) => {
+        return cache.match(request).then((cachedResponse) => {
+          if (cachedResponse) return cachedResponse;
+          return fetch(request).then((response) => {
+            if (response.ok) cache.put(request, response.clone());
             return response;
           });
         });
