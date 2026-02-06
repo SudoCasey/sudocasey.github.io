@@ -16,7 +16,7 @@ function Copyright() {
   return (
     <Typography variant="body2" display="inline" sx={{ color: 'text.secondary', mt: 1 }}>
       {'Copyright © '}
-      <Link color="text.secondary" href="https://github.com/SudoCasey/sudocasey.github.io">
+      <Link color="text.secondary" href="https://github.com/sudocasey/sudocasey.github.io">
         Casey Friedrich
       </Link>
       &nbsp;
@@ -56,7 +56,7 @@ export default function Footer() {
           <IconButton
             color="inherit"
             size="small"
-            href="https://github.com/SudoCasey"
+            href="https://github.com/sudocasey"
             aria-label="GitHub"
             sx={{ alignSelf: 'center' }}
           >

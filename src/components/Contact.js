@@ -217,7 +217,7 @@ export default function Contact() {
                     variant="outlined"
                     fullWidth
                     startIcon={<GitHubIcon />}
-                    href="https://github.com/SudoCasey"
+                    href="https://github.com/sudocasey"
                     target="_blank"
                     rel="noopener noreferrer"
                     sx={{

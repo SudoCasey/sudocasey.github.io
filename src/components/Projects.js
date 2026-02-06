@@ -43,7 +43,7 @@ const projects = [
       }
     ],
     technologies: ['Next.js', 'Material-UI', 'Puppeteer', 'TypeScript', 'WCAG 2.2'],
-    github: 'https://github.com/SudoCasey/Web_Crawler',
+    github: 'https://github.com/sudocasey/Web_Crawler',
     date: 'March 2024'
   },
   {
@@ -56,7 +56,7 @@ const projects = [
       fullSize: '/images/Soundboard/soundboard_tracker.png'
     }],
     technologies: ['Node.js', 'Discord.js', 'PostgreSQL', 'Docker', 'Express'],
-    github: 'https://github.com/SudoCasey/Soundboard_Usage_Tracker',
+    github: 'https://github.com/sudocasey/Soundboard_Usage_Tracker',
     demo: 'https://hub.docker.com/r/snipersrecon/discord_soundboard_usage_tracker',
     date: 'December 2024'
   },
@@ -90,7 +90,7 @@ const projects = [
       }
     ],
     technologies: ['React', 'Node.js', 'MongoDB', 'AWS EC2', 'AWS S3'],
-    github: 'https://github.com/SudoCasey/ADAshboard_example',
+    github: 'https://github.com/sudocasey/ADAshboard_example',
     demo: 'https://myadash.com/',
     date: 'January 2021 - October 2024'
   },
@@ -104,7 +104,7 @@ const projects = [
       fullSize: '/images/CCPlugin/CC_Gif.gif'
     }],
     technologies: ['React', 'Chrome Extension API'],
-    github: 'https://github.com/SudoCasey/Contrast_Checker_Chrome_Plugin',
+    github: 'https://github.com/sudocasey/Contrast_Checker_Chrome_Plugin',
     demo: 'https://chromewebstore.google.com/detail/wcag-color-contrast-tool/dlgdkjfbookpeopkfeookihfpobkophe',
     date: 'November 2024 - December 2024'
   }

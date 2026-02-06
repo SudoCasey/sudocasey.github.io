@@ -10,8 +10,6 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Stack from '@mui/material/Stack';
 import Link from '@mui/material/Link';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import { alpha } from '@mui/material/styles';
 import AccordionContactForm from './AccordionContactForm';
 
@@ -77,11 +75,11 @@ export default function About() {
                     /images/Casey/CaseyFriedrich_Headshot2-500.webp 500w,
                     /images/Casey/CaseyFriedrich_Headshot2-1000.webp 1000w
                   `}
-                  sizes="(max-width: 600px) 100px, (max-width: 900px) 200px, 400px"
+                  sizes="(max-width: 600px) 180px, (max-width: 900px) 200px, 400px"
                   alt="Casey Friedrich"
                   sx={{
-                    width: { xs: 100, sm: 200, md: 200 },
-                    height: { xs: 100, sm: 200, md: 200 },
+                    width: { xs: 180, sm: 200, md: 200 },
+                    height: { xs: 180, sm: 200, md: 200 },
                     border: '4px solid',
                     borderColor: 'primary.main',
                   }}
@@ -91,22 +89,27 @@ export default function About() {
               <Typography variant="h5" component="h2" gutterBottom sx={{ textAlign: 'center' }}>
                 Casey Friedrich
               </Typography>
-              <Typography variant="subtitle2" component="h3" color="text.secondary" sx={{ textAlign: 'center' }}>
-                <List >
-                  <ListItem sx={{py:0.25}}>Full Stack Web Developer</ListItem>
-                  <ListItem sx={{py:0.25}}>WCAG Accessibility Expert</ListItem>
-                  <ListItem sx={{py:0.25}}>Problem Solver</ListItem>
-                </List>
+              <Typography variant="subtitle2" component="h3" color="text.secondary">
+                <Stack
+                  component="span"
+                  display="block"
+                  alignItems={{ xs: 'center', sm: 'flex-start' }}
+                  sx={{ width: '100%', gap: 0.25 }}
+                >
+                  <Box component="span" sx={{ display: 'block', textAlign: { xs: 'center', sm: 'left' } }}>Full Stack Web Developer</Box>
+                  <Box component="span" sx={{ display: 'block', textAlign: { xs: 'center', sm: 'left' } }}>WCAG Accessibility Expert</Box>
+                  <Box component="span" sx={{ display: 'block', textAlign: { xs: 'center', sm: 'left' } }}>Problem Solver</Box>
+                </Stack>
               </Typography>
               <AccordionContactForm />
-              <Stack spacing={2}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <Stack spacing={2} sx={{ alignItems: { xs: 'center', md: 'stretch' }, width: '100%' }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: { xs: 'center', md: 'flex-start' } }}>
                   <LocationOnIcon color="action" />
                   <Typography variant="body2" color="text.secondary">
                     Florida, United States
                   </Typography>
                 </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: { xs: 'center', md: 'flex-start' } }}>
                   <GitHubIcon color="action" />
                   <Link
                     href="https://github.com/sudocasey"
@@ -114,10 +117,10 @@ export default function About() {
                     rel="noopener noreferrer"
                     color="text.secondary"
                   >
-                    github.com/SudoCasey
+                    github.com/sudocasey
                   </Link>
                 </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: { xs: 'center', md: 'flex-start' } }}>
                   <LinkedInIcon color="action" />
                   <Link
                     href="https://www.linkedin.com/in/caseyfriedrich1/"
