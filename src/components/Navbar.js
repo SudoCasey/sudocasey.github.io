@@ -71,7 +71,7 @@ export default function Navbar() {
         enableColorOnDark
         sx={{
           boxShadow: 0,
-          bgcolor: 'transparent',
+          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'background.paper' : 'transparent'),
           backgroundImage: 'none',
           mt: 'calc(var(--template-frame-height, 0px) + 28px)',
         }}
@@ -111,10 +111,11 @@ export default function Navbar() {
                   href="/" 
                   color="secondary" 
                   component={NextLink}
-                  sx={{
+                  sx={(theme) => ({
                     height: scrolled ? '2.5rem' : '4rem',
                     transition: 'height 0.3s ease',
-                  }}
+                    ...(theme.palette.mode === 'light' && { backgroundColor: 'transparent' }),
+                  })}
                 >
                   Home
                 </Button>
@@ -123,10 +124,11 @@ export default function Navbar() {
                   href="/contact" 
                   color="secondary" 
                   component={NextLink}
-                  sx={{
+                  sx={(theme) => ({
                     height: scrolled ? '2.5rem' : '4rem',
                     transition: 'height 0.3s ease',
-                  }}
+                    ...(theme.palette.mode === 'light' && { backgroundColor: 'transparent' }),
+                  })}
                 >
                   Contact
                 </Button>

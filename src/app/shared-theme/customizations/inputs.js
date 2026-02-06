@@ -116,7 +116,7 @@ export const inputsCustomizations = {
               color: (theme.vars || theme).palette.text.primary,
               border: '1px solid',
               borderColor: gray[200],
-              backgroundColor: alpha(gray[50], 0.3),
+              backgroundColor: (theme.vars || theme).palette.background.paper,
               '&:hover': {
                 backgroundColor: gray[100],
                 borderColor: gray[300],
@@ -175,6 +175,7 @@ export const inputsCustomizations = {
             },
             style: {
               color: gray[600],
+              backgroundColor: (theme.vars || theme).palette.background.paper,
               '&:hover': {
                 backgroundColor: gray[100],
               },
@@ -183,6 +184,7 @@ export const inputsCustomizations = {
               },
               ...theme.applyStyles('dark', {
                 color: gray[50],
+                backgroundColor: 'transparent',
                 '&:hover': {
                   backgroundColor: gray[700],
                 },
@@ -199,6 +201,7 @@ export const inputsCustomizations = {
             },
             style: {
               color: brand[700],
+              backgroundColor: (theme.vars || theme).palette.background.paper,
               '&:hover': {
                 backgroundColor: alpha(brand[100], 0.5),
               },
@@ -207,6 +210,7 @@ export const inputsCustomizations = {
               },
               ...theme.applyStyles('dark', {
                 color: brand[100],
+                backgroundColor: 'transparent',
                 '&:hover': {
                   backgroundColor: alpha(brand[900], 0.5),
                 },
@@ -231,7 +235,7 @@ export const inputsCustomizations = {
         color: (theme.vars || theme).palette.text.primary,
         border: '1px solid ',
         borderColor: gray[200],
-        backgroundColor: alpha(gray[50], 0.3),
+        backgroundColor: (theme.vars || theme).palette.background.paper,
         '&:hover': {
           backgroundColor: gray[100],
           borderColor: gray[300],
