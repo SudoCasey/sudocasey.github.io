@@ -71,7 +71,7 @@ export default function Navbar() {
         enableColorOnDark
         sx={{
           boxShadow: 0,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'background.paper' : 'transparent'),
+          bgcolor: 'transparent',
           backgroundImage: 'none',
           mt: 'calc(var(--template-frame-height, 0px) + 28px)',
         }}
