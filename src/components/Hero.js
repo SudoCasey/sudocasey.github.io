@@ -6,6 +6,7 @@ import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
+import AskAboutCaseyForm from '@/components/AskAboutCaseyForm';
 
 export default function Hero() {
   return (
@@ -119,6 +120,7 @@ export default function Hero() {
               View My Work
             </Button>
           </Stack>
+          <AskAboutCaseyForm />
         </Stack>
       </Container>
     </Box>

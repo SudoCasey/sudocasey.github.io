@@ -20,6 +20,10 @@ jobs:
         run: npm ci
 
       - name: Build
+        env:
+          # Optional: set in repo Settings → Secrets and variables → Actions (e.g. your Ask API base URL).
+          # If unset, the form will POST to /api/ask (404 on static hosting; use Docker API URL and rebuild).
+          NEXT_PUBLIC_ASK_API_URL: ${{ vars.NEXT_PUBLIC_ASK_API_URL }}
         run: npm run build
 
       - name: Create .nojekyll
