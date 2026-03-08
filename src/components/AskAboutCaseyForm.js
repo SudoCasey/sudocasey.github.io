@@ -60,10 +60,11 @@ function TypingMarkdown({ text, onComplete }) {
   );
 }
 
-const DEFAULT_ASK_API =
-  typeof window !== 'undefined' && process.env.NEXT_PUBLIC_ASK_API_URL
-    ? process.env.NEXT_PUBLIC_ASK_API_URL
-    : '/api/ask';
+const IS_DEV = process.env.NODE_ENV === 'development';
+
+const DEFAULT_ASK_API = IS_DEV
+  ? '/api/ask'
+  : 'https://snipersrecon69.asuscomm.com:9988/v1/chat';
 
 export default function AskAboutCaseyForm({
   apiUrl = DEFAULT_ASK_API,
