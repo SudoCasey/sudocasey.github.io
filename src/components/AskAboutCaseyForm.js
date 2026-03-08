@@ -64,7 +64,7 @@ const IS_DEV = process.env.NODE_ENV === 'development';
 
 const DEFAULT_ASK_API = IS_DEV
   ? '/api/ask'
-  : 'https://73.67.93.56:9988/v1/chat';
+  : (process.env.NEXT_PUBLIC_ASK_API_URL || 'https://73.67.93.56:9988/v1/chat');
 
 export default function AskAboutCaseyForm({
   apiUrl = DEFAULT_ASK_API,
@@ -137,6 +137,7 @@ export default function AskAboutCaseyForm({
       component="form"
       onSubmit={handleSubmit}
       sx={{ width: '100%', maxWidth, pt: 1, ...sx }}
+      display="none"
     >
       <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} alignItems="stretch">
         <TextField
