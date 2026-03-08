@@ -64,7 +64,7 @@ const IS_DEV = process.env.NODE_ENV === 'development';
 
 const DEFAULT_ASK_API = IS_DEV
   ? '/api/ask'
-  : 'https://snipersrecon69.asuscomm.com:9988/v1/chat';
+  : 'https://73.67.93.56:9988/v1/chat';
 
 export default function AskAboutCaseyForm({
   apiUrl = DEFAULT_ASK_API,
