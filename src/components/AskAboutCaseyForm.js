@@ -91,7 +91,10 @@ export default function AskAboutCaseyForm({
       const res = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: q }),
+        body: JSON.stringify({
+          messages: [{ role: 'user', content: q }],
+          stream: false,
+        }),
       });
       const raw = await res.text();
       let data;
@@ -110,7 +113,15 @@ export default function AskAboutCaseyForm({
         );
       }
       if (!res.ok) throw new Error(data.error || 'Request failed');
-      setAnswer(data.answer || '');
+      const answerText =
+        (data && data.message && data.message.content) ||
+        data.answer ||
+        data.content ||
+        '';
+      if (!answerText) {
+        throw new Error('Ask API returned an empty response.');
+      }
+      setAnswer(answerText);
       setQuestion('');
     } catch (err) {
       setError(err.message || 'Something went wrong. Try again.');
