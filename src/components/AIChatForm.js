@@ -147,6 +147,7 @@ export default function AIChatForm({
           onChange={(e) => setQuestion(e.target.value)}
           disabled={loading}
           autoComplete="off"
+          label="Ask Casey's AI a question about him..."
           sx={{
             '& .MuiOutlinedInput-root': {
               backgroundColor: (theme) => theme.palette.background.paper,
