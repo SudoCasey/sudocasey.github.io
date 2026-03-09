@@ -11,6 +11,8 @@ import ReactMarkdown from 'react-markdown';
 
 const TYPING_INTERVAL_MS = 12;
 const CHARS_PER_TICK = 2;
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const RATE_LIMIT_MAX = 5;
 
 function TypingMarkdown({ text, onComplete }) {
   const [visibleLength, setVisibleLength] = React.useState(0);
@@ -77,12 +79,24 @@ export default function AIChatForm({
   const [answer, setAnswer] = React.useState('');
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState('');
+  const [messageTimestamps, setMessageTimestamps] = React.useState([]);
   const requestInFlightRef = React.useRef(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const q = question.trim();
     if (!q) return;
+
+    const now = Date.now();
+    const windowStart = now - RATE_LIMIT_WINDOW_MS;
+    const recent = messageTimestamps.filter((t) => t > windowStart);
+    if (recent.length >= RATE_LIMIT_MAX) {
+      setError('Rate limit: please wait a moment before asking more questions.');
+      return;
+    }
+    const updatedTimestamps = [...recent, now];
+    setMessageTimestamps(updatedTimestamps);
+
     if (requestInFlightRef.current) return;
     requestInFlightRef.current = true;
     setError('');
