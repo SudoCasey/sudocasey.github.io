@@ -173,7 +173,7 @@ export default function AIChatForm({
           variant="outlined"
           color="primary"
           disabled={loading}
-          sx={{ minWidth: 90 }}
+          sx={{ minWidth: 90, height: '100%' }}
         >
           {loading ? <CircularProgress size={24} /> : submitLabel}
         </Button>
