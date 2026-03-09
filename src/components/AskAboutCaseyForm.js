@@ -147,6 +147,7 @@ export default function AskAboutCaseyForm({
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           disabled={loading}
+          autoComplete="off"
           sx={{
             '& .MuiOutlinedInput-root': {
               backgroundColor: (theme) => theme.palette.background.paper,
