@@ -68,7 +68,7 @@ const DEFAULT_ASK_API = IS_DEV
 
 export default function AIChatForm({
   apiUrl = DEFAULT_ASK_API,
-  placeholder = 'Ask AI a question about Casey...',
+  placeholder = 'Ask Casey\'s AI a question about him...',
   submitLabel = 'Ask',
   maxWidth = 420,
   sx,
