@@ -66,7 +66,7 @@ const DEFAULT_ASK_API = IS_DEV
   ? '/api/ask'
   : (process.env.NEXT_PUBLIC_ASK_API_URL || 'https://chat.cfriedrich.net/v1/chat');
 
-export default function AskAboutCaseyForm({
+export default function AIChatForm({
   apiUrl = DEFAULT_ASK_API,
   placeholder = 'Ask AI a question about Casey...',
   submitLabel = 'Ask',
@@ -202,7 +202,9 @@ export default function AskAboutCaseyForm({
                 padding: '0.15em 0.35em',
                 borderRadius: 1,
                 backgroundColor: (theme) =>
-                  theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.08)',
+                  theme.palette.mode === 'dark'
+                    ? 'rgba(255,255,255,0.12)'
+                    : 'rgba(0,0,0,0.08)',
               },
               '& pre': {
                 margin: '0.5em 0',
@@ -210,14 +212,20 @@ export default function AskAboutCaseyForm({
                 borderRadius: 1,
                 overflow: 'auto',
                 backgroundColor: (theme) =>
-                  theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)',
+                  theme.palette.mode === 'dark'
+                    ? 'rgba(255,255,255,0.08)'
+                    : 'rgba(0,0,0,0.06)',
                 '& code': { padding: 0, backgroundColor: 'transparent' },
               },
               '& a': {
                 color: 'primary.main',
                 textDecoration: 'underline',
               },
-              '& h1, & h2, & h3': { margin: '0.5em 0 0.25em', fontSize: '1em', fontWeight: 600 },
+              '& h1, & h2, & h3': {
+                margin: '0.5em 0 0.25em',
+                fontSize: '1em',
+                fontWeight: 600,
+              },
             },
           }}
         >
@@ -272,3 +280,4 @@ export default function AskAboutCaseyForm({
     </Box>
   );
 }
+
