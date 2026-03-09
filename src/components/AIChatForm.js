@@ -137,7 +137,6 @@ export default function AIChatForm({
       component="form"
       onSubmit={handleSubmit}
       sx={{ width: '100%', maxWidth, pt: 1, ...sx }}
-      display="none"
     >
       <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} alignItems="stretch">
         <TextField
