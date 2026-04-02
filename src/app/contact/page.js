@@ -29,7 +29,7 @@ export default function ContactPage() {
                         }}
                     >
                         <main>
-                            <Contact />
+                            <Contact isStandalonePage />
                         </main>
                     </Box>
                     <Footer />

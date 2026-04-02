@@ -32,7 +32,7 @@ export default function TermsOfService() {
                         Agreement to Terms
                     </Typography>
                     <Typography variant="body1" paragraph>
-                        By accessing and using sudocasey.github.io (the "Site"), you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this site.
+                        By accessing and using cfriedrich.net (the "Site"), you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this site.
                     </Typography>
 
                     <Typography variant="h5" component="h2" gutterBottom sx={{ mt: 4 }}>

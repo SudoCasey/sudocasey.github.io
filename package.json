@@ -2,7 +2,7 @@
   "name": "material-ui-nextjs",
   "version": "5.0.0",
   "private": true,
-  "homepage": "https://sudocasey.github.io",
+  "homepage": "https://cfriedrich.net",
   "scripts": {
     "dev": "next dev",
     "build": "node scripts/setup-cache.js && next build",

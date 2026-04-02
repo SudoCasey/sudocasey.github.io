@@ -15,7 +15,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import CloudIcon from '@mui/icons-material/Cloud';
 import SendIcon from '@mui/icons-material/Send';
 
-export default function Contact() {
+export default function Contact({ isStandalonePage = false }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -78,7 +78,12 @@ export default function Contact() {
       }}
     >
       <Container>
-        <Typography variant="h4" component="h2" gutterBottom align="center">
+        <Typography
+          variant="h4"
+          component={isStandalonePage ? 'h1' : 'h2'}
+          gutterBottom
+          align="center"
+        >
           Get in Touch
         </Typography>
         <Typography

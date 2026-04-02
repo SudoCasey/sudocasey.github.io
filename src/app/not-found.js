@@ -16,6 +16,22 @@ import HomeIcon from '@mui/icons-material/Home';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export default function NotFound() {
+  React.useEffect(() => {
+    const prevTitle = document.title;
+    document.title = 'Page Not Found | Casey Friedrich';
+
+    const meta = document.createElement('meta');
+    meta.name = 'robots';
+    meta.content = 'noindex, follow';
+    meta.setAttribute('data-404', '1');
+    document.head.appendChild(meta);
+
+    return () => {
+      document.title = prevTitle;
+      meta.remove();
+    };
+  }, []);
+
   return (
     <Container maxWidth="lg">
       <AppTheme>

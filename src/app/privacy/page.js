@@ -32,7 +32,7 @@ export default function PrivacyPolicy() {
                         Introduction
                     </Typography>
                     <Typography variant="body1" paragraph>
-                        This Privacy Policy describes how your personal information is collected, used, and shared when you visit or interact with sudocasey.github.io (the "Site").
+                        This Privacy Policy describes how your personal information is collected, used, and shared when you visit or interact with cfriedrich.net (the "Site").
                     </Typography>
 
                     <Typography variant="h5" component="h2" gutterBottom sx={{ mt: 4 }}>

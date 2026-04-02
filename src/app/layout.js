@@ -5,6 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import theme from '@/theme';
 import Script from 'next/script';
 import { Inter } from 'next/font/google';
+import { SITE_DESCRIPTION, SITE_URL } from '@/lib/site';
 
 // Performance: Optimize font loading
 const inter = Inter({
@@ -16,11 +17,39 @@ const inter = Inter({
   adjustFontFallback: true, // Automatically adjust fallback font metrics
 });
 
+const ogImage = '/images/Casey/CaseyFriedrich_Headshot2-1000.webp';
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Casey Friedrich',
+  url: `${SITE_URL}/`,
+  image: `${SITE_URL}${ogImage}`,
+  jobTitle: 'Full Stack Web Developer',
+  description: SITE_DESCRIPTION,
+  knowsAbout: [
+    'Web development',
+    'WCAG accessibility',
+    'Full stack development',
+    'React',
+    'Next.js',
+  ],
+  sameAs: [
+    'https://github.com/sudocasey',
+    'https://www.linkedin.com/in/caseyfriedrich1/',
+    'https://bsky.app/profile/caseyfriedrich.bsky.social',
+  ],
+};
+
 export const metadata = {
-  title: 'Casey Friedrich',
-  description: 'Personal portfolio and blog of Casey Friedrich',
-  metadataBase: new URL('https://cfriedrich.net'),
-  // Performance: Add robots metadata
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'Casey Friedrich',
+    template: '%s | Casey Friedrich',
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: 'Casey Friedrich',
+  referrer: 'origin-when-cross-origin',
   robots: {
     index: true,
     follow: true,
@@ -43,17 +72,33 @@ export const metadata = {
   },
   openGraph: {
     title: 'Casey Friedrich',
-    description: 'Personal portfolio and blog of Casey Friedrich',
-    images: '/images/Casey/CaseyFriedrich_Headshot2-1000.webp',
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    locale: 'en_US',
     type: 'website',
     siteName: 'Casey Friedrich',
+    images: [
+      {
+        url: ogImage,
+        width: 1000,
+        height: 1000,
+        alt: 'Casey Friedrich — professional headshot',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Casey Friedrich',
-    description: 'Personal portfolio and blog of Casey Friedrich',
-    images: '/images/Casey/CaseyFriedrich_Headshot2-1000.webp',
+    description: SITE_DESCRIPTION,
+    images: [ogImage],
   },
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#1976d2',
 };
 
 export default function RootLayout(props) {
@@ -81,14 +126,14 @@ export default function RootLayout(props) {
         <link rel="icon" type="image/webp" href="/images/Casey/CaseyFriedrich_Headshot_favicon-16x16.webp" sizes="16x16" />
         <link rel="apple-touch-icon" type="image/webp" href="/images/Casey/CaseyFriedrich_Headshot-250.webp" sizes="180x180" />
         
-        {/* Performance: Viewport and rendering optimizations */}
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        <meta name="theme-color" content="#1976d2" />
-        
         {/* Performance: Web App Manifest */}
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body style={{ fontFamily: 'var(--font-inter)' }}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <ThemeProvider theme={theme}>
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}

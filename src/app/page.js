@@ -14,6 +14,22 @@ import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import { SITE_DESCRIPTION, SITE_URL } from '@/lib/site';
+
+export const metadata = {
+  title: {
+    absolute: 'Casey Friedrich',
+  },
+  description: SITE_DESCRIPTION,
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Casey Friedrich',
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+  },
+};
 
 export default function Home() {
   return (
