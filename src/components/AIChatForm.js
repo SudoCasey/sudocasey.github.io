@@ -7,6 +7,7 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
+import Typography from '@mui/material/Typography';
 import ReactMarkdown from 'react-markdown';
 
 const TYPING_INTERVAL_MS = 12;
@@ -81,6 +82,8 @@ export default function AIChatForm({
   const [error, setError] = React.useState('');
   const [messageTimestamps, setMessageTimestamps] = React.useState([]);
   const requestInFlightRef = React.useRef(false);
+  const submittedMessageCountRef = React.useRef(0);
+  const [loadingMessage, setLoadingMessage] = React.useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -99,6 +102,9 @@ export default function AIChatForm({
 
     if (requestInFlightRef.current) return;
     requestInFlightRef.current = true;
+    const isFirstMessage = submittedMessageCountRef.current === 0;
+    submittedMessageCountRef.current += 1;
+    setLoadingMessage(isFirstMessage ? 'Booting up…' : 'Thinking…');
     setError('');
     setAnswer('');
     setLoading(true);
@@ -142,6 +148,7 @@ export default function AIChatForm({
       setError(err.message || 'Something went wrong. Try again.');
     } finally {
       setLoading(false);
+      setLoadingMessage('');
       requestInFlightRef.current = false;
     }
   };
@@ -178,6 +185,56 @@ export default function AIChatForm({
           {loading ? <CircularProgress size={24} /> : submitLabel}
         </Button>
       </Stack>
+      {loading && loadingMessage && (
+        <Box
+          sx={{
+            mt: 1.5,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 1,
+            py: 1,
+            px: 1.5,
+            borderRadius: 2,
+            border: '1px solid',
+            borderColor: (theme) =>
+              theme.palette.mode === 'dark'
+                ? 'rgba(255,255,255,0.12)'
+                : 'rgba(0,0,0,0.08)',
+            backgroundColor: (theme) =>
+              theme.palette.mode === 'dark'
+                ? theme.palette.grey[900]
+                : theme.palette.grey[50],
+          }}
+        >
+          <Box
+            sx={{
+              width: 6,
+              height: 6,
+              borderRadius: '50%',
+              bgcolor: 'primary.main',
+              flexShrink: 0,
+              animation: 'pulse-dot 1.2s ease-in-out infinite',
+              '@keyframes pulse-dot': {
+                '0%, 100%': { opacity: 1 },
+                '50%': { opacity: 0.4 },
+              },
+            }}
+          />
+          <CircularProgress size={18} thickness={5} sx={{ color: 'primary.main' }} />
+          <Typography
+            variant="body2"
+            component="span"
+            sx={{
+              color: 'text.secondary',
+              fontWeight: 500,
+              letterSpacing: '0.02em',
+            }}
+          >
+            {loadingMessage}
+          </Typography>
+        </Box>
+      )}
       {error && (
         <Alert severity="error" onClose={() => setError('')} sx={{ mt: 1 }}>
           {error}
