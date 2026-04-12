@@ -9,6 +9,7 @@ import { feedbackCustomizations } from './customizations/feedback';
 import { navigationCustomizations } from './customizations/navigation';
 import { surfacesCustomizations } from './customizations/surfaces';
 import { colorSchemes, typography, shadows, shape } from './themePrimitives';
+import ThemePreferenceCoordinator from './ThemePreferenceCoordinator';
 
 function AppTheme(props) {
   const { children, disableCustomTheme, themeComponents } = props;
@@ -43,6 +44,7 @@ function AppTheme(props) {
 
   return (
     <CssVarsProvider theme={theme} defaultMode="system" noSsr>
+      <ThemePreferenceCoordinator />
       {children}
     </CssVarsProvider>
   );
