@@ -1,7 +1,7 @@
 "use client";
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { ThemeProvider, createTheme, CssVarsProvider } from '@mui/material/styles';
+import { createTheme, CssVarsProvider } from '@mui/material/styles';
 
 import { inputsCustomizations } from './customizations/inputs';
 import { dataDisplayCustomizations } from './customizations/dataDisplay';
@@ -12,11 +12,6 @@ import { colorSchemes, typography, shadows, shape } from './themePrimitives';
 
 function AppTheme(props) {
   const { children, disableCustomTheme, themeComponents } = props;
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const theme = React.useMemo(() => {
     return disableCustomTheme
@@ -42,16 +37,12 @@ function AppTheme(props) {
         });
   }, [disableCustomTheme, themeComponents]);
 
-  if (!mounted) {
-    return null;
-  }
-
   if (disableCustomTheme) {
     return <React.Fragment>{children}</React.Fragment>;
   }
 
   return (
-    <CssVarsProvider theme={theme} defaultMode="system">
+    <CssVarsProvider theme={theme} defaultMode="system" noSsr>
       {children}
     </CssVarsProvider>
   );
