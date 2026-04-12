@@ -2,14 +2,19 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { BackgroundEffectProvider, useBackgroundEffect } from '../contexts/BackgroundEffectContext';
 import InteractiveBackground from './InteractiveBackground';
 
 function Overlay() {
   const { enabled } = useBackgroundEffect();
   const theme = useTheme();
+  const showWebglChrome = useMediaQuery(theme.breakpoints.up('md'), {
+    defaultMatches: false,
+    noSsr: true,
+  });
 
-  if (!enabled) return null;
+  if (!enabled || !showWebglChrome) return null;
 
   return (
     <Box

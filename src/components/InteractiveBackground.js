@@ -1,6 +1,5 @@
 "use client";
 import * as React from 'react';
-import dynamic from 'next/dynamic';
 import Box from '@mui/material/Box';
 import { useBackgroundEffect } from '../contexts/BackgroundEffectContext';
 import { useTheme } from '@mui/material/styles';
@@ -44,6 +43,17 @@ export default function InteractiveBackground() {
   React.useEffect(() => {
     if (!enabled || !containerRef.current) return;
 
+    if (typeof window === 'undefined') return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    // WebGL + Three are very heavy on mobile (Lighthouse TBT/LCP); hero already uses CSS gradients.
+    if (window.matchMedia('(max-width: 899.98px)').matches) {
+      return;
+    }
+
     let mounted = true;
     let timeoutId = null;
     
@@ -51,10 +61,9 @@ export default function InteractiveBackground() {
     // Use requestIdleCallback to load when browser is idle
     const loadWhenIdle = (callback) => {
       if ('requestIdleCallback' in window) {
-        requestIdleCallback(callback, { timeout: 2000 });
+        requestIdleCallback(callback, { timeout: 4500 });
       } else {
-        // Fallback: delay by 1 second after page load
-        setTimeout(callback, 1000);
+        setTimeout(callback, 1500);
       }
     };
 

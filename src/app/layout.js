@@ -4,18 +4,8 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from '@/theme';
 import Script from 'next/script';
-import { Inter } from 'next/font/google';
+import { inter } from '@/lib/fonts';
 import { SITE_DESCRIPTION, SITE_URL } from '@/lib/site';
-
-// Performance: Optimize font loading
-const inter = Inter({
-  weight: ['300', '400', '500', '600', '700'],
-  subsets: ['latin'],
-  display: 'swap', // Show fallback font immediately, swap when loaded
-  variable: '--font-inter',
-  fallback: ['system-ui', 'arial'], // Fallback fonts
-  adjustFontFallback: true, // Automatically adjust fallback font metrics
-});
 
 const ogImage = '/images/Casey/CaseyFriedrich_Headshot2-1000.webp';
 

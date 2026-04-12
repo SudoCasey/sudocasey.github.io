@@ -1,12 +1,19 @@
 "use client";
 import * as React from 'react';
+import dynamic from 'next/dynamic';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
-import AIChatForm from '@/components/AIChatForm';
+
+const AIChatForm = dynamic(() => import('@/components/AIChatForm'), {
+  ssr: false,
+  loading: () => (
+    <Box sx={{ minHeight: 200, width: '100%', maxWidth: 420 }} aria-hidden />
+  ),
+});
 
 export default function Hero() {
   return (

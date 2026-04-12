@@ -1,13 +1,5 @@
 'use client';
-import { Inter } from 'next/font/google';
 import { createTheme } from '@mui/material/styles';
-
-const inter = Inter({
-  weight: ['300', '400', '500', '600', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-});
 
 const theme = createTheme({
   cssVariables: true,
@@ -15,7 +7,7 @@ const theme = createTheme({
     mode: 'light',
   },
   typography: {
-    fontFamily: inter.style.fontFamily,
+    fontFamily: 'var(--font-inter), system-ui, sans-serif',
   },
   components: {
     MuiAlert: {

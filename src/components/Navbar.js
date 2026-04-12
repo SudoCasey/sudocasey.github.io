@@ -158,14 +158,6 @@ export default function Navbar() {
               <ColorModeIconDropdown />
             </Box>
             <Box sx={{ display: { xs: 'flex', md: 'none' }, gap: 1 }}>
-              <IconButton
-                onClick={toggle}
-                disableRipple
-                size="small"
-                aria-label={enabled ? 'Disable background effect' : 'Enable background effect'}
-              >
-                {enabled ? <PaletteIcon /> : <PaletteOutlinedIcon />}
-              </IconButton>
               <ColorModeIconDropdown size="small" />
               <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
                 <MenuIcon />
