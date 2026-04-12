@@ -5,6 +5,7 @@ import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
 import theme from '@/theme';
 import Script from 'next/script';
 import { inter } from '@/lib/fonts';
+import { APPEARANCE_MODE_STORAGE_KEY } from '@/lib/appearanceModeStorageKey';
 import { SITE_DESCRIPTION, SITE_URL } from '@/lib/site';
 
 const ogImage = '/images/Casey/CaseyFriedrich_Headshot2-1000.webp';
@@ -129,6 +130,7 @@ export default function RootLayout(props) {
         <InitColorSchemeScript
           attribute="data-mui-color-scheme"
           defaultMode="system"
+          modeStorageKey={APPEARANCE_MODE_STORAGE_KEY}
         />
         <script
           type="application/ld+json"

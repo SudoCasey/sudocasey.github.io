@@ -2,9 +2,8 @@
 
 import * as React from 'react';
 import { useColorScheme } from '@mui/material/styles';
+import { APPEARANCE_MODE_STORAGE_KEY } from '@/lib/appearanceModeStorageKey';
 
-/** Matches MUI Material InitColorSchemeScript / CssVarsProvider default. */
-const MODE_STORAGE_KEY = 'mui-mode';
 const VALID_MODES = new Set(['light', 'dark', 'system']);
 
 /**
@@ -38,7 +37,7 @@ export default function ThemePreferenceCoordinator() {
 
     let stored;
     try {
-      stored = localStorage.getItem(MODE_STORAGE_KEY);
+      stored = localStorage.getItem(APPEARANCE_MODE_STORAGE_KEY);
     } catch {
       if (mode !== 'system') {
         setMode('system');

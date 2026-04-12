@@ -8,6 +8,7 @@ import { dataDisplayCustomizations } from './customizations/dataDisplay';
 import { feedbackCustomizations } from './customizations/feedback';
 import { navigationCustomizations } from './customizations/navigation';
 import { surfacesCustomizations } from './customizations/surfaces';
+import { APPEARANCE_MODE_STORAGE_KEY } from '@/lib/appearanceModeStorageKey';
 import { colorSchemes, typography, shadows, shape } from './themePrimitives';
 import ThemePreferenceCoordinator from './ThemePreferenceCoordinator';
 
@@ -43,7 +44,12 @@ function AppTheme(props) {
   }
 
   return (
-    <CssVarsProvider theme={theme} defaultMode="system" noSsr>
+    <CssVarsProvider
+      theme={theme}
+      defaultMode="system"
+      noSsr
+      modeStorageKey={APPEARANCE_MODE_STORAGE_KEY}
+    >
       <ThemePreferenceCoordinator />
       {children}
     </CssVarsProvider>
