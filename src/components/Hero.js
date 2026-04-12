@@ -6,7 +6,6 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { styled } from '@mui/material/styles';
 
 const AIChatForm = dynamic(() => import('@/components/AIChatForm'), {
   ssr: false,
@@ -73,10 +72,29 @@ export default function Hero() {
               variant="h2"
               sx={(theme) => ({
                 fontSize: 'inherit',
-                color: 'primary.main',
                 textAlign: { xs: 'center', lg: 'left' },
+                display: 'inline-block',
+                fontWeight: theme.typography.h2.fontWeight,
+                backgroundImage:
+                  'linear-gradient(105deg, hsl(210, 98%, 38%) 0%, hsl(265, 85%, 48%) 22%, hsl(190, 90%, 36%) 45%, hsl(330, 82%, 52%) 68%, hsl(210, 98%, 42%) 100%)',
+                backgroundSize: '280% 100%',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                color: 'transparent',
+                WebkitTextFillColor: 'transparent',
+                '@keyframes heroNameGradient': {
+                  '0%': { backgroundPosition: '0% 50%' },
+                  '50%': { backgroundPosition: '100% 50%' },
+                  '100%': { backgroundPosition: '0% 50%' },
+                },
+                animation: 'heroNameGradient 10s ease-in-out infinite',
+                '@media (prefers-reduced-motion: reduce)': {
+                  animation: 'none',
+                  backgroundPosition: '40% 50%',
+                },
                 ...theme.applyStyles('dark', {
-                  color: 'primary.light',
+                  backgroundImage:
+                    'linear-gradient(105deg, hsl(210, 100%, 72%) 0%, hsl(275, 95%, 75%) 22%, hsl(175, 85%, 58%) 45%, hsl(320, 90%, 72%) 68%, hsl(210, 100%, 78%) 100%)',
                 }),
               })}
             >

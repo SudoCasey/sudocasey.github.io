@@ -1,7 +1,15 @@
 const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export',
+  // `output: 'export'` with the same `distDir` as export output can stall `next dev`
+  // after "Starting" (Windows / Next 15). Production builds set NODE_ENV=production.
+  ...(isProd
+    ? {
+        output: 'export',
+        distDir: 'out',
+      }
+    : {}),
   // Same-origin assets so previews (*.pages.dev) and custom domain both work.
   // A fixed assetPrefix (e.g. cfriedrich.net) breaks Pages deployment URLs.
   assetPrefix: '',
@@ -11,8 +19,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Ensure proper static export
-  distDir: 'out',
   // Performance: Enable compression
   compress: true,
   // Note: swcMinify is enabled by default in Next.js 15+
@@ -21,15 +27,6 @@ const nextConfig = {
     removeConsole: isProd ? {
       exclude: ['error', 'warn'],
     } : false,
-  },
-  // Performance: Enable build caching
-  experimental: {
-    turbo: {
-      resolveAlias: {
-        // Add any aliases if needed
-      },
-    },
-    // Note: optimizeCss requires critters package, removed to avoid build errors
   },
   // Performance: Configure build cache and optimizations
   webpack: (config, { dev, isServer }) => {

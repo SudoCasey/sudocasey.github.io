@@ -193,7 +193,7 @@ export default function InteractiveBackground() {
         return Promise.resolve(); // Return resolved promise instead of undefined
       }
       
-      const [THREE_JS, VANTA_MODULE] = result;
+      let [THREE_JS, VANTA_MODULE] = result;
       
       if (!THREE_JS || !VANTA_MODULE) {
         // Only log error if component is still mounted
