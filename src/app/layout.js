@@ -88,7 +88,13 @@ export const viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
-  themeColor: '#1976d2',
+  /** Safari (including iOS): document supports both schemes so the UA canvas follows system before JS runs. */
+  colorScheme: 'light dark',
+  /** iOS Safari 15+ uses media-specific theme-color for the toolbar when appearance follows system. */
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#1976d2' },
+    { media: '(prefers-color-scheme: dark)', color: '#050509' },
+  ],
 };
 
 export default function RootLayout(props) {
