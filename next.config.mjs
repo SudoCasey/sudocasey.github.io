@@ -2,9 +2,10 @@ const isProd = process.env.NODE_ENV === 'production';
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
-  // Configure for GitHub Pages root URL
-  assetPrefix: isProd ? 'https://cfriedrich.net' : '',
-  basePath: isProd ? '' : '',
+  // Same-origin assets so previews (*.pages.dev) and custom domain both work.
+  // A fixed assetPrefix (e.g. cfriedrich.net) breaks Pages deployment URLs.
+  assetPrefix: '',
+  basePath: '',
   trailingSlash: true,
   // Disable image optimization for static export
   images: {
