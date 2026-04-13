@@ -10,6 +10,7 @@ import { useColorScheme } from '@mui/material/styles';
 
 export default function ColorModeIconDropdown(props) {
   const { mode, setMode } = useColorScheme();
+  const menuId = React.useId();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mounted, setMounted] = React.useState(false);
   const open = Boolean(anchorEl);
@@ -65,7 +66,7 @@ export default function ColorModeIconDropdown(props) {
         disableRipple
         size="small"
         aria-label="Appearance"
-        aria-controls={open ? 'color-scheme-menu' : undefined}
+        aria-controls={open ? menuId : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         {...props}
@@ -74,7 +75,7 @@ export default function ColorModeIconDropdown(props) {
       </IconButton>
       <Menu
         anchorEl={anchorEl}
-        id="account-menu"
+        id={menuId}
         open={open}
         onClose={handleClose}
         onClick={handleClose}

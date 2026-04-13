@@ -1,5 +1,11 @@
 const isProd = process.env.NODE_ENV === 'production';
 
+// Avoid writing `.next/trace` on every span in dev (Windows often returns EPERM when
+// Defender/sync locks the file; uncaught WriteStream errors are noisy and can disrupt dev).
+if (!isProd && process.env.NEXT_TRACE_SPAN_THRESHOLD_MS == null) {
+  process.env.NEXT_TRACE_SPAN_THRESHOLD_MS = String(Number.MAX_SAFE_INTEGER);
+}
+
 const nextConfig = {
   reactStrictMode: true,
   // `output: 'export'` with the same `distDir` as export output can stall `next dev`

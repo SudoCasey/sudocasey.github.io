@@ -47,7 +47,6 @@ function AppTheme(props) {
     <CssVarsProvider
       theme={theme}
       defaultMode="system"
-      noSsr
       modeStorageKey={APPEARANCE_MODE_STORAGE_KEY}
     >
       <ThemePreferenceCoordinator />

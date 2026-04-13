@@ -36,7 +36,10 @@ export default function InteractiveBackground() {
   const theme = useTheme();
   const containerRef = React.useRef(null);
   const vantaEffect = React.useRef(null);
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'), {
+    defaultMatches: false,
+    noSsr: true,
+  });
 
   const isDark = theme.palette.mode === 'dark';
 

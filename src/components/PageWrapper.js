@@ -9,10 +9,19 @@ import InteractiveBackground from './InteractiveBackground';
 function Overlay() {
   const { enabled } = useBackgroundEffect();
   const theme = useTheme();
-  const showWebglChrome = useMediaQuery(theme.breakpoints.up('md'), {
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const matchesMdUp = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: false,
     noSsr: true,
   });
+
+  // Only apply viewport-based UI after mount so SSR + hydration match (no extra sibling vs server).
+  const showWebglChrome = mounted && matchesMdUp;
 
   if (!enabled || !showWebglChrome) return null;
 

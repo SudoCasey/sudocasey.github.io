@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import { ThemeProvider } from '@mui/material/styles';
 import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
-import theme from '@/theme';
 import Script from 'next/script';
 import { inter } from '@/lib/fonts';
 import { APPEARANCE_MODE_STORAGE_KEY } from '@/lib/appearanceModeStorageKey';
@@ -126,7 +124,7 @@ export default function RootLayout(props) {
         {/* Performance: Web App Manifest */}
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body style={{ fontFamily: 'var(--font-inter)' }}>
+      <body style={{ fontFamily: 'var(--font-inter)' }} suppressHydrationWarning>
         <InitColorSchemeScript
           attribute="data-mui-color-scheme"
           defaultMode="system"
@@ -137,9 +135,7 @@ export default function RootLayout(props) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-          <ThemeProvider theme={theme}>
-            {props.children}
-          </ThemeProvider>
+          {props.children}
         </AppRouterCacheProvider>
         <Script 
           src="/register-sw.js" 

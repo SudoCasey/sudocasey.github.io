@@ -1,18 +1,33 @@
 "use client";
 import * as React from 'react';
-import dynamic from 'next/dynamic';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
-const AIChatForm = dynamic(() => import('@/components/AIChatForm'), {
-  ssr: false,
-  loading: () => (
-    <Box sx={{ minHeight: 200, width: '100%', maxWidth: 420 }} aria-hidden />
-  ),
-});
+const CHAT_PLACEHOLDER_SX = { minHeight: 200, width: '100%', maxWidth: 420 };
+
+/** Loads chat after mount so SSR + first client paint match (no `next/dynamic` + `ssr: false` mismatch). */
+function HeroAIChat() {
+  const [Form, setForm] = React.useState(null);
+
+  React.useEffect(() => {
+    let cancelled = false;
+    import('@/components/AIChatForm').then((mod) => {
+      if (!cancelled) setForm(() => mod.default);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  if (!Form) {
+    return <Box sx={CHAT_PLACEHOLDER_SX} aria-hidden />;
+  }
+
+  return <Form />;
+}
 
 export default function Hero() {
   return (
@@ -53,8 +68,8 @@ export default function Hero() {
               justifyContent: { xs: 'center', lg: 'flex-start' },
               fontSize: 'clamp(3rem, 10vw, 3.5rem)',
               '@media (min-width: 1200px)': {
-                flexDirection: 'row'
-              }
+                flexDirection: 'row',
+              },
             }}
           >
             <Typography
@@ -62,7 +77,7 @@ export default function Hero() {
               variant="h2"
               sx={{
                 fontSize: 'inherit',
-                textAlign: { xs: 'center', lg: 'left' }
+                textAlign: { xs: 'center', lg: 'left' },
               }}
             >
               Hi, I'm&nbsp;
@@ -128,24 +143,14 @@ export default function Hero() {
             useFlexGap
             sx={{ pt: 2, width: { xs: '100%', sm: 'auto' } }}
           >
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              href="#contact"
-            >
+            <Button variant="contained" color="primary" size="large" href="#contact">
               Contact Me
             </Button>
-            <Button
-              variant="outlined"
-              color="primary"
-              size="large"
-              href="#projects"
-            >
+            <Button variant="outlined" color="primary" size="large" href="#projects">
               View My Work
             </Button>
           </Stack>
-          <AIChatForm />
+          <HeroAIChat />
         </Stack>
       </Container>
     </Box>

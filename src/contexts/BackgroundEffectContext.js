@@ -7,13 +7,19 @@ const BackgroundEffectContext = React.createContext({
 });
 
 export function BackgroundEffectProvider({ children }) {
-  const [enabled, setEnabled] = React.useState(() => {
-    if (typeof window !== 'undefined') {
+  // Must match SSR and first client render; read localStorage after mount only.
+  const [enabled, setEnabled] = React.useState(true);
+
+  React.useEffect(() => {
+    try {
       const saved = localStorage.getItem('backgroundEffectEnabled');
-      return saved !== null ? saved === 'true' : true; // Default to enabled
+      if (saved !== null) {
+        setEnabled(saved === 'true');
+      }
+    } catch {
+      // ignore (private mode, blocked storage)
     }
-    return true;
-  });
+  }, []);
 
   const toggle = React.useCallback(() => {
     setEnabled((prev) => {
