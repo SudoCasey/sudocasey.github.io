@@ -149,17 +149,6 @@ export default function Contact({ isStandalonePage = false }) {
                 rows={6}
                 disabled={isSubmitting}
                 autoComplete="off"
-                sx={{
-                  '& .MuiOutlinedInput-root': {
-                    alignItems: 'flex-start',
-                    paddingTop: '8px',
-                    '& textarea': {
-                      paddingTop: '8px',
-                      paddingBottom: '8px',
-                      lineHeight: '1.5',
-                    },
-                  }
-                }}
               />
               <Button
                 type="submit"

@@ -142,16 +142,6 @@ export default function AccordionContactForm({
               onClick={(e) => e.stopPropagation()}
               autoComplete="email"
               name="email"
-              sx={{
-                '& .MuiInputLabel-outlined': {
-                  '&.MuiInputLabel-sizeSmall': {
-                    transform: 'translate(14px, 7px) scale(1)',
-                  },
-                  '&.MuiInputLabel-shrink': {
-                    transform: 'translate(14px, -9px) scale(0.75)',
-                  },
-                },
-              }}
             />
           </AccordionSummary>
           <AccordionDetails

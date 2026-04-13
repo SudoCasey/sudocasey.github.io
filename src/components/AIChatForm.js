@@ -193,11 +193,6 @@ export default function AIChatForm({
           disabled={loading}
           autoComplete="off"
           label="Ask Casey's AI a question about him..."
-          sx={{
-            '& .MuiOutlinedInput-root': {
-              backgroundColor: (theme) => theme.palette.background.paper,
-            },
-          }}
         />
         <Button
           type="submit"
