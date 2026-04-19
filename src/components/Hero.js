@@ -8,17 +8,28 @@ import Typography from '@mui/material/Typography';
 
 const CHAT_PLACEHOLDER_SX = { minHeight: 200, width: '100%', maxWidth: 420 };
 
-/** Loads chat after mount so SSR + first client paint match (no `next/dynamic` + `ssr: false` mismatch). */
+/** Loads chat after idle so main-thread work for LCP (hero heading) finishes first. */
 function HeroAIChat() {
   const [Form, setForm] = React.useState(null);
 
   React.useEffect(() => {
     let cancelled = false;
-    import('@/components/AIChatForm').then((mod) => {
-      if (!cancelled) setForm(() => mod.default);
-    });
+    const load = () => {
+      import('@/components/AIChatForm').then((mod) => {
+        if (!cancelled) setForm(() => mod.default);
+      });
+    };
+    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+      const id = window.requestIdleCallback(load, { timeout: 3200 });
+      return () => {
+        cancelled = true;
+        window.cancelIdleCallback(id);
+      };
+    }
+    const t = window.setTimeout(load, 0);
     return () => {
       cancelled = true;
+      window.clearTimeout(t);
     };
   }, []);
 
@@ -90,6 +101,10 @@ export default function Hero() {
                 textAlign: { xs: 'center', lg: 'left' },
                 display: 'inline-block',
                 fontWeight: theme.typography.h2.fontWeight,
+                /* Limit repaint scope; gradient+clip-text is not fully compositor-only. */
+                contain: 'paint',
+                transform: 'translateZ(0)',
+                backfaceVisibility: 'hidden',
                 backgroundImage:
                   'linear-gradient(105deg, hsl(210, 98%, 38%) 0%, hsl(265, 85%, 48%) 22%, hsl(190, 90%, 36%) 45%, hsl(330, 82%, 52%) 68%, hsl(210, 98%, 42%) 100%)',
                 backgroundSize: '280% 100%',
@@ -102,10 +117,15 @@ export default function Hero() {
                   '50%': { backgroundPosition: '100% 50%' },
                   '100%': { backgroundPosition: '0% 50%' },
                 },
-                animation: 'heroNameGradient 10s ease-in-out infinite',
+                animation: 'heroNameGradient 12s linear infinite',
                 '@media (prefers-reduced-motion: reduce)': {
                   animation: 'none',
                   backgroundPosition: '40% 50%',
+                },
+                /* No shifting gradient on small screens — fewer paints during mobile Lighthouse. */
+                '@media (max-width: 899.98px) and (prefers-reduced-motion: no-preference)': {
+                  animation: 'none',
+                  backgroundPosition: '42% 50%',
                 },
                 ...theme.applyStyles('dark', {
                   backgroundImage:

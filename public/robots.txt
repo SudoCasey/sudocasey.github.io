@@ -1,3 +1,5 @@
+# If Lighthouse reports Content-Signal: Cloudflare is prepending managed robots.txt (zone → Bots / AI crawlers). Disable there to validate.
+
 User-agent: *
 Allow: /
 Disallow: /api/

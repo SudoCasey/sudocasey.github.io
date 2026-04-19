@@ -91,6 +91,13 @@ export default function Navbar() {
                   alt="Casey Friedrich"
                   component={NextLink}
                   href="/"
+                  title="Casey Friedrich — home"
+                  slotProps={{
+                    img: {
+                      fetchPriority: 'low',
+                      decoding: 'async',
+                    },
+                  }}
                   sx={{ 
                     width: scrolled ? 50 : 100, 
                     height: scrolled ? 50 : 100,
@@ -179,7 +186,7 @@ export default function Navbar() {
                       justifyContent: 'flex-end',
                     }}
                   >
-                    <IconButton onClick={toggleDrawer(false)}>
+                    <IconButton onClick={toggleDrawer(false)} aria-label="Close navigation menu">
                       <CloseRoundedIcon />
                     </IconButton>
                   </Box>

@@ -13,6 +13,9 @@ export default function CaseyFriedrichIcon() {
       `}
       sizes="(max-width: 600px) 100px, (max-width: 900px) 200px, 400px"
       alt="Casey Friedrich"
+      loading="lazy"
+      decoding="async"
+      fetchPriority="low"
       sx={{
         width: 40,
         height: 40,

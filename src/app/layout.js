@@ -100,21 +100,11 @@ export default function RootLayout(props) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
-        {/* Performance: Resource hints */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Inter is self-hosted via next/font — avoid fonts.googleapis preconnect (unused + can confuse Lighthouse). */}
         <link rel="dns-prefetch" href="https://api.web3forms.com" />
         <link rel="dns-prefetch" href="https://github.com" />
         <link rel="dns-prefetch" href="https://www.linkedin.com" />
         <link rel="dns-prefetch" href="https://bsky.app" />
-        
-        {/* Performance: Preload critical resources */}
-        <link
-          rel="preload"
-          href="/images/Casey/CaseyFriedrich_Headshot2-250.webp"
-          as="image"
-          type="image/webp"
-        />
         
         {/* Favicons */}
         <link rel="icon" type="image/webp" href="/images/Casey/CaseyFriedrich_Headshot_favicon-32x32.webp" sizes="32x32" />

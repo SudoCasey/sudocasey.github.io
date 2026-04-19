@@ -16,7 +16,11 @@ function Copyright() {
   return (
     <Typography variant="body2" display="inline" sx={{ color: 'text.secondary', mt: 1 }}>
       {'Copyright © '}
-      <Link color="text.secondary" href="https://github.com/sudocasey/sudocasey.github.io">
+      <Link
+        color="text.secondary"
+        href="https://github.com/sudocasey/sudocasey.github.io"
+        title="Portfolio site source on GitHub"
+      >
         Casey Friedrich
       </Link>
       &nbsp;
@@ -57,7 +61,8 @@ export default function Footer() {
             color="inherit"
             size="small"
             href="https://github.com/sudocasey"
-            aria-label="GitHub"
+            aria-label="Casey Friedrich on GitHub"
+            title="Casey Friedrich on GitHub"
             sx={{ alignSelf: 'center' }}
           >
             <GitHubIcon />
@@ -66,7 +71,8 @@ export default function Footer() {
             color="inherit"
             size="small"
             href="https://bsky.app/profile/caseyfriedrich.bsky.social"
-            aria-label="Bluesky"
+            aria-label="Casey Friedrich on Bluesky"
+            title="Casey Friedrich on Bluesky"
             sx={{ alignSelf: 'center' }}
           >
             <CloudIcon />
@@ -75,7 +81,8 @@ export default function Footer() {
             color="inherit"
             size="small"
             href="https://www.linkedin.com/in/caseyfriedrich1/"
-            aria-label="LinkedIn"
+            aria-label="Casey Friedrich on LinkedIn"
+            title="Casey Friedrich on LinkedIn"
             sx={{ alignSelf: 'center' }}
           >
             <LinkedInIcon />
