@@ -8,7 +8,6 @@ import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
 import Typography from '@mui/material/Typography';
-import ReactMarkdown from 'react-markdown';
 
 const TYPING_INTERVAL_MS = 12;
 const CHARS_PER_TICK = 2;
@@ -39,7 +38,9 @@ function TypingMarkdown({ text, onComplete }) {
 
   return (
     <Box component="span" className="markdown-body chat-response-body" sx={{ display: 'block' }}>
-      <ReactMarkdown>{visible}</ReactMarkdown>
+      <Box component="span" sx={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
+        {visible}
+      </Box>
       {!isComplete && (
         <Box
           component="span"
