@@ -24,7 +24,8 @@ const projects = [
     description: 'A modern web crawler built with Next.js, Material-UI, and Puppeteer. This application allows you to crawl websites, take screenshots, discover all pages within a website, and perform WCAG accessibility testing.',
     images: [
       { 
-        src: '/images/WebDevToolkit/web_crawler_demo.gif', 
+        // Use an optimized static preview in the grid; keep GIF for full-size modal view.
+        src: '/images/WebDevToolkit/Web_Dev_Toolkit_1.webp', 
         width: 500, 
         height: 250,
         fullSize: '/images/WebDevToolkit/web_crawler_demo.gif'

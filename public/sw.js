@@ -140,8 +140,9 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Performance: Network-first strategy for HTML/API, fallback to cache
-  if (request.destination === 'document' || url.pathname.startsWith('/api/')) {
+  // Network-first strategy for HTML pages, fallback to cache
+  // Security: do not cache API responses in SW storage.
+  if (request.destination === 'document') {
     event.respondWith(
       fetch(request)
         .then((response) => {
@@ -157,6 +158,12 @@ self.addEventListener('fetch', (event) => {
           return caches.match(request);
         })
     );
+    return;
+  }
+
+  // Security: bypass service-worker caching for API calls.
+  if (url.pathname.startsWith('/api/')) {
+    event.respondWith(fetch(request));
     return;
   }
 

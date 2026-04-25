@@ -15,10 +15,6 @@ const CHARS_PER_TICK = 2;
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX = 5;
 
-/** One-time background request on mount; not shown, not counted toward user limits. */
-const CLIENT_WARMUP_USER_CONTENT =
-  '[cf-site-warmup] Ignore; no user-visible reply needed.';
-
 function TypingMarkdown({ text, onComplete }) {
   const [visibleLength, setVisibleLength] = React.useState(0);
   const isComplete = visibleLength >= text.length;
@@ -88,26 +84,6 @@ export default function AIChatForm({
   const requestInFlightRef = React.useRef(false);
   const submittedMessageCountRef = React.useRef(0);
   const [loadingMessage, setLoadingMessage] = React.useState('');
-
-  React.useEffect(() => {
-    const ac = new AbortController();
-    (async () => {
-      try {
-        await fetch(apiUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            messages: [{ role: 'user', content: CLIENT_WARMUP_USER_CONTENT }],
-            stream: false,
-          }),
-          signal: ac.signal,
-        });
-      } catch {
-        // Aborted or network failure — silent; user flow unchanged.
-      }
-    })();
-    return () => ac.abort();
-  }, [apiUrl]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

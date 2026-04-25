@@ -25,8 +25,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Performance: Enable compression
-  compress: true,
   // Note: swcMinify is enabled by default in Next.js 15+
   // Performance: Target modern browsers to reduce legacy JavaScript
   compiler: {
@@ -34,68 +32,58 @@ const nextConfig = {
       exclude: ['error', 'warn'],
     } : false,
   },
-  // Performance: Configure build cache and optimizations
+  // Performance: keep predictable chunking and isolate heavy vendor modules.
   webpack: (config, { dev, isServer }) => {
-    // Enable caching in production
     if (!dev && !isServer) {
       config.cache = {
         type: 'filesystem',
       };
-      
-      // Performance: Optimize bundle splitting for client-side
-      if (!isServer) {
-        config.optimization = {
-          ...config.optimization,
-          moduleIds: 'deterministic',
-          // Performance: Enable tree shaking
-          usedExports: true,
-          sideEffects: false,
-          splitChunks: {
-            chunks: 'all',
-            minSize: 20000, // Only split chunks larger than 20KB
-            maxSize: 244000, // Max chunk size for better caching
-            cacheGroups: {
-              default: false,
-              vendors: false,
-              // Separate chunk for MUI (large library)
-              mui: {
-                name: 'mui',
-                test: /[\\/]node_modules[\\/]@mui[\\/]/,
-                chunks: 'all',
-                priority: 30,
-                reuseExistingChunk: true,
-                enforce: true,
-              },
-              // Separate chunk for THREE.js and Vanta (large libraries, loaded dynamically)
-              three: {
-                name: 'three',
-                test: /[\\/]node_modules[\\/](three|vanta)[\\/]/,
-                chunks: 'async', // Only split async chunks for these
-                priority: 30,
-                enforce: true,
-              },
-              // Vendor chunk for other node_modules
-              vendor: {
-                name: 'vendor',
-                chunks: 'all',
-                test: /[\\/]node_modules[\\/]/,
-                priority: 20,
-                reuseExistingChunk: true,
-                minChunks: 2,
-              },
-              // Common chunk for shared code
-              common: {
-                name: 'common',
-                minChunks: 2,
-                chunks: 'all',
-                priority: 10,
-                reuseExistingChunk: true,
-                enforce: true,
-              },
+
+      config.optimization = {
+        ...config.optimization,
+        moduleIds: 'deterministic',
+        usedExports: true,
+        splitChunks: {
+          chunks: 'all',
+          minSize: 20000,
+          maxSize: 244000,
+          cacheGroups: {
+            default: false,
+            vendors: false,
+            mui: {
+              name: 'mui',
+              test: /[\\/]node_modules[\\/]@mui[\\/]/,
+              chunks: 'all',
+              priority: 30,
+              reuseExistingChunk: true,
+              enforce: true,
+            },
+            three: {
+              name: 'three',
+              test: /[\\/]node_modules[\\/](three|vanta)[\\/]/,
+              chunks: 'async',
+              priority: 30,
+              enforce: true,
+            },
+            vendor: {
+              name: 'vendor',
+              chunks: 'all',
+              test: /[\\/]node_modules[\\/]/,
+              priority: 20,
+              reuseExistingChunk: true,
+              minChunks: 2,
+            },
+            common: {
+              name: 'common',
+              minChunks: 2,
+              chunks: 'all',
+              priority: 10,
+              reuseExistingChunk: true,
+              enforce: true,
             },
           },
-        };
-      }
+        },
+      };
     }
     return config;
   },
