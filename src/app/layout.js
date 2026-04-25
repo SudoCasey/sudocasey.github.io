@@ -105,6 +105,7 @@ export default function RootLayout(props) {
         <link rel="dns-prefetch" href="https://github.com" />
         <link rel="dns-prefetch" href="https://www.linkedin.com" />
         <link rel="dns-prefetch" href="https://bsky.app" />
+        <link rel="dns-prefetch" href="https://db1-api.autoa11y.com" />
         
         {/* Favicons */}
         <link rel="icon" type="image/webp" href="/images/Casey/CaseyFriedrich_Headshot_favicon-32x32.webp" sizes="32x32" />
@@ -127,8 +128,17 @@ export default function RootLayout(props) {
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           {props.children}
         </AppRouterCacheProvider>
-        <Script 
-          src="/register-sw.js" 
+        <Script
+          src="https://db1-api.autoa11y.com/v1/embed/wcag-g174-contrast/1.0.0.js?k=35b481525618945a8a10f08ff64a5df85f194cb630bfac52"
+          strategy="afterInteractive"
+          async
+          data-wcag-g174="1"
+          data-wcag-level="AA"
+          data-position="br"
+          data-label="Contrast"
+        />
+        <Script
+          src="/register-sw.js"
           strategy="lazyOnload"
         />
       </body>
