@@ -129,7 +129,7 @@ export default function RootLayout(props) {
           {props.children}
         </AppRouterCacheProvider>
         <Script
-          src="https://db1-api.autoa11y.com/v1/embed/wcag-g174-contrast/1.0.0.js?k=35b481525618945a8a10f08ff64a5df85f194cb630bfac52"
+          src="https://db1-api.autoa11y.com/v1/embed/wcag-g174-contrast/latest.js?k=35b481525618945a8a10f08ff64a5df85f194cb630bfac52"
           strategy="afterInteractive"
           async
           data-wcag-g174="1"
