@@ -128,14 +128,14 @@ export default function RootLayout(props) {
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           {props.children}
         </AppRouterCacheProvider>
-        <Script
-          src="https://db1-api.autoa11y.com/v1/embed/wcag-g174-contrast/latest.js?k=35b481525618945a8a10f08ff64a5df85f194cb630bfac52"
-          strategy="afterInteractive"
+        <script
+          src="https://db1-api.autoa11y.com/v1/embed/wcag-g174-contrast/latest.js?k=c2189bbc49e46a25b6825d902cfee5b863a7c31c0be2e0c2"
           async
           data-wcag-g174="1"
           data-wcag-level="AA"
           data-position="br"
           data-label="Contrast"
+          data-storage-key="wcagG174"
         />
         <Script
           src="/register-sw.js"
