@@ -226,7 +226,23 @@ export default function AIChatForm({
         </Box>
       )}
       {error && (
-        <Alert severity="error" onClose={() => setError('')} sx={{ mt: 1 }}>
+        <Alert
+          severity="error"
+          onClose={() => setError('')}
+          sx={{
+            mt: 1,
+            border: '2px solid',
+            borderColor: 'error.main',
+            backgroundColor: (theme) =>
+              theme.palette.mode === 'dark'
+                ? 'rgba(211, 47, 47, 0.22)'
+                : 'rgba(211, 47, 47, 0.12)',
+            borderRadius: 1.5,
+            '& .MuiAlert-icon': {
+              color: 'error.main',
+            },
+          }}
+        >
           {error}
         </Alert>
       )}

@@ -115,7 +115,27 @@ export default function Contact({ isStandalonePage = false }) {
                 Send me a Message
               </Typography>
               {status.message && (
-                <Alert severity={status.type === 'success' ? 'success' : 'error'}>
+                <Alert
+                  severity={status.type === 'success' ? 'success' : 'error'}
+                  sx={{
+                    border: '2px solid',
+                    borderColor: (theme) =>
+                      status.type === 'success'
+                        ? theme.palette.success.main
+                        : theme.palette.error.main,
+                    backgroundColor: (theme) =>
+                      status.type === 'success'
+                        ? (theme.palette.mode === 'dark' ? 'rgba(46, 125, 50, 0.22)' : 'rgba(46, 125, 50, 0.12)')
+                        : (theme.palette.mode === 'dark' ? 'rgba(211, 47, 47, 0.22)' : 'rgba(211, 47, 47, 0.12)'),
+                    borderRadius: 1.5,
+                    '& .MuiAlert-icon': {
+                      color: (theme) =>
+                        status.type === 'success'
+                          ? theme.palette.success.main
+                          : theme.palette.error.main,
+                    },
+                  }}
+                >
                   {status.message}
                 </Alert>
               )}
