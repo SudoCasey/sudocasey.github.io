@@ -157,7 +157,18 @@ export default function AIChatForm({
     <Box
       component="form"
       onSubmit={handleSubmit}
-      sx={{ width: '100%', maxWidth, pt: 1, ...sx }}
+      sx={{
+        width: '100%',
+        maxWidth,
+        pt: 1,
+        px: 1.5,
+        py: 1.5,
+        borderRadius: 2,
+        border: '1px solid',
+        borderColor: 'divider',
+        backgroundColor: 'background.paper',
+        ...sx,
+      }}
     >
       <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} alignItems="stretch">
         <TextField
@@ -196,10 +207,7 @@ export default function AIChatForm({
               theme.palette.mode === 'dark'
                 ? 'rgba(255,255,255,0.12)'
                 : 'rgba(0,0,0,0.08)',
-            backgroundColor: (theme) =>
-              theme.palette.mode === 'dark'
-                ? theme.palette.grey[900]
-                : theme.palette.grey[50],
+            backgroundColor: 'background.paper',
           }}
         >
           <CircularProgress size={18} thickness={5} sx={{ color: 'primary.main' }} />
@@ -238,10 +246,7 @@ export default function AIChatForm({
               theme.palette.mode === 'dark'
                 ? 'rgba(255,255,255,0.12)'
                 : 'rgba(0,0,0,0.08)',
-            backgroundColor: (theme) =>
-              theme.palette.mode === 'dark'
-                ? theme.palette.grey[900]
-                : theme.palette.grey[50],
+            backgroundColor: 'background.paper',
             '& .chat-response-body': {
               '& p': { margin: '0 0 0.5em', '&:last-child': { marginBottom: 0 } },
               '& ul, & ol': { margin: '0.25em 0', paddingLeft: '1.25em' },

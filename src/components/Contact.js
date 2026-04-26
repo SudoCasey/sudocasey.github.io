@@ -104,6 +104,11 @@ export default function Contact({ isStandalonePage = false }) {
                 flexDirection: 'column',
                 gap: 3,
                 textAlign: { xs: 'center', md: 'left' },
+                backgroundColor: 'background.paper',
+                border: '1px solid',
+                borderColor: 'divider',
+                borderRadius: 2,
+                p: { xs: 2, md: 3 },
               }}
             >
               <Typography variant="h6" component="h3" gutterBottom>
@@ -174,6 +179,11 @@ export default function Contact({ isStandalonePage = false }) {
                 gap: 4,
                 height: '100%',
                 textAlign: { xs: 'center', md: 'left' },
+                backgroundColor: 'background.paper',
+                border: '1px solid',
+                borderColor: 'divider',
+                borderRadius: 2,
+                p: { xs: 2, md: 3 },
               }}
             >
               <Box>
