@@ -132,7 +132,7 @@ export default function RootLayout(props) {
           src="/register-sw.js"
           strategy="lazyOnload"
         />
-        {/*<script
+        <script
           src="https://db1-api.autoa11y.com/v1/embed/wcag-g174-contrast/latest.js?k=6bc78975525a7e44ffd1d05c55e90436ed16789398301e53"
           async
           data-wcag-g174="1"
@@ -140,7 +140,7 @@ export default function RootLayout(props) {
           data-position="br"
           data-label="Contrast"
           data-storage-key="wcagG174"
-        />*/}
+        />
       </body>
     </html>
   );
