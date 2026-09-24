@@ -170,7 +170,7 @@ export default function Hero() {
               View My Work
             </Button>
           </Stack>
-          <HeroAIChat />
+          {/* <HeroAIChat /> */}
         </Stack>
       </Container>
     </Box>
