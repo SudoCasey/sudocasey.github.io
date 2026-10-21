@@ -3,7 +3,7 @@ import * as React from 'react';
 import DarkModeIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeIcon from '@mui/icons-material/LightModeRounded';
 import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useColorScheme } from '@mui/material/styles';
@@ -60,19 +60,21 @@ export default function ColorModeIconDropdown(props) {
 
   return (
     <React.Fragment>
-      <IconButton
+      <Button
         data-screenshot="toggle-mode"
         onClick={handleClick}
         disableRipple
         size="small"
+        variant="outlined"
         aria-label="Appearance"
         aria-controls={open ? menuId : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         {...props}
       >
+        Toggle Darkmode &nbsp;
         {icon}
-      </IconButton>
+      </Button>
       <Menu
         anchorEl={anchorEl}
         id={menuId}

@@ -60,6 +60,14 @@ export default function Navbar() {
     setOpen(newOpen);
   };
 
+  const mobileControlSx = {
+    minWidth: 0,
+    px: 1,
+    whiteSpace: 'normal',
+    lineHeight: 1.2,
+    '& .MuiSvgIcon-root': { flexShrink: 0 },
+  };
+
   /*const NavbarSpacer = styled('div')(({ theme }) => ({
       height: theme.spacing(8),
   }));*/
@@ -84,8 +92,8 @@ export default function Navbar() {
               transition: 'padding 0.3s ease',
             }}
           >
-            <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Box sx={{ flexGrow: 1, minWidth: 0, display: 'flex', alignItems: 'center', px: 0 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, sm: 2 }, minWidth: 0 }}>
                 <Avatar
                   src="/images/Casey/CaseyFriedrich_Headshot-250.webp"
                   alt="Casey Friedrich"
@@ -102,12 +110,17 @@ export default function Navbar() {
                     width: scrolled ? 50 : 100, 
                     height: scrolled ? 50 : 100,
                     transition: 'width 0.3s ease, height 0.3s ease',
+                    '@media (max-width: 420px)': { width: 48, height: 48 },
                   }}
                 />
                 <Typography variant="h6" component="h2" sx={{ 
                   flexGrow: 1,
+                  minWidth: 0,
                   color: (theme) => theme.palette.mode === 'light' ? 'text.primary' : 'inherit',
-                  marginRight: 2,
+                  marginRight: { xs: 0, sm: 2 },
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
                 }}>
                   Casey Friedrich
                 </Typography>
@@ -142,10 +155,13 @@ export default function Navbar() {
               </Box>
             </Box>
             <Box
+            
               sx={{
                 display: { xs: 'none', md: 'flex' },
+                width: 220,
                 gap: 1,
                 alignItems: 'center',
+                flexDirection: 'column',
               }}
             >
               {/*<Button color="primary" variant="text" size="small">
@@ -154,19 +170,33 @@ export default function Navbar() {
               <Button color="primary" variant="contained" size="small">
                 Sign up
               </Button>*/}
-              <IconButton
+              <Button
                 onClick={toggle}
+                variant="outlined"
                 disableRipple
                 size="small"
                 aria-label={enabled ? 'Disable background effect' : 'Enable background effect'}
+                fullWidth
               >
-                {enabled ? <PaletteIcon /> : <PaletteOutlinedIcon />}
-              </IconButton>
-              <ColorModeIconDropdown />
+                {enabled ? <>Disable Background &nbsp; <PaletteIcon /> </>: <>Enable Background &nbsp; <PaletteOutlinedIcon /></>}
+              </Button>
+              <ColorModeIconDropdown fullWidth />
             </Box>
-            <Box sx={{ display: { xs: 'flex', md: 'none' }, gap: 1 }}>
-              <ColorModeIconDropdown size="small" />
-              <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
+            <Box sx={{ display: { xs: 'flex', md: 'none' }, gap: 1, alignItems: 'center' }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, width: 'min(40vw, 10rem)', '@media (max-width: 640px)': { display: 'none' } }}>
+                <Button
+                  onClick={toggle}
+                  variant="outlined"
+                  size="small"
+                  aria-label={enabled ? 'Disable background effect' : 'Enable background effect'}
+                  fullWidth
+                  sx={mobileControlSx}
+                >
+                  {enabled ? <>Disable Background &nbsp; <PaletteIcon /></> : <>Enable Background &nbsp; <PaletteOutlinedIcon /></>}
+                </Button>
+                <ColorModeIconDropdown size="small" fullWidth sx={mobileControlSx} />
+              </Box>
+              <IconButton size="large" aria-label="Menu button" onClick={toggleDrawer(true)}>
                 <MenuIcon />
               </IconButton>
               <Drawer
@@ -193,6 +223,18 @@ export default function Navbar() {
 
                   <MenuItem href="/" color="secondary" component={NextLink}>Home</MenuItem>
                   <MenuItem href="/contact" color="secondary" component={NextLink}>Contact</MenuItem>
+                  <Box sx={{ display: 'none', flexDirection: 'column', gap: 1, mt: 1, '@media (max-width: 640px)': { display: 'flex' } }}>
+                    <Button
+                      onClick={toggle}
+                      variant="outlined"
+                      size="small"
+                      aria-label={enabled ? 'Disable background effect' : 'Enable background effect'}
+                      fullWidth
+                    >
+                      {enabled ? <>Disable Background &nbsp; <PaletteIcon /></> : <>Enable Background &nbsp; <PaletteOutlinedIcon /></>}
+                    </Button>
+                    <ColorModeIconDropdown fullWidth />
+                  </Box>
                   {/*<MenuItem>Features</MenuItem>
                   <MenuItem>Testimonials</MenuItem>
                   <MenuItem>Highlights</MenuItem>
