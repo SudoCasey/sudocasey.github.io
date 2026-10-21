@@ -146,23 +146,90 @@ export default function About() {
               <Typography variant="h4" component="h2" gutterBottom>
                 About Me
               </Typography>
-            <Typography variant="body1" paragraph>
-              Dynamic Full-stack Web Developer and Manager with 7+ years of experience in agile environments, excelling in web accessibility and cloud deployment strategies. Currently serving as Web Developer Manager at{' '}
-              <Link href="https://seoforrealestateinvestors.com" target="_blank" rel="noopener noreferrer">
-                SEO For Real Estate Investors
-              </Link>
-              , where I direct a development team in building and maintaining SEO-optimized websites for real estate investment businesses.
-            </Typography>
-            <Typography variant="body1" paragraph>
-              Previously, as Web Development Team Lead and WCAG Accessibility SME at{' '}
-              <Link href="https://adasitecompliance.com" target="_blank" rel="noopener noreferrer">
-                ADA Site Compliance
-              </Link>
-              , I mentored and led teams of developers in agile sprints, promoting coding best practices and accessibility-first development. I architected scalable RESTful APIs that improved web app performance and database fetch speeds by 80% in the <Link href="/#ADAshboard">"ADAshboard"</Link>, and implemented DevOps pipelines with CircleCI, Docker, and AWS for improved deployment speed and reliability.
-            </Typography>
-            <Typography variant="body1" paragraph>
-              I served as Subject Matter Expert on WCAG 2.2 and Section 508 standards, influencing product design and client compliance strategy. I spearheaded accessibility remediation for over 200 client websites, improving usability for users with disabilities, increasing WCAG 2.2 compliance across websites, mobile apps on iOS & Android, and preventing legal liability by addressing accessibility issues in clients' received legal threats. I also developed and launched 25+ bespoke web applications using React, PHP, WordPress, and Shopify, directly contributing to SEO improvements and higher sales conversions.
-            </Typography>
+              <Typography variant="body1" paragraph>
+                Dynamic Full-stack Web Developer and Systems Engineer with 7+ years of
+                experience building, maintaining, and improving web applications in Agile
+                environments, with a strong focus on accessibility, performance, and
+                scalable development practices.
+              </Typography>
+
+              <Typography variant="body1" paragraph>
+                Currently serving as a <strong>Systems Engineer for NASA NCAPS at N4 Solutions LLC</strong>,
+                supporting NASA's web platforms through the NASA Consolidated Applications
+                and Platform Services (NCAPS) team. I work in an Agile SAFe environment,
+                maintaining and developing solutions for NASA websites, applications, and plugins, including
+                Gutenberg blocks and custom applications while using React, HTML/CSS,
+                JavaScript, and PHP to develop tools that support NASA missions.
+              </Typography>
+
+              <Typography variant="body1" paragraph>
+                Previously, I served as <strong>Web Developer Manager at </strong>
+                <Link
+                  href="https://seoforrealestateinvestors.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  SEO For Real Estate Developers
+                </Link>
+                , where I led a development team building and maintaining SEO-optimized
+                websites for real estate investment businesses. I mentored developers
+                through code reviews and performance feedback, established development
+                workflows and coding standards, and implemented KPI tracking to improve
+                team efficiency. I also developed <em>AudioNibbles</em>, an AI-powered
+                text-to-speech WordPress plugin designed to enhance SEO and accessibility,
+                and created accessible WordPress templates that accelerated development
+                and reduced client delivery times.
+              </Typography>
+
+              <Typography variant="body1" paragraph>
+                Before that, I spent more than four years at{" "}
+                <Link
+                  href="https://adasitecompliance.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ADA Site Compliance
+                </Link>
+                , progressing from Junior Front-end Developer to{" "}
+                <strong>
+                  Web Development Team Lead, Full-stack Web Developer, and WCAG
+                  Accessibility SME
+                </strong>
+                . I led development teams in Agile sprints, architected scalable RESTful
+                APIs that improved web application performance and database fetch speeds
+                by 80%, and implemented DevOps pipelines using CircleCI, Docker, and AWS
+                to improve deployment speed and reliability.
+              </Typography>
+
+              <Typography variant="body1" paragraph>
+                I also directed the full-stack development and cloud deployment of the{" "}
+                <Link
+                  href="https://cfriedrich.net/#ADAshboard"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ADAshboard
+                </Link>
+                , a proprietary accessibility scanning platform built with React, Node.js,
+                and MongoDB.
+              </Typography>
+
+              <Typography variant="body1" paragraph>
+                As a <strong>WCAG 2.2 and Section 508 Subject Matter Expert</strong>, I
+                spearheaded accessibility remediation for more than 200 client websites,
+                increasing WCAG 2.2 compliance by an average of 50% while improving
+                usability for users with disabilities and helping clients address
+                accessibility-related legal threats. I have also developed and launched
+                25+ bespoke web applications using React, PHP, WordPress, and Shopify,
+                contributing to improved SEO and sales conversions.
+              </Typography>
+
+              <Typography variant="body1">
+                My technical experience spans JavaScript, React, Next.js, Node.js, PHP,
+                Python, SQL, MongoDB, AWS, Docker, CI/CD, WordPress, Shopify, and
+                BigCommerce, with accessibility, responsive design, and modern web
+                development at the center of my work.
+              </Typography>
             </Box>
           </Grid>
         </Grid>
