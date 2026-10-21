@@ -53,14 +53,6 @@ export default function AccordionContactForm({
     setExpandedByUser(isExpanded);
   };
 
-  const handleFormBlur = () => {
-    setTimeout(() => {
-      if (formRef.current && !formRef.current.contains(document.activeElement)) {
-        setExpandedByUser(false);
-      }
-    }, 0);
-  };
-
   React.useEffect(() => {
     const handleClickOutside = (e) => {
       if (formRef.current && !formRef.current.contains(e.target)) {
@@ -138,7 +130,6 @@ export default function AccordionContactForm({
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               onFocus={() => setExpandedByUser(true)}
-              onBlur={handleFormBlur}
               onClick={(e) => e.stopPropagation()}
               autoComplete="email"
               name="email"
@@ -164,7 +155,6 @@ export default function AccordionContactForm({
               placeholder="Message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              onBlur={handleFormBlur}
               name="message"
               autoComplete="off"
             />
@@ -175,7 +165,6 @@ export default function AccordionContactForm({
               disabled={isSubmitting}
               fullWidth
               sx={{ mt: 1 }}
-              onBlur={handleFormBlur}
             >
               {isSubmitting ? 'Sending…' : 'Send'}
             </Button>
