@@ -150,7 +150,7 @@ export default function About() {
                 Dynamic Full-stack Web Developer and Systems Engineer with 7+ years of
                 experience building and maintaining web applications in Agile environments,
                 with a focus on accessibility, performance, and scalable development.
-                Currently serving as Systems Engineer for NASA NCAPS at N4 Solutions LLC,
+                Currently serving as a Systems Engineer for NASA NCAPS at N4 Solutions LLC,
                 where I support NASA's web platforms through the NASA Consolidated
                 Applications and Platform Services (NCAPS) team. I maintain and update
                 websites, applications, and plugins while using React, HTML/CSS, JavaScript,
